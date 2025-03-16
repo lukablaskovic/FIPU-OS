@@ -24,3 +24,7 @@
 
 Kolegij slušaju:
 - studenti 1. godine [Prijediplomskog sveučilišnog studija Informatika](https://fipu.unipu.hr/fipu/studijski_programi/preddiplomski_sveucilisni_studij_informatika) u 2. semestru, na [Fakultetu informatike u Puli](https://fipu.unipu.hr/fipu)
+
+## YouTube 📺
+
+1. [Uvod u operacijske sustave](https://youtu.be/IkmykdaaeyA) ([OS1](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS1%20-%20Uvod%20u%20operacijske%20sustave))
