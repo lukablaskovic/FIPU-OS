@@ -904,7 +904,7 @@ cp -n novi_config.txt vjezba_n/config.txt
 cp -nv novi_config.txt vjezba_n/config.txt
 ```
 
-<img src="./CLI-screenshots/cp-nv.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/cp-nv.png?raw=true" style="width:60%" ></img>
 
 > 🖼️ Naredba `cp` s kombinacijom zastavica ``-n` i `-v` će ispisati detalje o radnji i neće prepisati datoteku ako već postoji
 
@@ -924,7 +924,7 @@ mv -n novi_backup.txt vjezba_mv_n/backup.txt
 mv -nv novi_backup.txt vjezba_mv_n/backup.txt
 ```
 
-<img src="./CLI-screenshots/mv-nv.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/mv-nv.png?raw=true" style="width:60%" ></img>
 
 > 🖼️ Naredba `mv` s kombinacijom zastavica ``-n` i `-v` će ispisati detalje o radnji i neće prepisati datoteku ako već postoji
 
