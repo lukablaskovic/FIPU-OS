@@ -20,9 +20,7 @@ Zastavice (<i>eng. flags</i>) su posebni argumenti koji modificiraju ponašanje 
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 19.3.2025.**
-
-- skripta nije dovršena! 🔜
+**🆙 Posljednje ažurirano:20.3.2025.**
 
 ## Sadržaj
 
@@ -42,7 +40,11 @@ Zastavice (<i>eng. flags</i>) su posebni argumenti koji modificiraju ponašanje 
   - [🚩Zastavica: `-i`](#zastavica--i)
   - [🚩Zastavica: `-r`](#zastavica--r-1)
   - [🚩Zastavica: `-v`](#zastavica--v)
-- [Zadatak 2: Vježba složenijih zastavica](#zadatak-2-vježba-složenijih-zastavica)
+  - [🚩Zastavica: `-f`](#zastavica--f)
+  - [🚩Zastavica: `-n`](#zastavica--n)
+  - [4.1 Tablica čestih zastavica naredbi `cp`, `mv` i `rm`](#41-tablica-čestih-zastavica-naredbi-cp-mv-i-rm)
+- [Zadatak 2: Vježba zastavica naredbi `cp`, `mv` i `rm`](#zadatak-2-vježba-zastavica-naredbi-cp-mv-i-rm)
+- [Zadaci za Vježbu 2](#zadaci-za-vježbu-2)
 
 # 1. Uvod
 
@@ -462,6 +464,8 @@ Ekvivalentno možemo koristiti i naredbu `rmdir -p` za brisanje ugniježđenih d
 
 # Zadatak 1: Vježba osnovnih zastavica
 
+- ne predaje se (samo za vježbu)
+
 1. Stvorite direktorij `vjezba_ls` i unutar njega stvorite sljedeću strukturu direktorija i datoteka koristeći isključivo `mkdir` i `touch` naredbe:
 
    - ugniježđene direktorije stvorite koristeći odgovarajuću zastavicu
@@ -743,7 +747,7 @@ Na ovaj način naredba `rm` će:
 
 ## 🚩Zastavica: `-v`
 
-- `-v` (zapamti kao "verbose") - ispisuje detalje o radnji koja se izvršava (npr. ispisuje datoteke koje se kopiraju/premještaju/brišu)
+`-v` (zapamti kao "verbose") - ispisuje detalje o radnji koja se izvršava (npr. ispisuje datoteke koje se kopiraju/premještaju/brišu)
 
 Izraz _verbose_ je općenit pojam koji označava "govorljivost" ili "detaljnost" ispisivanja informacija. U kontekstu naredbi `cp`, `mv` i `rm`, zastavica `-v` će ispisivati **detalje o radnji koja se izvršava**.
 
@@ -788,16 +792,248 @@ rm -vir vjezba_v_rm
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-# Zadatak 2: Vježba složenijih zastavica
+## 🚩Zastavica: `-f`
 
-1. Stvorite direktorij `backup` unutar roditeljskog direktorija `Zadatak2`. Unutar `backup` stvorite tri datoteke: `file1.txt`, `file2.txt`, `file3.txt`.
+`-f` (zapamti kao "force") - **forsira izvršavanje naredbe** bez traženja potvrde i bez prikazivanja upozorenja ako datoteka ne postoji. Ova zastavica se koristi kada želimo zaobići potvrde i greške, što može biti korisno, ali i opasno ako nismo pažljivi.
 
-2. Jednom naredbom kopirajte sve datoteke iz `backup` u novi direktorij `backup/backup_copy`, koristeći odgovarajuću zastavicu da se prikaže svaka kopirana datoteka.
+Zastavica `-f` se koristi kod naredbi `cp`, `mv` i `rm`:
 
-3. Premjestite `backup_copy` u direktorij `Zadatak2` i preimenujte ga u `backup_moved`, koristeći odgovarajuću zastavicu da se prikaže svaka premještena datoteka.
+- kada želimo obrisati **datoteke ili direktorije** bez potvrde (`rm -f`)
+- kada želimo prepisati (_eng. overwrite_) postojeće datoteke prilikom kopiranja (`cp -f`)
+- kada želimo premjestiti datoteke i prepisati postojeće bez upozorenja (`mv -f`)
 
-4. Obrišite `backup_moved` direktorij i njegov sadrzaj, koristeći zastavicu koja će tražiti potvrdu prije brisanja svake datoteke.
+Zastavica `-f` **može dovesti do nepovratnog gubitka podataka**. Preporučuje se koristiti samo kada ste sigurni da želite prisilno izvršiti operaciju.
 
-5. Izradite novi direktorij `data` unutar `Zadatak2` i u njemu stvorite datoteku `.config.json` (skrivena datoteka). Zatim detaljno ispišite sve datoteke u `data`, uključujući i sve skrivene.
+_Primjer brisanja bez potvrde:_
 
-6. Ako se nalazite u `Zadatak2/data`, kako biste kopirali `.config.json` u direktorij `backup` bez da mijenjate direktorij? Napišite dvije različite naredbe bez korištenja `cd`.
+```bash
+mkdir vjezba_f
+
+cd vjezba_f
+
+touch osjetljiva_datoteka.txt
+
+# Brisanje bez potvrde
+rm -f osjetljiva_datoteka.txt
+```
+
+Kako bismo demonstrirali rad ove zastavice, moramo imati datoteke različitog sadržaja.
+
+Upis u datoteku možemo napraviti pomoću naredbe `echo` i operatora `>`:
+
+**Sintaksa:**
+
+```bash
+echo "string_sadrzaj" > datoteka.txt
+```
+
+- za sada dovoljno, a detalje ćemo raditi na sljedećim vježbama 😎
+
+_Primjer kopiranja bez potvrde:_
+
+```bash
+mkdir vjezba_cp_f
+
+touch vjezba_cp_f/backup.log
+
+echo "Stari podaci" > vjezba_cp_f/backup.log # sintaksa za upis u datoteku (radit ćemo ovo kasnije)
+
+# Stvaramo novu datoteku s novim podacima
+echo "Novi podaci" > novi_backup.log # sintaksa za upis u datoteku (radit ćemo ovo kasnije)
+
+# Kopiramo i prepisujemo datoteku bez upozorenja
+cp -f novi_backup.log vjezba_cp_f/backup.log
+```
+
+_Primjer premještanja bez potvrde:_
+
+```bash
+mkdir vjezba_mv_f
+
+touch vjezba_mv_f/old_config.cfg
+
+echo "Stara konfiguracija" > vjezba_mv_f/old_config.cfg
+
+# Kreiramo novu konfiguracijsku datoteku
+echo "Nova konfiguracija" > new_config.cfg
+
+# Premještamo i prepisujemo bez upozorenja
+mv -f new_config.cfg vjezba_mv_f/old_config.cfg
+```
+
+🚨**Opasna kombinacija zastavica** `-f` i `-r` može dovesti do rekurzivnog brisanja sadržaja direktorija bez potvrde!
+
+_Primjer rekurzivnog brisanja bez potvrde:_
+
+```bash
+mkdir -p vjezba_rm_rf/temp
+
+touch vjezba_rm_rf/temp/file1.txt vjezba_rm_rf/temp/file2.txt
+
+# Brisanje cijelog direktorija bez upita
+rm -rf vjezba_rm_rf
+```
+
+> 💡Hint: Ako niste sigurni u radnju, preporuka je izbjegavati `-f` ili koristiti `-i` zastavicu za potvrdu.
+
+## 🚩Zastavica: `-n`
+
+`-n` (zapamti kao "no overwrite") - sprječava prepisivanje postojećih datoteka prilikom kopiranja (`cp`) ili premještanja (`mv`). Ova zastavica je korisna kada **ne želimo izgubiti postojeće podatke slučajnim prepisivanjem**.
+
+Zastavica `-n` će **preskočiti kopiranje/premještanje datoteke ako već postoji na odredištu** i koristimo ju:
+
+- **kada kopiramo ili premještamo datoteke**, ali ne želimo prebrisati postojeće datoteke
+- kada želimo **zaštititi stare verzije datoteka**
+- kada ne želimo ručno potvrđivati svaku zamjenu (`-i`), već jednostavno **automatski spriječiti prepisivanje**
+
+Praktično je kombinirati `-n` i `-v` zastavice za bolju vidljivost i kontrolu nad radnjama:
+
+_Primjer s kopiranjem:_
+
+```bash
+mkdir vjezba_n
+
+echo "Prva verzija" > vjezba_n/config.txt
+
+echo "Najnovija verzija" > novi_config.txt
+
+# Kopiramo, ali ne prepisujemo ako "config.txt" već postoji
+cp -n novi_config.txt vjezba_n/config.txt
+
+# Kombiniranje s -v za ispis detalja
+cp -nv novi_config.txt vjezba_n/config.txt
+```
+
+<img src="./CLI-screenshots/cp-nv.png" style="width:60%" ></img>
+
+> 🖼️ Naredba `cp` s kombinacijom zastavica ``-n` i `-v` će ispisati detalje o radnji i neće prepisati datoteku ako već postoji
+
+_Primjer s premještanjem:_
+
+```bash
+mkdir vjezba_mv_n
+
+echo "Originalna verzija" > vjezba_mv_n/backup.txt
+
+echo "Nova verzija" > novi_backup.txt
+
+# Premještamo, ali ne prepisujemo ako "backup.txt" već postoji
+mv -n novi_backup.txt vjezba_mv_n/backup.txt
+
+# Kombiniranje s -v za ispis detalja
+mv -nv novi_backup.txt vjezba_mv_n/backup.txt
+```
+
+<img src="./CLI-screenshots/mv-nv.png" style="width:60%" ></img>
+
+> 🖼️ Naredba `mv` s kombinacijom zastavica ``-n` i `-v` će ispisati detalje o radnji i neće prepisati datoteku ako već postoji
+
+## 4.1 Tablica čestih zastavica naredbi `cp`, `mv` i `rm`
+
+| Zastavica | Sintaksa                    | Objašnjenje                                                                                          |
+| --------- | --------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `-i`      | `cp -i` / `mv -i` / `rm -i` | **Interaktivni način** – traži potvrdu prije prepisivanja (`cp`, `mv`) ili brisanja (`rm`) datoteke. |
+| `-r`      | `cp -r` / `rm -r`           | **Rekurzivno kopira** (`cp`) ili briše (`rm`) direktorij i sve njegove poddirektorije i datoteke.    |
+| `-R`      | `cp -R` / `rm -R`           | Isto kao `-r` (za `cp` i `rm`). Kod `ls` ove zastavice nisu ekvivalentne.                            |
+| `-v`      | `cp -v` / `mv -v` / `rm -v` | **Prikazuje detalje** o izvršenim operacijama (`verbose`).                                           |
+| `-f`      | `cp -f` / `mv -f` / `rm -f` | **Forsira izvršenje** – ne traži potvrdu i ne prikazuje upozorenja ako datoteka ne postoji.          |
+| `-n`      | `cp -n` / `mv -n`           | **Onemogućuje prepisivanje** postojećih datoteka (ne utječe na `rm`).                                |
+| `-u`      | `cp -u` / `mv -u`           | Kopira ili premješta samo ako je izvorna datoteka novija od ciljne ili ako ciljna ne postoji.        |
+
+> 💡 **Napomena:** Naredba `mv` ponaša se rekurzivno prema direktorijima po defaultu, pa nema `-r` opciju. Kod `rm` se `-r` koristi pažljivo jer može trajno obrisati velike količine podataka.
+
+# Zadatak 2: Vježba zastavica naredbi `cp`, `mv` i `rm`
+
+- ne predaje se (samo za vježbu)
+
+1. Stvorite direktorij `vjezba_cp_mv_rm` i unutar njega stvorite sljedeću strukturu direktorija koristeći isključivo `mkdir` naredbu
+
+- naredbu `mkdir` **smijete pozvati najviše 5puta**. Hint: zastavica
+
+```bash
+[ 160]  .
+├── [ 128]  Documents
+│   ├── [  64]  faks
+│   └── [  64]  sve_ostalo
+├── [ 160]  Games
+│   ├── [  64]  action
+│   ├── [  64]  puzzle
+│   └── [  64]  sandbox
+```
+
+2. Koristeći `touch` naredbu, unutar direktorija `sve_ostalo` stvorite sljedeće datoteke:
+
+```
+salabahter_ikt.txt
+salabahter_os.txt
+salabahter_programiranje.txt
+```
+
+- stvorite novu datoteku `salabahter_ikt.txt` unutar direktorija `faks` i unesite u nju sadržaj: `"Salabahter iz IKT-a"` naredbom `echo`
+- kopirajte odjednom sadržaj direktorija `sve_ostalo` u direktorij `faks`, ne prepisujte datoteku koja već postoji i ispišite detalje o radnji
+
+3. Unutar `games` direktorija stvorite 5 datoteka jednom naredbom, a koje predstavljaju kratice (_shortcut_ - s nastavkom `.lnk`) na igre koje spadaju u kategorije `action`, `puzzle` i `sandbox`.
+
+- `minecraft.lnk`
+- `portal2.lnk`
+- `DOOM.lnk`
+- `the_witness.lnk`
+- `the_legends_of_zelda.lnk`
+
+Koristeći naredbe `cp` i `mv`, premjestite datoteke u odgovarajuće direktorije i ispišite detalje o radnji. Neke igre se mogu nalaziti u više kategorija pa morate kopirati datoteke, a ne premještati.
+
+1. action i puzzle: `minecraft.lnk`
+2. puzzle i action: `portal2.lnk`
+3. action: `DOOM.lnk`
+4. puzzle: `the_witness.lnk`
+5. action, puzzle i sandbox: `the_legends_of_zelda.lnk`
+
+Napišite naredbu koja rekurzivno briše sadržaj direktorija `Games` i pitajte korisnika za potvrdu prije brisanja svake datoteke. Ovom interakcijom obrišite samo datoteke (kratice), direktorije ostavite netaknute (ali prazne).
+
+# Zadaci za Vježbu 2
+
+Zadaću predajete na Merlin prema uputama za predaju.
+
+Zadatke riješite izvršavanjem naredbi u kloniranom GitHub repozitoriju, tako da se vide rezultati. Sve naredbe i odgovore upišite u `vjezba_2.txt` datoteku.
+
+**Zadatak 1**
+
+U radnom okruženju stvorite direktorije `vjezba_2/data` i `vjezba_2/backup` koristeći dvije naredbe `mkdir`.
+
+Unutar direktorija `data` stvorite sljedeće datoteke:
+
+```bash
+script.js
+style.css
+.env
+```
+
+Naredbom `echo` unesite sljedeći sadržaj u datoteke:
+
+- `script.js`: `console.log("Hello, World!")`
+- `style.css`: `body { background-color: #f0f0f0; }`
+- `.env`: `VJEBE=OS`
+
+**Zadatak 2**
+
+Kopirajte sav sadržaj direktorija `data` u direktorij `backup` koristeći odgovarajuću naredbu. Ispišite detalje o radnji.
+
+Prebacite se u direktorij `data` i napravite detaljan ispis direktorija `backup`. Ispis mora biti detaljan, uključivati sve skrivene datoteke i biti sortiran po veličini.
+
+**Zadatak 3**
+
+Jednom naredbom izbrišite sve datoteke i direktorij `data` osim datoteke `.env` koristeći odgovarajuće zastavice. Ispišite detalje o radnji.
+
+Napravite ponovno direktorij `data` i kopirajte u njega sve datoteke iz direktorija `backup` koristeći odgovarajuću naredbu, ali spriječite prepisivanje datoteka koje već postoje. Ispišite detalje o radnji.
+
+Detaljno ispišite sadržaj direktorija `data` koji mora sadržavati skrivene datoteke osim pokazivača na trenutni i radni direktorij, sortirane po datumu zadnje izmjene i svaki zapis u novom redu.
+
+**Zadatak 4**
+
+Otvorite direktorij po želji, ali nek ne sadržava više od 20 datoteka - mora sadržavati ugniježđene direktorije s nekoliko datoteka unutar njih.
+
+Prebacite se u direktorij i napišite sljedeće naredbe:
+
+1. Izlistaj detaljno sadržaj glavnog direktorija, uključujući sve skrivene datoteke i sortiraj po veličini.
+2. Izlistaj detaljno sadržaj glavnog direktorija, bez skrivenih datoteka, sortiraj po veličini i prikaži jedinice (KB, MB, GB) uz veličinu datoteka.
+3. Izlistaj sav sadržaj direktorija (uključujući poddirektorije i njihove datoteke i skrivene datoteke), ispis neka bude u boji i sortiran po datumu zadnje izmjene (najnovije na početku).
