@@ -1022,7 +1022,7 @@ Prebacite se u direktorij `data` i napravite detaljan ispis direktorija `backup`
 
 **Zadatak 3**
 
-Jednom naredbom izbrišite sve datoteke i direktorij `data` osim datoteke `.env` koristeći odgovarajuće zastavice. Ispišite detalje o radnji.
+Jednom naredbom izbrišite sve datoteke u direktoriju `data` osim datoteke `.env` koristeći odgovarajuće zastavice. Ispišite detalje o radnji.
 
 Napravite ponovno direktorij `data` i kopirajte u njega sve datoteke iz direktorija `backup` koristeći odgovarajuću naredbu, ali spriječite prepisivanje datoteka koje već postoje. Ispišite detalje o radnji.
 
