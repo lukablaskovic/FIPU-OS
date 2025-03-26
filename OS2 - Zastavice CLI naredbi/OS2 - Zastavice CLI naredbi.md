@@ -20,7 +20,7 @@ Zastavice (<i>eng. flags</i>) su posebni argumenti koji modificiraju ponašanje 
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano:20.3.2025.**
+**🆙 Posljednje ažurirano: 26.3.2025.**
 
 ## Sadržaj
 
@@ -423,9 +423,9 @@ _Primjeri kombiniranja zastavica:_
 | `-X`      | `ls -X` / `ls -l -X` / `ls -lX` | Sortira datoteke prema ekstenziji.                                                                                  |
 | `--color` | `ls --color`                    | Prikazuje datoteke u boji prema tipu datoteke.                                                                      |
 
-> **Napomena:** zastavice treba izvježbati i koristiti u praksi kako bi se bolje razumjele i zapamtile. Neke zastavice nije moguće kombinirati, primjerice zastavice `d` i `l` ne mogu se koristiti zajedno jer su međusobno kontradiktorne.
+> 💡**Napomena:** zastavice treba izvježbati i koristiti u praksi kako bi se bolje razumjele i zapamtile. Neke zastavice nije moguće kombinirati, primjerice zastavice `d` i `l` ne mogu se koristiti zajedno jer su međusobno kontradiktorne.
 
-> 💡Hint: Kod svih bash naredbi je moguće koristiti uputstva ili _manual_ naredbom `man`, npr. `man ls` za detaljne upute kako koristiti naredbu `ls` i koje su sve zastavice dostupne uključujući njihova ograničenja. Iz manuala se izlazi pritiskom tipke `q`
+> **💡Hint**: Kod svih bash naredbi je moguće koristiti uputstva ili _manual_ naredbom `man`, npr. `man ls` za detaljne upute kako koristiti naredbu `ls` i koje su sve zastavice dostupne uključujući njihova ograničenja. Iz manuala se izlazi pritiskom tipke `q`
 
 # 3. Zastavice naredbi `cd`, `pwd`, `mkdir` i `rmdir`
 
@@ -613,7 +613,7 @@ Nakon izvršavanja naredbe, korisnik će dobiti sljedeći ispis:
 
 `-r` (zapamti kao "recursive") - kopira/briše direktorij i **sav njegov sadržaj rekurzivno**. Pomoću ove zastavice moguće je kopirati/brisati direktorije i sve datoteke/poddirektorije unutar njih u jednom koraku.
 
-- ovo ponašanje je zadano kod naredbe `mv` (premještanje) pa iz tog razloga nema zastavice `-r` kod naredbe `mv`
+- ovo ponašanje je već zadano kod naredbe `mv` (premještanje) pa iz tog razloga nema zastavice `-r` kod iste
 - zastavicu `-r` je moguće pisati i velikim slovom: `-R` (kod naredbe `ls` ove zastavice nisu ekvivalentne)
 
 Kod **kopiranja** (`cp`) smo rekli da možemo kopirati određenu datoteku ili direktorij iz mjesta `<izvor>` u mjesto `<odrediše>`:
@@ -719,7 +719,7 @@ _Primjer rekurzivnog brisanja:_
 → rm -r dir1
 ```
 
-> 🚨Oprez: **Rekurzivno brisanje direktorija i njegovog sadržaja može biti opasno**, stoga je potrebno biti oprezan i provjeriti je li odabrani direktorij ispravan prije brisanja. Ipak, dobra praksa je kombinirati zastavicu `r` zastavicom `i` koja će u tom slučaju pitati korisnika je li siguran u brisanje za svaku datoteku. Ipak, većina modernih Linux distribucija ima neki oblik zaštita (_safeguards_) koje preveniraju rekurzivno brisanje korijenskog direktorija.
+> 🚨Oprez: **Rekurzivno brisanje direktorija i njegovog sadržaja može biti opasno**, stoga je potrebno biti oprezan i provjeriti navoditeli ispravan direktorij prije brisanja. Ipak, dobra praksa je kombinirati zastavicu `r` zastavicom `i` koja će u tom slučaju pitati korisnika je li siguran u brisanje za svaku datoteku. Većina modernih Linux distribucija ima neki oblik zaštita (_safeguards_) koje preveniraju rekurzivno brisanje korijenskog direktorija ili drugih važnih direktorija
 
 _Primjer rekurzivnog brisanja s potvrdom:_
 
@@ -739,17 +739,17 @@ Na ovaj način naredba `rm` će:
 - pitati korisnika za pregled svakog direktorija (`examine`)
 - pitati korisnika je li siguran u brisanje svake datoteke (`remove`)
 - pitati korisnika je li siguran u brisanje ukupnog direktorija (`remove directory`)
-- korisnik odgovara s `y` ili `n` i pritiskom tipke `Enter` na jednak način kao do sada
+- korisnik odgovara s `y` ili `n` i pritiskom tipke `Enter` na isti način kao što smo pokazali ranije
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/rm-ri-system32.png?raw=true" style="width:60%" ></img>
 
-> 🖼️ Naredba `rm -ri` će pitati korisnika je li siguran u brisanje svake datoteke i direktorija, svaki put.
+> 🖼️ Naredba `rm -ri` će pitati korisnika je li siguran u brisanje svake datoteke odnosno direktorija, svaki put.
 
 ## 🚩Zastavica: `-v`
 
-`-v` (zapamti kao "verbose") - ispisuje detalje o radnji koja se izvršava (npr. ispisuje datoteke koje se kopiraju/premještaju/brišu)
+`-v` (zapamti kao "verbose") - **ispisuje detalje/rezultate naredbe** koja se izvršava (npr. ispisuje datoteke koje se kopiraju/premještaju/brišu)
 
-Izraz _verbose_ je općenit pojam koji označava "govorljivost" ili "detaljnost" ispisivanja informacija. U kontekstu naredbi `cp`, `mv` i `rm`, zastavica `-v` će ispisivati **detalje o radnji koja se izvršava**.
+Izraz _verbose_ je općenit pojam koji označava "detaljnost" ispisivanja informacija. U kontekstu naredbi `cp`, `mv` i `rm`, zastavica `-v` će ispisivati **detalje o rezultate radnje** koja se izvršava, npr. naziv datoteke koja se kopira/premješta/briše.
 
 ```bash
 → cp -v datoteka.txt /mnt/c/Users/username/Desktop # ispisuje detalje o kopiranju datoteke
@@ -802,7 +802,9 @@ Zastavica `-f` se koristi kod naredbi `cp`, `mv` i `rm`:
 - kada želimo prepisati (_eng. overwrite_) postojeće datoteke prilikom kopiranja (`cp -f`)
 - kada želimo premjestiti datoteke i prepisati postojeće bez upozorenja (`mv -f`)
 
-Zastavica `-f` **može dovesti do nepovratnog gubitka podataka**. Preporučuje se koristiti samo kada ste sigurni da želite prisilno izvršiti operaciju.
+Zastavica `-f` **može dovesti do nepovratnog gubitka podataka**. Preporučuje se koristiti samo kada ste uvjereni da želite prisilno izvršiti operaciju - provjerili ste putanju i datoteke koje se brišu/premještaju/kopiraju.
+
+> **💡Napomena**: [Postoji mnogo verzija bash shella](https://ftp.gnu.org/gnu/bash/), ovisno o verziji koju imate instaliranu, naredbe `cp`, `mv` i `rm` se mogu ponašati različito u kontekstu `-f` flaga. **U većini novih verzija naredbe forsiraju izvršavanje radnje i bez ove zastavice** te se ona pretežito koristi u skriptiranju kako bi spriječila greške u izvršavanju skripte. Svakako pripazite s ovim naredbama.x“
 
 _Primjer brisanja bez potvrde:_
 
@@ -876,6 +878,8 @@ rm -rf vjezba_rm_rf
 
 > 💡Hint: Ako niste sigurni u radnju, preporuka je izbjegavati `-f` ili koristiti `-i` zastavicu za potvrdu.
 
+**Još jedanput** - zastavica `-f` može biti zadana ovisno o verziji shella (`bash --version`), ali i ovisno o postavkama sustava, okoline ili direktorija u kojem se nalazite.
+
 ## 🚩Zastavica: `-n`
 
 `-n` (zapamti kao "no overwrite") - sprječava prepisivanje postojećih datoteka prilikom kopiranja (`cp`) ili premještanja (`mv`). Ova zastavica je korisna kada **ne želimo izgubiti postojeće podatke slučajnim prepisivanjem**.
@@ -886,7 +890,9 @@ Zastavica `-n` će **preskočiti kopiranje/premještanje datoteke ako već posto
 - kada želimo **zaštititi stare verzije datoteka**
 - kada ne želimo ručno potvrđivati svaku zamjenu (`-i`), već jednostavno **automatski spriječiti prepisivanje**
 
-Praktično je kombinirati `-n` i `-v` zastavice za bolju vidljivost i kontrolu nad radnjama:
+Ova zastavica je u jednu ruku suprotnost zastavice `-f`.
+
+Praktično je kombinirati `-n` i `-v` zastavice za bolju vidljivost i kontrolu nad naredbama.
 
 _Primjer s kopiranjem:_
 
@@ -906,7 +912,7 @@ cp -nv novi_config.txt vjezba_n/config.txt
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/cp-nv.png?raw=true" style="width:60%" ></img>
 
-> 🖼️ Naredba `cp` s kombinacijom zastavica ``-n` i `-v` će ispisati detalje o radnji i neće prepisati datoteku ako već postoji
+> 🖼️ Naredba `cp` s kombinacijom zastavica `-n` i `-v` će ispisati detalje o radnji i neće prepisati datoteku ako već postoji
 
 _Primjer s premještanjem:_
 
@@ -926,7 +932,7 @@ mv -nv novi_backup.txt vjezba_mv_n/backup.txt
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/mv-nv.png?raw=true" style="width:60%" ></img>
 
-> 🖼️ Naredba `mv` s kombinacijom zastavica ``-n` i `-v` će ispisati detalje o radnji i neće prepisati datoteku ako već postoji
+> 🖼️ Naredba `mv` s kombinacijom zastavica `-n` i `-v` će ispisati detalje o radnji i neće prepisati datoteku ako već postoji
 
 ## 4.1 Tablica čestih zastavica naredbi `cp`, `mv` i `rm`
 
@@ -937,8 +943,8 @@ mv -nv novi_backup.txt vjezba_mv_n/backup.txt
 | `-R`      | `cp -R` / `rm -R`           | Isto kao `-r` (za `cp` i `rm`). Kod `ls` ove zastavice nisu ekvivalentne.                            |
 | `-v`      | `cp -v` / `mv -v` / `rm -v` | **Prikazuje detalje** o izvršenim operacijama (`verbose`).                                           |
 | `-f`      | `cp -f` / `mv -f` / `rm -f` | **Forsira izvršenje** – ne traži potvrdu i ne prikazuje upozorenja ako datoteka ne postoji.          |
-| `-n`      | `cp -n` / `mv -n`           | **Onemogućuje prepisivanje** postojećih datoteka (ne utječe na `rm`).                                |
-| `-u`      | `cp -u` / `mv -u`           | Kopira ili premješta samo ako je izvorna datoteka novija od ciljne ili ako ciljna ne postoji.        |
+| `-n`      | `cp -n` / `mv -n`           | **Onemogućuje prepisivanje** postojećih datoteka                                                     |
+| `-u`      | `cp -u` / `mv -u`           | Kopira ili premješta **samo ako je izvorna datoteka novija od ciljne ili ako ciljna ne postoji**.    |
 
 > 💡 **Napomena:** Naredba `mv` ponaša se rekurzivno prema direktorijima po defaultu, pa nema `-r` opciju. Kod `rm` se `-r` koristi pažljivo jer može trajno obrisati velike količine podataka.
 
@@ -948,7 +954,7 @@ mv -nv novi_backup.txt vjezba_mv_n/backup.txt
 
 1. Stvorite direktorij `vjezba_cp_mv_rm` i unutar njega stvorite sljedeću strukturu direktorija koristeći isključivo `mkdir` naredbu
 
-- naredbu `mkdir` **smijete pozvati najviše 5puta**. Hint: zastavica
+- naredbu `mkdir` **smijete pozvati najviše 5 puta**. Hint: neka zastavica
 
 ```bash
 [ 160]  .
@@ -1012,7 +1018,7 @@ Naredbom `echo` unesite sljedeći sadržaj u datoteke:
 
 - `script.js`: `console.log("Hello, World!")`
 - `style.css`: `body { background-color: #f0f0f0; }`
-- `.env`: `VJEBE=OS`
+- `.env`: `VJEZBE=OS`
 
 **Zadatak 2**
 
@@ -1030,7 +1036,7 @@ Detaljno ispišite sadržaj direktorija `data` koji mora sadržavati skrivene da
 
 **Zadatak 4**
 
-Otvorite direktorij po želji, ali nek ne sadržava više od 20 datoteka - mora sadržavati ugniježđene direktorije s nekoliko datoteka unutar njih.
+Otvorite direktorij na vašem računalu po želji, ali nek ne sadržava više od 20 datoteka - mora sadržavati ugniježđene direktorije s nekoliko datoteka unutar njih.
 
 Prebacite se u direktorij i napišite sljedeće naredbe:
 
