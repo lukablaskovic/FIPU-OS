@@ -1030,7 +1030,7 @@ Prebacite se u direktorij `data` i napravite detaljan ispis direktorija `backup`
 
 Jednom naredbom izbrišite sve datoteke u direktoriju `data` osim datoteke `.env` koristeći odgovarajuće zastavice. Ispišite detalje o radnji.
 
-Napravite ponovno direktorij `data` i kopirajte u njega sve datoteke iz direktorija `backup` koristeći odgovarajuću naredbu, ali spriječite prepisivanje datoteka koje već postoje. Ispišite detalje o radnji.
+U direktorij `data` kopirajte sve datoteke iz direktorija `backup` koristeći odgovarajuću naredbu, ali spriječite prepisivanje datoteka koje već postoje. Ispišite detalje o radnji.
 
 Detaljno ispišite sadržaj direktorija `data` koji mora sadržavati skrivene datoteke osim pokazivača na trenutni i radni direktorij, sortirane po datumu zadnje izmjene i svaki zapis u novom redu.
 
