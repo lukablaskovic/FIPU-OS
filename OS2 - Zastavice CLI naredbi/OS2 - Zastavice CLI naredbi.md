@@ -143,7 +143,7 @@ Sintaksu koju smo pokazali na prošlim vježbama, na ovim vježbama ćemo proši
 
 ## 🚩Zastavica: `-a`
 
-`-a` (zapamti kao "all") - lista sve datoteke, uključujući i one skrivene (koje počinju s `.`)
+`-a` (zapamti kao "all") → lista sve datoteke, uključujući i one skrivene (koje počinju s `.`)
 
 _Primjer:_
 
@@ -221,7 +221,7 @@ Postoji varijanta ove zastavice s velikim slovom `-A` koja također ispisuje sve
 
 ## 🚩Zastavica: `-l`
 
-`-l` (zapamti kao "long") - ispisuje detaljan ispis datoteka i direktorija
+`-l` (zapamti kao "long") → ispisuje detaljan ispis datoteka i direktorija
 
 ```bash
 → cd vjezba_2
@@ -298,7 +298,7 @@ Za sada toliko! 😎
 
 ## 🚩Zastavica: `-R`
 
-`-R` (zapamti kao "recursive") - rekurzivno ispisuje sadržaj ugniježđenih direktorija (eng. _subdirectories_)
+`-R` (zapamti kao "recursive") → rekurzivno ispisuje sadržaj ugniježđenih direktorija (eng. _subdirectories_)
 
 _Primjer:_
 
@@ -350,7 +350,7 @@ Naredbom `ls -R` ispisujemo sadržaj direktorija `vjezba_2` **rekurzivno**:
 
 Zastavica ima jako puno, pokazat ćemo još nekoliko korisnih koje se često koriste.
 
-- `-h` (zapamti kao "human"): ispisuje veličine datoteka u ljudski čitljivom formatu (npr. `1K`, `36M`, `3G`). Kombinira se s `-l` zastavicom.
+- `-h` (zapamti kao "human") → ispisuje veličine datoteka u ljudski čitljivom formatu (npr. `1K`, `36M`, `3G`). Kombinira se s `-l` zastavicom.
 
 ```bash
 → ls -l -h /mnt/c/Users/username/Books
@@ -364,12 +364,12 @@ Zastavica ima jako puno, pokazat ćemo još nekoliko korisnih koje se često kor
 
 > 🖼️ Naredba `ls -l -h` će ispisati veličine datoteka u ljudski čitljivom formatu
 
-- `-t` (zapamti kao "time") sortira datoteke po vremenu zadnje izmjene (od **najnovijih** prema **najstarijima**).
-- `-S` (zapamti kao "Size") sortira datoteke po veličini (od **najvećih** prema **najmanjima**).
-- `-1` (zapamti kao "one") ispisuje svaku datoteku u zasebnom redu (korisno za ispis u skriptama).
-- `--color` obojit će ispisane datoteke i direktorije (zadano: direktoriji su plave boje, datoteke crne, ...)
+- `-t` (zapamti kao "time") → sortira datoteke po vremenu zadnje izmjene (od **najnovijih** prema **najstarijima**).
+- `-S` (zapamti kao "Size") → sortira datoteke po veličini (od **najvećih** prema **najmanjima**).
+- `-1` (zapamti kao "one") → ispisuje svaku datoteku u zasebnom redu (korisno za ispis u skriptama).
+- `--color` → obojit će ispisane datoteke i direktorije (zadano: direktoriji su plave boje, datoteke crne, ...)
 
-> 💡Hint: Kod naredbe `ls`, gotovo sve zastavice je moguće međusobno kombinirati (npr. `-la`, `-lR`, `-aR`). Ovo je najbolje naučiti _trial-and-error_ metodom.
+> **💡Hint**: Kod naredbe `ls`, gotovo sve zastavice je moguće međusobno kombinirati (npr. `-la`, `-lR`, `-aR`). Ovo je najbolje naučiti _trial-and-error_ metodom.
 
 _Primjeri kombiniranja zastavica:_
 
@@ -565,7 +565,7 @@ Ove tri naredbe imaju dosta zastavica koje se ponavljaju i međusobno su slične
 
 ## 🚩Zastavica: `-i`
 
-`-i` (zapamti kao "interactive") - prije kopiranja/premještanja/brisanja datoteke, **zastavica će pitati korisnika za potvrdu**. Zastavica je korisna u slučajevima kada želimo izbjeći slučajnu izmjenu važnih datoteka, pogotovo kad radimo s više datoteka odjednom ili kad radimo s datotekama koje su važne za rad operacijskog sustava.
+`-i` (zapamti kao "interactive") → prije kopiranja/premještanja/brisanja datoteke, **zastavica će pitati korisnika za potvrdu**. Zastavica je korisna u slučajevima kada želimo izbjeći slučajnu izmjenu važnih datoteka, pogotovo kad radimo s više datoteka odjednom ili kad radimo s datotekama koje su važne za rad operacijskog sustava.
 
 - zastavica `-i` unutar `cp` će pitati korisnika za potvrdu **samo ako datoteka već postoji na odredištu** (_eng. overwrite_)
 - zastavica `-i` unutar `mv` će pitati korisnika za potvrdu **samo ako datoteka već postoji na odredištu** (_eng. overwrite_)
@@ -611,7 +611,7 @@ Nakon izvršavanja naredbe, korisnik će dobiti sljedeći ispis:
 
 ## 🚩Zastavica: `-r`
 
-`-r` (zapamti kao "recursive") - kopira/briše direktorij i **sav njegov sadržaj rekurzivno**. Pomoću ove zastavice moguće je kopirati/brisati direktorije i sve datoteke/poddirektorije unutar njih u jednom koraku.
+`-r` (zapamti kao "recursive") → kopira/briše direktorij i **sav njegov sadržaj rekurzivno**. Pomoću ove zastavice moguće je kopirati/brisati direktorije i sve datoteke/poddirektorije unutar njih u jednom koraku.
 
 - ovo ponašanje je već zadano kod naredbe `mv` (premještanje) pa iz tog razloga nema zastavice `-r` kod iste
 - zastavicu `-r` je moguće pisati i velikim slovom: `-R` (kod naredbe `ls` ove zastavice nisu ekvivalentne)
@@ -710,7 +710,7 @@ _Primjer rekurzivnog brisanja:_
 
 → cd vjezba_rm_r/dir1
 
-→ touch touch cache1.txt cache2.txt cache3.txt cache4.txt
+→ touch cache1.txt cache2.txt cache3.txt cache4.txt
 
 → ls -1
 
@@ -747,7 +747,7 @@ Na ovaj način naredba `rm` će:
 
 ## 🚩Zastavica: `-v`
 
-`-v` (zapamti kao "verbose") - **ispisuje detalje/rezultate naredbe** koja se izvršava (npr. ispisuje datoteke koje se kopiraju/premještaju/brišu)
+`-v` (zapamti kao "verbose") → **ispisuje detalje/rezultate naredbe** koja se izvršava (npr. ispisuje datoteke koje se kopiraju/premještaju/brišu)
 
 Izraz _verbose_ je općenit pojam koji označava "detaljnost" ispisivanja informacija. U kontekstu naredbi `cp`, `mv` i `rm`, zastavica `-v` će ispisivati **detalje o rezultate radnje** koja se izvršava, npr. naziv datoteke koja se kopira/premješta/briše.
 
@@ -762,11 +762,11 @@ Izraz _verbose_ je općenit pojam koji označava "detaljnost" ispisivanja inform
 _Primjer s detaljima o kopiranju:_
 
 ```bash
-mkdir vjezba_v
+→ mkdir vjezba_v
 
-touch vjezba_v/datoteka1.txt
+→ touch vjezba_v/datoteka1.txt
 
-cp -v vjezba_v/datoteka1.txt vjezba_v/datoteka2.txt # kopira datoteku i preimenuje je, ispisuje detalje o radnji
+→ cp -v vjezba_v/datoteka1.txt vjezba_v/datoteka2.txt # kopira datoteku i preimenuje je, ispisuje detalje o radnji
 ```
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/cp-v.png?raw=true" style="width:60%" ></img>
@@ -776,14 +776,14 @@ cp -v vjezba_v/datoteka1.txt vjezba_v/datoteka2.txt # kopira datoteku i preimenu
 _Primjer s detaljima o rekurzivnom brisanju i potvrdama:_
 
 ```bash
-mkdir vjezba_v_rm
+→ mkdir vjezba_v_rm
 
-cd vjezba_v_rm
+→ cd vjezba_v_rm
 
-touch spam1.txt spam2.txt spam3.txt spam4.txt
+→ touch spam1.txt spam2.txt spam3.txt spam4.txt
 
 # Primjer: kombinirat ćemo zastavice -v, -i i -r za upit prije brisanja svake datoteke i ispisati obrisanu datoteku/direktorij nakon svake operacije
-rm -vir vjezba_v_rm
+→ rm -vir vjezba_v_rm
 ```
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/rm-vir.png?raw=true" style="width:60%" ></img>
@@ -794,7 +794,7 @@ rm -vir vjezba_v_rm
 
 ## 🚩Zastavica: `-f`
 
-`-f` (zapamti kao "force") - **forsira izvršavanje naredbe** bez traženja potvrde i bez prikazivanja upozorenja ako datoteka ne postoji. Ova zastavica se koristi kada želimo zaobići potvrde i greške, što može biti korisno, ali i opasno ako nismo pažljivi.
+`-f` (zapamti kao "force") → **forsira izvršavanje naredbe** bez traženja potvrde i bez prikazivanja upozorenja ako datoteka ne postoji. Ova zastavica se koristi kada želimo zaobići potvrde i greške, što može biti korisno, ali i opasno ako nismo pažljivi.
 
 Zastavica `-f` se koristi kod naredbi `cp`, `mv` i `rm`:
 
@@ -809,14 +809,14 @@ Zastavica `-f` **može dovesti do nepovratnog gubitka podataka**. Preporučuje s
 _Primjer brisanja bez potvrde:_
 
 ```bash
-mkdir vjezba_f
+→ mkdir vjezba_f
 
-cd vjezba_f
+→ cd vjezba_f
 
-touch osjetljiva_datoteka.txt
+→ touch osjetljiva_datoteka.txt
 
 # Brisanje bez potvrde
-rm -f osjetljiva_datoteka.txt
+→ rm -f osjetljiva_datoteka.txt
 ```
 
 Kako bismo demonstrirali rad ove zastavice, moramo imati datoteke različitog sadržaja.
@@ -826,7 +826,7 @@ Upis u datoteku možemo napraviti pomoću naredbe `echo` i operatora `>`:
 **Sintaksa:**
 
 ```bash
-echo "string_sadrzaj" > datoteka.txt
+→ echo "string_sadrzaj" > datoteka.txt
 ```
 
 - za sada dovoljno, a detalje ćemo raditi na sljedećim vježbama 😎
@@ -834,33 +834,33 @@ echo "string_sadrzaj" > datoteka.txt
 _Primjer kopiranja bez potvrde:_
 
 ```bash
-mkdir vjezba_cp_f
+→ mkdir vjezba_cp_f
 
-touch vjezba_cp_f/backup.log
+→ touch vjezba_cp_f/backup.log
 
-echo "Stari podaci" > vjezba_cp_f/backup.log # sintaksa za upis u datoteku (radit ćemo ovo kasnije)
+→ echo "Stari podaci" > vjezba_cp_f/backup.log # sintaksa za upis u datoteku (radit ćemo ovo kasnije)
 
 # Stvaramo novu datoteku s novim podacima
-echo "Novi podaci" > novi_backup.log # sintaksa za upis u datoteku (radit ćemo ovo kasnije)
+→ echo "Novi podaci" > novi_backup.log # sintaksa za upis u datoteku (radit ćemo ovo kasnije)
 
 # Kopiramo i prepisujemo datoteku bez upozorenja
-cp -f novi_backup.log vjezba_cp_f/backup.log
+→ cp -f novi_backup.log vjezba_cp_f/backup.log
 ```
 
 _Primjer premještanja bez potvrde:_
 
 ```bash
-mkdir vjezba_mv_f
+→ mkdir vjezba_mv_f
 
-touch vjezba_mv_f/old_config.cfg
+→ touch vjezba_mv_f/old_config.cfg
 
-echo "Stara konfiguracija" > vjezba_mv_f/old_config.cfg
+→ echo "Stara konfiguracija" > vjezba_mv_f/old_config.cfg
 
 # Kreiramo novu konfiguracijsku datoteku
-echo "Nova konfiguracija" > new_config.cfg
+→ echo "Nova konfiguracija" > new_config.cfg
 
 # Premještamo i prepisujemo bez upozorenja
-mv -f new_config.cfg vjezba_mv_f/old_config.cfg
+→ mv -f new_config.cfg vjezba_mv_f/old_config.cfg
 ```
 
 🚨**Opasna kombinacija zastavica** `-f` i `-r` može dovesti do rekurzivnog brisanja sadržaja direktorija bez potvrde!
@@ -876,13 +876,13 @@ touch vjezba_rm_rf/temp/file1.txt vjezba_rm_rf/temp/file2.txt
 rm -rf vjezba_rm_rf
 ```
 
-> 💡Hint: Ako niste sigurni u radnju, preporuka je izbjegavati `-f` ili koristiti `-i` zastavicu za potvrdu.
+> **💡Hint**: Ako niste sigurni u radnju, preporuka je izbjegavati `-f` ili koristiti `-i` zastavicu za potvrdu.
 
 **Još jedanput** - zastavica `-f` može biti zadana ovisno o verziji shella (`bash --version`), ali i ovisno o postavkama sustava, okoline ili direktorija u kojem se nalazite.
 
 ## 🚩Zastavica: `-n`
 
-`-n` (zapamti kao "no overwrite") - sprječava prepisivanje postojećih datoteka prilikom kopiranja (`cp`) ili premještanja (`mv`). Ova zastavica je korisna kada **ne želimo izgubiti postojeće podatke slučajnim prepisivanjem**.
+`-n` (zapamti kao "no overwrite") → sprječava prepisivanje postojećih datoteka prilikom kopiranja (`cp`) ili premještanja (`mv`). Ova zastavica je korisna kada **ne želimo izgubiti postojeće podatke slučajnim prepisivanjem**.
 
 Zastavica `-n` će **preskočiti kopiranje/premještanje datoteke ako već postoji na odredištu** i koristimo ju:
 
@@ -897,17 +897,17 @@ Praktično je kombinirati `-n` i `-v` zastavice za bolju vidljivost i kontrolu n
 _Primjer s kopiranjem:_
 
 ```bash
-mkdir vjezba_n
+→ mkdir vjezba_n
 
-echo "Prva verzija" > vjezba_n/config.txt
+→ echo "Prva verzija" > vjezba_n/config.txt
 
-echo "Najnovija verzija" > novi_config.txt
+→ echo "Najnovija verzija" > novi_config.txt
 
 # Kopiramo, ali ne prepisujemo ako "config.txt" već postoji
-cp -n novi_config.txt vjezba_n/config.txt
+→ cp -n novi_config.txt vjezba_n/config.txt
 
 # Kombiniranje s -v za ispis detalja
-cp -nv novi_config.txt vjezba_n/config.txt
+→ cp -nv novi_config.txt vjezba_n/config.txt
 ```
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/cp-nv.png?raw=true" style="width:60%" ></img>
@@ -917,17 +917,17 @@ cp -nv novi_config.txt vjezba_n/config.txt
 _Primjer s premještanjem:_
 
 ```bash
-mkdir vjezba_mv_n
+→ mkdir vjezba_mv_n
 
-echo "Originalna verzija" > vjezba_mv_n/backup.txt
+→ echo "Originalna verzija" > vjezba_mv_n/backup.txt
 
-echo "Nova verzija" > novi_backup.txt
+→ echo "Nova verzija" > novi_backup.txt
 
 # Premještamo, ali ne prepisujemo ako "backup.txt" već postoji
-mv -n novi_backup.txt vjezba_mv_n/backup.txt
+→ mv -n novi_backup.txt vjezba_mv_n/backup.txt
 
 # Kombiniranje s -v za ispis detalja
-mv -nv novi_backup.txt vjezba_mv_n/backup.txt
+→ mv -nv novi_backup.txt vjezba_mv_n/backup.txt
 ```
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/mv-nv.png?raw=true" style="width:60%" ></img>
