@@ -2012,7 +2012,7 @@ _Primjer:_ Funkcija koja provjerava je li broj paran ili neparan. Ako je broj pa
 ```bash
 # main.sh
 function provjeri_parnost() {
-    if [ $(( $1 % 2 == 0 )) -eq 0 ]; then # provjeravamo je li broj paran
+    if [ $(( $1 % 2 )) -eq 0 ]; then # provjeravamo je li broj paran
         echo "$1 je paran broj"
         return 0 # vraćamo uspješan status
     else
