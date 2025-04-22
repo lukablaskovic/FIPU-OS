@@ -2216,7 +2216,7 @@ Prije nego što pokrenemo skriptu, moramo joj dodati dozvolu za izvršavanje:
 
 ```bash
 varijabla="vrijednost" # definiranje varijable s navodnicima
-varijabla="vrijednost" # definiranje varijable bez navodnika
+varijabla=vrijednost # definiranje varijable bez navodnika
 echo $varijabla # ispisivanje varijable
 echo "${varijabla}" # ispisivanje varijable unutar navodnih znakova
 
