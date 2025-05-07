@@ -336,6 +336,8 @@ Odmah na početnoj stranici možete vidjeti nekoliko korisnih informacija:
 - Broj prijavljenih korisnika
 - ...
 
+<div style="page-break-after: always; break-after: page;"></div>
+
 # 3. Ubuntu Server
 
 Uspješno smo instalirali Ubuntu Server unutar VirtualBoxa hipervizora na našem računalu. Sada ćemo provjeriti osnovne postavke sustava i upoznati se s nekim osnovnim naredbama.
@@ -903,6 +905,8 @@ U tom slučaju, našu situaciju možemo ilustrirati na sljedeći način:
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_3.png?raw=true"  style="width:40%; border-radius: 10px;" ></img>
 
 > 🖼️ Ilustracija komunikacije između našeg računala i VM-a u Cloudu putem SSH protokola
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 # 4. Zadaci za Vježbu 4
 
