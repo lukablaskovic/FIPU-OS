@@ -74,7 +74,7 @@ U fizičkom svijetu, tvrtka bi trebala kupiti tri fizička poslužitelja, svaki 
 
 - **Disaster recovery**: Virtualizacija omogućava brže oporavak od potencijalnih katastrofa (npr. prirodne nepogode, kibernetički napadi i sl.). Ako fizički poslužitelj otkaže, virtualni stroj se može lako premjestiti na drugi fizički poslužitelj bez gubitka podataka ili funkcionalnosti.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vmw-virtualization-defined.jpg?raw=true" style="width:50%;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vmw-virtualization-defined.jpg?raw=true" style="width:50%;" ></img>
 
 > 🖼️ Ilustracija tradicionalne računalne arhitekture vs. Virtualna arhitektura
 
@@ -90,7 +90,7 @@ U grubo, hipervizor se može podijeliti u dvije kategorije:
 
 - **Tip 2 ("hosted")**: Hipervizor radi unutar operacijskog sustava domaćina i koristi resurse fizičkog računala putem operacijskog sustava. Primjeri uključuju _VMware Workstation, Oracle VirtualBox i Parallels Desktop_.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtual-machine-hypervisor.png?raw=true" style="width:50%;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtual-machine-hypervisor.png?raw=true" style="width:50%;" ></img>
 
 > 🖼️ Ilustracija predstavlja hijerarhiju virtualne arhitekture: fizičko računalo → hipervizor → VM1, VM2, VM3 ...
 
@@ -119,7 +119,7 @@ Ovisno o operacijskom sustavu, provjeru možete napraviti na sljedeći način:
 
 - **Windows**: Otvorite "Task Manager" (`Ctrl` + `Shift` + `Esc`) → `Performance` → `CPU` → provjerite je li opcija "Virtualization" uključena
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/windows-taskmanager-virtualisation.png?raw=true" style="width:50%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/windows-taskmanager-virtualisation.png?raw=true" style="width:50%; border-radius: 10px;" ></img>
 
 > 🖼️ Provjera je li virtualizacija uključena kroz Task Manager na Windows OS-u
 
@@ -192,7 +192,7 @@ Iako možemo ovo izvesti i na taj način se upoznati s virtualizacijom, mi ćemo
 
 Ubuntu Server je besplatan i predstavlja idealno rješenje za učenje koncepata poput CLI-a, mrežnog upravljanja (networking), upravljanja korisničkim ovlastima, instalacija paketa i sl.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server.png?raw=true" style="width:30%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server.png?raw=true" style="width:30%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server logo - https://ubuntu.com/download/server
 
@@ -223,7 +223,7 @@ Jednom kad ste preuzeli ISO datoteku, otvorite VirtualBox i slijedite sljedeće 
 2. Odaberite ISO datoteku koju ste preuzeli
 3. Type postavite na `"Linux"`, a Subtype na `Ubuntu`
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/new-vm.png?raw=true" style="width:80%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/new-vm.png?raw=true" style="width:80%; border-radius: 10px;" ></img>
 
 > 🖼️ VirtualBox: Izrada novog virtualnog stroja
 
@@ -231,7 +231,7 @@ U sljedećem prozoru će vas tražiti da odredite količinu radne memorije i pro
 
 Za naše potrebe, možemo dodijeliti `2 GB RAM-a` i `2` procesorske jezgre. Opciju `"Enable EFI"` možete ostaviti uključenu, no nije nužno.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/ram-cpu-setup.png?raw=true" style="width:80%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/ram-cpu-setup.png?raw=true" style="width:80%; border-radius: 10px;" ></img>
 
 > 🖼 VirtualBox: Odabir radne memorije i CPU jezgri za novi virtualni stroj
 
@@ -243,7 +243,7 @@ Hipervizor će stvoriti virtualni disk koji će se ponašati gotovo identično k
 
 Prije same izrade, provjerite još jedanput sve postavke virtualnog stroja. Ako ste sve dobro postavili, kliknite na "Next" gumb.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/summary.png?raw=true" style="width:80%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/summary.png?raw=true" style="width:80%; border-radius: 10px;" ></img>
 
 > 🖼️ VirtualBox: Pregled postavki virtualnog stroja
 
@@ -256,7 +256,7 @@ Jednom kada pokrenete virtualni stroj, morate proći kroz postupak instalacije o
 1. Odaberite `Try or Install Ubuntu Server` opciju
 2. Odaberite jezik koji želite koristiti tijekom instalacije
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/try-or-install-ubuntu-server.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/try-or-install-ubuntu-server.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Odabir: "Try or Install Ubuntu Server"
 
@@ -266,7 +266,7 @@ Dalje, odaberite standardnu opciju `Ubuntu Server`
 
 Mrežno sučelje ostavite zadano i odaberite `Done`, preskočite opciju `Configure proxy`.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ubuntu-server-base.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ubuntu-server-base.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Odabir zadanih mrežnih postavki, bez _proxya_
 
@@ -281,7 +281,7 @@ Posljednji korak je konfiguracija korisničkog profila. Unesite:
 
 **Ove podaci nisu povezani s domaćinom**, već su isključivo vezani za Ubuntu Server na VM-u.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/profile-config.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/profile-config.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Konfiguracija korisničkog profila
 
@@ -289,7 +289,7 @@ Pitati će vas još želite li dodatne opcije: `Ubuntu Pro`, `OpenSSH server` i 
 
 To je to! Instalacija će započeti i potrajati nekoliko sekundi do par minuta, ovisno o brzini računala.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/installing.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/installing.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Instalacija u tijeku
 
@@ -322,7 +322,7 @@ Unesite prvo `username`, zatim `password` koji ste ranije postavili prilikom ins
 
 Ako ste sve dobro napravili, trebali biste vidjeti pozdravnu poruku i osnovne informacije o sustavu:
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/successfull-login-ubuntu-server.png?raw=true" style="width:90%;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/successfull-login-ubuntu-server.png?raw=true" style="width:90%;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Uspješna prijava u Ubuntu Server OS
 
@@ -342,7 +342,7 @@ Uspješno smo instalirali Ubuntu Server unutar VirtualBoxa hipervizora na našem
 
 Kratki podsjetnik: naše okruženje sada izgleda ovako:
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_1.png?raw=true" style="width:60%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_1.png?raw=true" style="width:60%; border-radius: 10px;" ></img>
 
 > 🖼️ Ilustracija hijerarhije između VirtualBox hipervizora i Ubuntu Server VM-a
 
@@ -379,7 +379,7 @@ Prebacite se u korijenski direktorij i provjerite sadržaj:
 → ls -la
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/root-dir-lsla.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/root-dir-lsla.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Detaljni prikaz sadržaja korijenskog direktorija (`ls -la`)
 
@@ -389,7 +389,7 @@ Prebacite se u korijenski direktorij i provjerite sadržaj:
 
 Unesite naredbu `apt` i pritisnite `Enter`. Trebali biste dobiti sljedeći ispis:
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/apt.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/apt.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Prikaz metapodataka i osnovnih naredbi `apt` alata
 
@@ -432,7 +432,7 @@ Vidjet ćete datoteku `ubuntu.sources` koja sadrži informacije o repozitorijima
 → cat ubuntu.sources
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ls-la-ubuntu-sources.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ls-la-ubuntu-sources.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Ispis sadržaja `ubuntu.sources` datoteke
 
@@ -461,7 +461,7 @@ Poveznica s repozitorijem biblioteka razlikuje se ovisno o verziji Ubuntu Server
 
 Ako otvorite poveznicu u web pregledniku, **vidjet ćete datotečni sustav pohranjen na web stranici koji sadrži sve dostupne pakete za instalaciju**. Svaki od tih paketa je pohranjen u nekom od poddirektorija.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/index-of-ubuntu-ports.png?raw=true" style="width:40%;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/index-of-ubuntu-ports.png?raw=true" style="width:40%;" ></img>
 
 > 🖼️ Datotečni sustav javnog repozitorija - moguće ga je otvoriti na webu
 
@@ -481,7 +481,7 @@ Ova naredba će zahtijevati unos lozinke koju ste postavili prilikom instalacije
 → sudo apt update
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-apt-update.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-apt-update.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Rezultat `apt update` naredbe - uočite da postoji 64 paketa koje možemo ažurirati
 
@@ -505,7 +505,7 @@ Ovo može potrajati nekoliko sekundi do nekoliko minuta, ovisno o tome koliko pa
 
 Nakon što je nadogradnja završena, možemo ponovo pozvati naredbu `apt update` kako bismo provjerili ima li novih nadogradnji.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/upgrade-then-update-again.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/upgrade-then-update-again.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Nakon `apt upgrade` ponovo pozivamo naredbu `apt update` kako bismo provjerili koliko je paketa ažurirano
 
@@ -524,7 +524,7 @@ Možemo instalirati više paketa u isto vrijeme:
 
 Vidimo da su oba uređivača već instalirana na našem sustavu i najnovije verzije.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-apt-install-nanovim.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-apt-install-nanovim.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Instalacija `nano` i `vim` CLI uređivača
 
@@ -609,7 +609,7 @@ Prema tome, naše računalo domaćina će biti **SSH klijent** (eng. _SSH client
 
 ### 3.2.1 Instalacija OpenSSH poslužitelja
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/openssh.gif?raw=true" style="width:70%;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/openssh.gif?raw=true" style="width:70%;" ></img>
 
 > 🖼️ OpenSSH je besplatan alat za udaljeno povezivanje putem SSH protokola
 
@@ -632,7 +632,7 @@ Argumentom `status` možemo dobiti status određenog servisa. U ovom slučaju, p
 → sudo systemctl status ssh
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/try-or-install-ubuntu-server.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/try-or-install-ubuntu-server.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Ispis statusa SSH servisa (SSH neaktivan)
 
@@ -650,7 +650,7 @@ Nakon toga možemo ponovo provjeriti status:
 → sudo systemctl status ssh
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-system-start-ssh.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-system-start-ssh.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Pokretanje SSH servisa (SSH aktivan)
 
@@ -696,7 +696,7 @@ Možemo i navesti port koji nas zanima, primjerice, **SSH obično koristi port**
 → sudo lsof -i :22 # koristimo :<port>
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/lsof-i-22.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/lsof-i-22.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Ispis svih otvorenih datoteka i procesa koji koriste port 22 (SSH)
 
@@ -725,7 +725,7 @@ Zapis naredbe je dosta kompleksan i dugačak, a u pravilu se sastoji od 2 dijela
 
 O mrežama više na kolegiju [Mrežni sustavi](https://fipu.unipu.hr/fipu/predmet/mresus).
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ip-address.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ip-address.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Ispis IP adrese virtualnog stroja naredbom ip address
 
@@ -772,7 +772,7 @@ Zamislite da je vaš VM „iza“ usmjerivača – baš kao što su vaša račun
 
 Otvorite VirtualBox i otvorite postavke VM-a. Na vrhu ćete vidjeti odabir `Basic`, `Expert`. Odaberite `Expert` kako bi vam se otvorila dodatna opcija `Port Forwarding`. Odaberite `Network → Port Forwarding`.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/port-forwarding.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/port-forwarding.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ VirtualBox: Settings → Expert → Port Forwarding
 
@@ -798,7 +798,7 @@ Trebali bismo vidjeti TCP zapis `*:ssh` koji označava da je ssh dostupan na svi
 
 Vidimo da se port `:ssh` zamijenio brojem `22`, a port `:http` brojem `80` itd. Isto potvrđuje da je SSH poslužitelj pokrenut i da sluša na portu `22`.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ss-tuln.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ss-tuln.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 Sada možemo zatvoriti VM i vratiti se u mrežne postavke VirtualBoxa. U `Port Forwarding` opcijama dodajte novi unos:
 
@@ -811,7 +811,7 @@ Sada možemo zatvoriti VM i vratiti se u mrežne postavke VirtualBoxa. U `Port F
 
 `Host IP` predstavlja adresu domaćina na kojoj će se slušati promet, dok je `Guest IP` adresa VM-a na kojoj će se slušati promet. `Host Port` predstavlja port na domaćinu koji će se koristiti za preusmjeravanje prometa, dok je `Guest Port` port na VM-u na kojem će se slušati promet - u našem slučaju port `22` (SSH).
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/port-forwarding-adding-entry.png?raw=true"  style="width:70%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/port-forwarding-adding-entry.png?raw=true"  style="width:70%; border-radius: 10px;" ></img>
 
 > 🖼️ VirtualBox: Dodavanje novog unosa za port forwarding (TCP: Host 2222 -> Guest 22)
 
@@ -837,7 +837,7 @@ Otvorite ponovo terminal. Više nećemo koristiti IP adresu VM-a, budući da kad
 
 Dobit ćete upozorenje da je poslužitelj nepoznat i da se ne može provjeriti njegov identitet. Ovo je normalno, jer SSH klijent ne prepoznaje javni ključ poslužitelja - **povezujemo se prvi put**. Jednostavno unesite `yes`, a zatim lozinku koju ste postavili prilikom instalacije sustava.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/host-ssh-successful-connect.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/host-ssh-successful-connect.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Lokalno računalo: Uspješno povezivanje na SSH poslužitelj
 
@@ -859,7 +859,7 @@ Ponovno pokrenite virtualni stroj i provjerite njegovu IP adresu pomoću `ip a` 
 
 Uočit ćete da se IP adresa promijenila.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ip-addr-bridged-adapter.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ip-addr-bridged-adapter.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): IP adresa nakon promjene mrežnog adaptera u Bridged Adapter
 
@@ -876,7 +876,7 @@ Kako biste izašli iz prethodne SSH sesije, jednostavno upišite `exit` ili prit
 
 Ponovno će nas pitati da li želimo dodati javni ključ poslužitelja u našu SSH poznatu listu. Unesite `yes` i lozinku koju ste postavili prilikom instalacije sustava.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ssh-successfull-connection-bridged.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ssh-successfull-connection-bridged.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Lokalno računalo: Uspješno povezivanje na SSH poslužitelj (Bridged Adapter) - bez _port forwardinga_
 
@@ -886,7 +886,7 @@ Uspješno smo se povezali na virtualni stroj putem SSH klijenta! 🚀
 
 Okruženje koje smo sada postavili možemo prikazati sljedećom ilustracijom:
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_2.png?raw=true"  style="width:50%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_2.png?raw=true"  style="width:50%; border-radius: 10px;" ></img>
 
 > 🖼️ Ilustracija komunikacije između domaćina i VM-a putem SSH protokola
 
@@ -900,7 +900,7 @@ Također, prisjetimo se naše tvrtke s početka ove skripte. Recimo da su ipak o
 
 U tom slučaju, našu situaciju možemo ilustrirati na sljedeći način:
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_3.png?raw=true"  style="width:40%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_3.png?raw=true"  style="width:40%; border-radius: 10px;" ></img>
 
 > 🖼️ Ilustracija komunikacije između našeg računala i VM-a u Cloudu putem SSH protokola
 
