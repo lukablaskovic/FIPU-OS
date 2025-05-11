@@ -30,3 +30,4 @@ Kolegij slušaju:
 1. [Uvod u operacijske sustave](https://youtu.be/IkmykdaaeyA) ([OS1](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS1%20-%20Uvod%20u%20operacijske%20sustave))
 2. [Zastavice CLI naredbi](https://youtu.be/TADw8BZA9Tg) ([OS2](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS2%20-%20Zastavice%20CLI%20naredbi))
 3. [Bash skriptiranje](https://youtu.be/T0yg0FqOb6o) ([OS3](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS3%20-%20Bash%20skriptiranje))
+4. [Rad na virtualnom stroju: Uvod](https://youtu.be/2YSd__CFYWg) ([OS4](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju%3A%20Uvod))
