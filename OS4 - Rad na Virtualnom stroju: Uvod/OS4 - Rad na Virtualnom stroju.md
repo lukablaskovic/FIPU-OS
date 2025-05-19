@@ -18,7 +18,7 @@ Virtualni stroj (eng. <i>Virtual Machine</i>) je programski proizvod koji emulir
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 7.5.2025.**
+**🆙 Posljednje ažurirano: 19.5.2025.**
 
 ## Sadržaj
 
@@ -634,7 +634,7 @@ Argumentom `status` možemo dobiti status određenog servisa. U ovom slučaju, p
 → sudo systemctl status ssh
 ```
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/try-or-install-ubuntu-server.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/systemctl-status-ssh.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > 🖼️ Ubuntu Server (VM): Ispis statusa SSH servisa (SSH neaktivan)
 
