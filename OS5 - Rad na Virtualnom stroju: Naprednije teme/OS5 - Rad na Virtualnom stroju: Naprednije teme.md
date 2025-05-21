@@ -12,13 +12,18 @@
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/icons/OS5.png" style="width:9%; border-radius: 8px; float:right;"></img>
 
 <div style="float: clear; margin-right:5px;">
-Virtualni stroj (eng. <i>Virtual Machine</i>) je programski proizvod koji emulira ponašanje određenog računalnog sustava, a pritom koristi arhitekturu i funkcije stvarnog računala. Virtualni strojevi često pružaju cijelu sistemsku platformu koja omogućava izvođenje kompletnog operacijskog sustava (OS). Računalo koje pokreće virtualni stroj naziva se domaćin (eng. <i>host</i>), dok se virtualni stroj naziva gost (eng. <i>guest</i>). Studenti će u ovoj skripti naučiti kako instalirati i koristiti virtualni stroj, pritom koristeći vlastito računalo kao domaćina.
+Procesi predstavljaju aktivne instance programa koji se izvršavaju unutar operacijskog sustava. U višezadaćnim operacijskim sustavima, što uključuje sve suvremene računalne sustave, procesor se brzo prebacuje između više procesa, omogućujući tako istovremeno i konkurentno izvođenje različitih programa.
+Operacijski sustav ima ključnu ulogu u organizaciji i optimizaciji rada sustava – on upravlja dostupnim resursima te raspodjeljuje procesorsko vrijeme među različitim procesima i njihovim dretvama. U ovoj skripti pružit ćemo uvod u upravljanje procesima i dretvama, te upoznati osnovne alate koji se koriste za njihovo praćenje i kontrolu u Linux operacijskom sustavu.
+Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servisima – pozadinskim procesima koji se automatski pokreću prilikom dizanja sustava i omogućuju kontinuiran rad ključnih funkcionalnosti operacijskog sustava.
+
 </div>
 
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
 **🆙 Posljednje ažurirano: 21.5.2025.**
+
+- gradivo skripte je dovršeno, zadaci na kraju će se dodati naknadno - uskoro
 
 ## Sadržaj
 
@@ -44,6 +49,8 @@ Virtualni stroj (eng. <i>Virtual Machine</i>) je programski proizvod koji emulir
 - [3. Upravljanje servisima](#3-upravljanje-servisima)
   - [Zadatak 4: Upravljanje servisima](#zadatak-4-upravljanje-servisima)
 - [Zadaci za Vježbu 5](#zadaci-za-vježbu-5)
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 # 1. Upravljanje procesima
 
@@ -292,6 +299,8 @@ PID   USER PRI NI VIRT   RES   SHR  S CPU% MEM% TIME+    COMMAND
 - Naredba koja je pokrenula proces je `/sbin/multipathd -d -s`.
 
 <hr>
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 ## Zadatak 1: Tumačenje procesa
 
