@@ -40,7 +40,7 @@ Virtualni stroj (eng. <i>Virtual Machine</i>) je programski proizvod koji emulir
     - [3.2.2. Povezivanje na SSH poslužitelj](#322-povezivanje-na-ssh-poslužitelj)
       - [Alat `ip`](#alat-ip)
       - [Alat `ss`](#alat-ss)
-- [4. Zadaci za Vježbu 4](#4-zadaci-za-vježbu-4)
+- [Zadaci za Vježbu 4](#zadaci-za-vježbu-4)
 
 # 1. Virtualizacija
 
@@ -908,7 +908,7 @@ U tom slučaju, našu situaciju možemo ilustrirati na sljedeći način:
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-# 4. Zadaci za Vježbu 4
+# Zadaci za Vježbu 4
 
 1. **Preuzmite i instalirajte** VirtualBox na svoje računalo.
 
