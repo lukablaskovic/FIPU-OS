@@ -178,7 +178,7 @@ Uočit ćete da neki procesi imaju `PR < 0`, što najvjerojatnije predstavlja po
 
 #### Alat `htop`
 
-Moderniji alat koji se može koristiti za praćenje procesa je `htop`, koji je naprednija verzija `top` alata gdje su takve pogršeke svedene na minimum. Osim toga, `htop` nudi i više opcija za filtriranje i sortiranje procesa, pristupačnije sučelje i obojeno sučelje, lakše pretraživanje i navigaciju kroz procese itd.
+Moderniji alat koji se može koristiti za praćenje procesa je `htop`, koji je naprednija verzija `top` alata gdje su takve pogreške svedene na minimum. Osim toga, `htop` nudi i više opcija za filtriranje i sortiranje procesa, pristupačnije sučelje i obojeno sučelje, lakše pretraživanje i navigaciju kroz procese itd.
 
 **Sintaksa:**
 
@@ -218,7 +218,7 @@ Rekli smo da je praktično koristiti `htop` jer pruža i jednostavnije sučelje 
 
 - _swap_ predstavlja dio diska koji se koristi kao proširenje fizičke memorije. Zamislite ju kao _backup_ memoriju koju sustav koristi kada ponestaje fizičke memorije.
 - _Primjer_: Kada koristimo web preglednik i otvorimo puno kartica, OS može neaktivne kartice "premjestiti" u _swap_ memoriju kako bi oslobodio fizičku memoriju za aktivne kartice.
-- Virtualna memorija uključuje i memoriju koju aktivni proces može koristiti, ali nije direktno pristuna u kompajliranom programu, npr. dijeljene biblioteke, konfiguracijske datoteke, druge OS-level datoteke itd.
+- Virtualna memorija uključuje i memoriju koju aktivni proces može koristiti, ali nije direktno prisutna u kompajliranom programu, npr. dijeljene biblioteke, konfiguracijske datoteke, druge OS-level datoteke itd.
 
 **2. Fizička memorija (RES)** (_eng. Resident Set Size / Physical Memory_) predstavlja stvarnu količinu radne memorije (RAM) koju proces trenutno koristi. Drugim riječima, predstavlja količinu _non-swapped_ memorije koju proces trenutno okupira u fizičkoj memoriji.
 
@@ -596,7 +596,7 @@ Otvorite alat `htop` i provjerite je li se prioritet izvođenja procesa promijen
 
 ## Zadatak 2: Upravljanje procesima
 
-Alat `node` omogućuje pokretanje JavaScript koda izvan okruženja web preglednika. Možete ga jednostavno instalirati u Ubuntu Server koristći `apt` alat. Jednom kada ga instalirate, u _home_ direktoriju stvorite novu datoteku `stopwatch.js` koja će pauzirati izvršavanje procesa koristeći `prompt` funkciju. Kroz `prompt` funkciju korisnik unosi broj sekundi koje moraju isteći prije nego što se proces završi.
+Alat `node` omogućuje pokretanje JavaScript koda izvan okruženja web preglednika. Možete ga jednostavno instalirati u Ubuntu Server koristeći `apt` alat. Jednom kada ga instalirate, u _home_ direktoriju stvorite novu datoteku `stopwatch.js` koja će pauzirati izvršavanje procesa koristeći `prompt` funkciju. Kroz `prompt` funkciju korisnik unosi broj sekundi koje moraju isteći prije nego što se proces završi.
 
 U JavaScriptu, _timer_ možete implementirati koristeći `setTimeout` funkciju koja prima _callback_ funkciju (ono što se poziva jednom kad vrijeme istekne) i vrijeme u milisekundama (koliko se čeka):
 
@@ -621,6 +621,8 @@ console.log(process.pid);
 ```
 
 Ispišite PID trenutnog procesa jednom kad on započne, zatim pomoću `htop` alata provjerite podudara li se.
+
+<div style="page-break-after: always; break-after: page;"></div>
 
 # 2. Upravljanje korisnicima
 
@@ -893,7 +895,7 @@ Kako bismo korisniku dodali grupu, možemo koristiti naredbu `usermod`:
 → usermod [opcije/zastavice] <username>
 ```
 
-Cilj je izmjeniti datoteku `/etc/group` i dodati korisnika u grupu. Koristimo sljedeće zastavice:
+Cilj je izmijeniti datoteku `/etc/group` i dodati korisnika u grupu. Koristimo sljedeće zastavice:
 
 - `-a` - dodaje korisnika u grupu (append)
 - `-G` - definira grupu u koju dodajemo korisnika
@@ -1039,6 +1041,8 @@ Kako su junior developeri na praksi, postavite datum isteka korisničkog računa
 
 E sad, svake godine dobivate nove juniore i neda vam se ponovo raditi sve ispočetka. Prijavite se kao senior i u njegovom _home_ direktoriju stvorite bash skriptu `create_junior.sh <username> <full_name> <password> <date>` koja će automatski dodati juniore u sustav pozivanjem svih odgovarajućih naredbi koje ste ručno upisivali.
 
+<div style="page-break-after: always; break-after: page;"></div>
+
 # 3. Upravljanje servisima
 
 Već smo se upoznali s osnovnim naredbama za upravljanje procesima, poput `ps`, `top`, `htop`, `kill`, `pkill` itd.
@@ -1127,6 +1131,8 @@ Servis ssh je pokrenut
 Servis apache2 ne postoji u sustavu
 ```
 
+<div style="page-break-after: always; break-after: page;"></div>
+
 # Zadaci za Vježbu 5
 
-Objavim ih uskoro, ali to je to. Gradivo iz vježbi je gotovo ! 🎉
+Objavim ih uskoro, ali to je to. Gradivo iz vježbi je gotovo! 🎉
