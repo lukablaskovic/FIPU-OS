@@ -59,7 +59,7 @@ Osim samog programa, proces sadrži (enkapsulira) i sve druge resurse potrebne z
 - **varijable okoline** (eng. <i>environment variables</i>) - varijable koje proces koristi
 - **informacije o procesoru** (eng. <i>CPU</i>) - trenutno stanje procesora (registri, brojač instrukcija, itd.) ako je proces u stanju izvođenja
 
-<img src="./screenshots/os-process-wiki.jpg" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/os-process-wiki.jpg?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Računalni program je skup instrukcija pohranjen na disku, dok proces predstavlja egzekuciju (realizaciju) tog programa. Naravno, za realizaciju je potrebno više od samih instrukcija (programskog koda)
 
@@ -97,7 +97,7 @@ Kako bi pratili promjene stanja procesa, možemo koristiti ugrađeni alat `top`.
 → top
 ```
 
-<img src="./screenshots/top.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/top.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼 Rezultat naredbe `top` je interaktivni prozor koji prikazuje dinamičku listu procesa u realnom vremenu
 
@@ -149,7 +149,7 @@ Recimo da su neke narudžbe super hitne (npr. za VIP goste), njih ćemo nazivati
 
 Sljedeća skala ilustrira **prioritetni raspon** (_eng. Priority range_) koji koristi Linux kernel za upravljanje procesima (skala se može razlikovati od distribucije do distribucije, ali generalno je slična):
 
-<img src="./screenshots/priority-range-linux-kernel.png" style="width:90%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/priority-range-linux-kernel.png?raw=true" style="width:90%; box-shadow: none !important;"></img>
 
 > 🖼 Prioritetni raspon koji koristi Linux kernel. Izvor: https://blogs.oracle.com/linux/post/task-priority
 
@@ -186,7 +186,7 @@ Moderniji alat koji se može koristiti za praćenje procesa je `htop`, koji je n
 → htop
 ```
 
-<img src="./screenshots/htop.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼 Moderniji interaktivni prikaz aktivnih procesa koristeći naredbu `htop`.
 
@@ -204,7 +204,7 @@ Rekli smo da je praktično koristiti `htop` jer pruža i jednostavnije sučelje 
 - `F6` - sortiranje procesa prema različitim kriterijima, primjer: `SortBy: CPU%`
 - `F4` - sortiranje procesa prema naredbi i argumentu (zadano ponašanje), primjer: `Filter: ModemManager`
 
-<img src="./screenshots/htop-filter.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-filter.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Primjer filtriranja `python3` procesa u `htop` alatu.
 
@@ -238,7 +238,7 @@ Važan stupac koji nismo objasnili su stanja procesa - `S`.
 - `Z` - **Zombie** - proces je završen, ali ga i dalje možemo pronaći u procesnom prikazu (tablici), npr. zbog neodgovarajuće obrade signala od strane roditeljskog procesa
 - `X` - **Dead** - proces je mrtav, potpuno je završen i ne može se više pronaći u procesnom prikazu. Ovu oznaku ćemo vrlo rijetko vidjeti.
 
-<img src="./screenshots/linux-process-states.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/linux-process-states.png?raw=true" style="width:70%; box-shadow: none !important;"></img>
 
 > 🖼️ Graf stanja procesa i prelazaka u drugo stanje. Izvor: https://idea.popcount.org/2012-12-11-linux-process-states/
 
@@ -322,7 +322,7 @@ _Primjer:_ Moderni web preglednici koriste **višestruke procese** (_multiproces
   - prikazivanje slika i videozapisa
   - upravljanje korisničkim sučeljem
 
-<img src="./screenshots/threads-illustration.png" style="width:90%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/threads-illustration.png?raw=true" style="width:90%; box-shadow: none !important;"></img>
 
 > 🖼️ Ilustracija prikazuje više dretvi unutar istog procesa, od kojih svaka ima različito trajanje izvršavanja tijekom rada procesa.
 
@@ -334,13 +334,13 @@ Dretveni prikaz koristeći `htop` će najvjerojatnije biti zadan, ako nije, mož
 
 Možemo otvoriti `Setup (F2)` i omogućiti opciju `Display options -> Display threads in a different color` kako bi lakše razlikovali dretve od procesa.
 
-<img src="./screenshots/htop-threads-different-color.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-threads-different-color.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼 `htop`: `Setup F2` -> `Display options` -> `Display threads in a different color`
 
 Pod `Command` ćete sada uočiti dretve definirane **zelenom bojom**. Dodatno, možemo prikazati hijerarhiju pritiskom na tipku `F5` (_Tree view_).
 
-<img src="./screenshots/htop-tree.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-tree.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ `htop`: Prikaz hijerarhije procesa i dretvi, hijerarhijski odabirom `F5` opcije
 
@@ -358,7 +358,7 @@ Općenito, unutar `htop` alata možemo u gornjem desnom kutu vidjeti ukupan **br
 
 Kada omogućimo skrivene kernel dretve, možemo ih vidjeti u `htop` alatu označene isto zelenom bojom.
 
-<img src="./screenshots/htop-kthr.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-kthr.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ `htop`: Prikaz skrivenih kernel dretvi - označene isto tako zelenom bojom
 
@@ -387,7 +387,7 @@ Prema zadanim postavkama, `kill` šalje signal `SIGTERM` (`-15`) procesu.
 
 Otvorite `htop` i pronađite `PID` procesa `htop`. Možete i pretraživati (`F3`) kako biste ga lakše pronašli.
 
-<img src="./screenshots/htop-htop-searchf3.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-htop-searchf3.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ `htop`: Pronalazak procesa pretraživanjem po nazivu (`F3`)
 
@@ -407,7 +407,7 @@ Možemo se spojiti sa SSH klijentom na naš virtualni stroj i pozvati naredbu u 
 
 Trebali biste vidjeti nove sesije koje razlikujete po oznaci `tty[N]`, npr. `tty1`, `tty2`, `tty3` itd. `tty` je stara oznaka za terminal sučelje, a `N` predstavlja broj terminala.
 
-<img src="./screenshots/tty3.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/tty3.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Nova terminal sesija (`tty3`) u koju smo se prebacili pritiskom na `ALT + →`
 
@@ -563,7 +563,7 @@ Ako pokrenemo skriptu s `nice` naredbom, primijetite da se procesi nalaze u drug
 → sudo nice -n -20 ./numbers.sh # pokreće skriptu s prioritetom -20 (najviši prioritet)
 ```
 
-<img src="./screenshots/htop-sudo-nice-max.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-sudo-nice-max.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ `htop` prikaz: Proces instanciran naredbom `nice` s najvišim mogućim prioritetom od `-20`.
 
@@ -643,7 +643,7 @@ Kako bismo provjerili **sve pohranjene korisnike**, možemo pročitati sadržaj 
 → cat /etc/passwd
 ```
 
-<img src="./screenshots/cat-etc-passwd.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/cat-etc-passwd.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Prikaz svih korisnika u konfiguracijskoj datoteci `/etc/passwd`
 
@@ -673,7 +673,7 @@ Kako bismo se prebacili u `root` korisnika, možemo koristiti naredbu:
 → sudo -i
 ```
 
-<img src="./screenshots/sudo-i.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/sudo-i.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Prebacivanje u `root` korisnika koristeći `sudo -i` naredbu
 
@@ -744,7 +744,7 @@ Na primjer, ako želimo brzo pronaći korisnika `markomaric` u datoteci `/etc/pa
 → cat /etc/passwd | grep markomaric # preusmjeri rezultat naredbe cat u naredbu grep (koja ga obrađuje)
 ```
 
-<img src="./screenshots/passwd-grep-markomaric.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/passwd-grep-markomaric.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Preusmjeravanje ukupnog sadržaja iz datoteke `/etc/passwd` u `grep` alat koji filtrira sadržaj prema regularnom izrazu, konkretno izraz je običan string: `markomaric`
 
@@ -795,7 +795,7 @@ Lozinku nije preporučljivo dodavati pomoću zastavice, već **naknadno pomoću*
 → sudo passwd anaanic # dodajemo lozinku korisniku "anaanic"
 ```
 
-<img src="./screenshots/sudopasswd-anaanic.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/sudopasswd-anaanic.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Dodavanje lozinke korisniku `anaanic` koristeći `passwd` nakon uspješnog stvaranja korisnika naredbom `useradd -m -s`
 
@@ -921,7 +921,7 @@ Testirat ćemo da li korisnik `anaanic` može koristiti `sudo` privilegije:
 
 Ako je sve prošlo u redu, trebali bismo se prebaciti u `root` korisnika bez problema.
 
-<img src="./screenshots/usermod-aG-anaanic.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/usermod-aG-anaanic.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Dodavanje `sudo` ovlasti korisniku `anaanic` pomoću naredebe `usermod`, prebacivanje u `root`
 
@@ -1053,7 +1053,7 @@ Servisima upravlja _service manager_ sustav, najčešće je to `systemd` koji je
 → pidof systemd
 ```
 
-<img src="./screenshots/htop-search-systemd.png" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-search-systemd.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ `htop` prikaz: Prikaz aktivnog `systemd` procesa.
 
