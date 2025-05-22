@@ -21,9 +21,7 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 21.5.2025.**
-
-- gradivo skripte je dovršeno, zadaci na kraju će se dodati naknadno - uskoro
+**🆙 Posljednje ažurirano: 22.5.2025.**
 
 ## Sadržaj
 
@@ -32,22 +30,27 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
   - [Sadržaj](#sadržaj)
 - [1. Upravljanje procesima](#1-upravljanje-procesima)
   - [1.1 Interaktivni pregled procesa (`top`/`htop`)](#11-interaktivni-pregled-procesa-tophtop)
-    - [Alat `top`](#alat-top)
-    - [Alat `htop`](#alat-htop)
+      - [Alat `top`](#alat-top)
+      - [Alat `htop`](#alat-htop)
   - [Zadatak 1: Tumačenje procesa](#zadatak-1-tumačenje-procesa)
   - [1.2 Programske dretve](#12-programske-dretve)
-    - [Alat `kill`](#alat-kill)
-    - [Alati `pidof` i `pgrep`](#alati-pidof-i-pgrep)
-    - [Alat `pkill`](#alat-pkill)
+      - [Alat `kill`](#alat-kill)
+      - [Alati `pidof` i `pgrep`](#alati-pidof-i-pgrep)
+      - [Alat `pkill`](#alat-pkill)
   - [1.3 Alat `nice`](#13-alat-nice)
   - [Zadatak 2: Upravljanje procesima](#zadatak-2-upravljanje-procesima)
-- [2. Upravljanje korisnicima](#2-upravljanje-korisnicima)
+- [2. Upravljanje korisnicima i grupama](#2-upravljanje-korisnicima-i-grupama)
   - [2.1 Naredba `useradd`](#21-naredba-useradd)
-  - [2.2 Naredba `usermod`](#22-naredba-usermod)
-  - [2.3 Naredba `userdel`](#23-naredba-userdel)
+  - [2.2. Tablica čestih zastavica naredbe `useradd`](#22-tablica-čestih-zastavica-naredbe-useradd)
+  - [2.3 Naredba `usermod`](#23-naredba-usermod)
+  - [2.4. Tablica čestih zastavica naredbe `usermod`](#24-tablica-čestih-zastavica-naredbe-usermod)
+  - [2.5 Naredba `userdel`](#25-naredba-userdel)
   - [Zadatak 3: Upravljanje korisnicima i grupama](#zadatak-3-upravljanje-korisnicima-i-grupama)
-- [3. Upravljanje servisima](#3-upravljanje-servisima)
-  - [Zadatak 4: Upravljanje servisima](#zadatak-4-upravljanje-servisima)
+  - [Zadatak 4: Dozvole datoteka](#zadatak-4-dozvole-datoteka)
+- [3. Dozvole datoteka (eng. file permissions)](#3-dozvole-datoteka-eng-file-permissions)
+      - [Alat `chown`](#alat-chown)
+- [4. Upravljanje servisima](#4-upravljanje-servisima)
+  - [Zadatak 5: Upravljanje servisima](#zadatak-5-upravljanje-servisima)
 - [Zadaci za Vježbu 5](#zadaci-za-vježbu-5)
 
 <div style="page-break-after: always; break-after: page;"></div>
@@ -603,9 +606,26 @@ Smanjit ćemo mu prioritet na `-10`:
 
 Otvorite alat `htop` i provjerite je li se prioritet izvođenja procesa promijenio.
 
+<hr>
+
+Općenito, sve skripte (bile one `bash`, `python`, `node` ili druge), možemo pozivati i u pozadini (_eng. background execution_) koristeći oznaku `&` nakon poziva:
+
+**Sintaksa:**
+
+```bash
+→ <naredba> &
+# Primjeri:
+→ ./numbers.sh &
+→ nice -n 10 ./numbers.sh &
+→ node hello.js &
+→ python3 hello.py &
+```
+
+Na ovaj način, **skripta će se izvoditi u aktivnoj terminal sesiji, ali neće zauzeti terminal sučelje** i moći ćemo nastaviti raditi u istoj sesiji.
+
 ## Zadatak 2: Upravljanje procesima
 
-Alat `node` omogućuje pokretanje JavaScript koda izvan okruženja web preglednika. Možete ga jednostavno instalirati u Ubuntu Server koristeći `apt` alat. Jednom kada ga instalirate, u _home_ direktoriju stvorite novu datoteku `stopwatch.js` koja će pauzirati izvršavanje procesa koristeći `prompt` funkciju. Kroz `prompt` funkciju korisnik unosi broj sekundi koje moraju isteći prije nego što se proces završi.
+Alat `node` omogućuje pokretanje JavaScript koda izvan okruženja web preglednika. Možete ga jednostavno instalirati u Ubuntu Server koristeći `apt` alat. Jednom kada ga instalirate, u _home_ direktoriju stvorite novu datoteku `stopwatch.js` koja će sadržavati jednostavnu skriptu koja će čekati određeno vrijeme i zatim ispisati poruku.
 
 U JavaScriptu, _timer_ možete implementirati koristeći `setTimeout` funkciju koja prima _callback_ funkciju (ono što se poziva jednom kad vrijeme istekne) i vrijeme u milisekundama (koliko se čeka):
 
@@ -613,11 +633,11 @@ U JavaScriptu, _timer_ možete implementirati koristeći `setTimeout` funkciju k
 setTimeout(callback_fn, vrijeme_ms);
 ```
 
-Jednom kad napišite skriptu, možete ju pokrenuti koristeći naredbu `node`.
+Odredite proizvoljno vrijeme čekanja (npr. `5000` ms) i ispišite poruku nakon isteka vremena.
 
-Pokrenite skriptu i provjerite kako se proces ponaša koristeći `htop` alat. Ispišite PID procesa i provjerite njegovu hijerarhiju.
+Jednom kad napišite skriptu, možete ju pokrenuti koristeći naredbu `node`. Provjerite kako se proces ponaša koristeći `htop` alat. Ispišite PID procesa i provjerite njegovu hijerarhiju.
 
-Pokrenite skriptu koristeći `nice` naredbu sa:
+Nakon toga, pokrenite ponovo skriptu koristeći `nice` naredbu sa:
 
 - zadanim prioritetom
 - prioritetom `-10`
@@ -633,7 +653,7 @@ Ispišite PID trenutnog procesa jednom kad on započne, zatim pomoću `htop` ala
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-# 2. Upravljanje korisnicima
+# 2. Upravljanje korisnicima i grupama
 
 Upravljanje korisnicima i grupama (_eng. User and Group Management_) još je jedan ključan aspekt administracije Linux sustava, koji je, srećom, znatno jednostavniji od upravljanja procesima.
 
@@ -739,7 +759,7 @@ Prema zadanim postavkama, novi korisnik će biti bez lozinke, a njegov home dire
 sudo cat /etc/passwd
 ```
 
-> **💡Hint**: Općenito, kada čitamo velike datoteke nije loše preusmjeriti njihov _output_ u naredbu `grep`. Naredba `grep` (global regular expression print) je utility alat koji se koristi za pretraživanje _plaintext_ sadržaja pomoću nekog regularnog izraza (_eng. regular expression_).
+> **💡Hint**: Općenito, kada čitamo velike datoteke nije loše preusmjeriti njihov _output_ u naredbu `grep`. Naredba `grep` (_global regular expression print_) je utility alat koji se koristi za pretraživanje _plaintext_ sadržaja pomoću nekog regularnog izraza (_eng. regular expression_).
 
 **Preusmjeravanje** (_eng. piping_) izvodimo pomoću znaka `|` (pipe). Zapamti kao okomitu cijev.
 
@@ -773,9 +793,9 @@ Međutim dobit ćemo upozorenje da korisnik nema _home_ direktorij:
 su: warning: cannot change directory to /home/markomaric: No such file or directory
 ```
 
-Upišite `exit` kako biste se vratili u vašeg korisnika.
+Upišite `exit` kako biste se odjavili i vratili u prethodnog korisnika.
 
-Stvorit ćemo direktorij ručno:
+Stvorit ćemo _home_ direktorij ručno:
 
 ```bash
 → whoami # lukablaskovic
@@ -785,9 +805,11 @@ Stvorit ćemo direktorij ručno:
 
 Ipak, ako pokušate išta raditi s novim korisnikom, nećete moći jer `markomaric` nema privilegije.
 
-**Ovo nije preporučen način!** Ne želimo nikad ručno stvarati _home_ direktorij, već koristiti odgovarajuću zastavicu/zastavice prilikom pozivanja `useradd` naredbe.
+**Ne preporučuje se ovo raditi!** Ne želimo nikad ručno stvarati _home_ direktorij, već koristiti odgovarajuću zastavicu/zastavice prilikom pozivanja `useradd` naredbe.
 
-Pogledat ćemo nekoliko korisnih zastavica kako bismo inicijalno korisniku podesili neke postavke, poput _home_ direktorija, grupa, zadanog shella i dr.
+Pogledat ćemo nekoliko korisnih zastavica kako bismo inicijalno korisniku podesili postavke, poput _home_ direktorija, grupa, zadanog shella, itd. prilikom stvaranja korisnika.
+
+## 2.2. Tablica čestih zastavica naredbe `useradd`
 
 | `useradd` zastavica | Opis zastavice                                                                                         | Primjer                                      |
 | ------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
@@ -795,11 +817,11 @@ Pogledat ćemo nekoliko korisnih zastavica kako bismo inicijalno korisniku podes
 | `-d DIR`            | Postavlja _custom home_ direktorij na `DIR`, ako nije navedeno postavlja se na zadani `/home/korisnik` | `useradd -m -d /opt/anaanic anaanic`         |
 | `-s SHELL`          | Postavlja korisniku zadani shell (`SHELL`)                                                             | `useradd -m -s /bin/bash anaanic`            |
 | `-u UID`            | Postavlja korisnički ID (`UID`)                                                                        | `useradd -m -u 1050 anaanic`                 |
-| `-g GROUP_NAME`     | Postavlja **primarnu grupu korisnika** na `GROUP_NAME`. U nastavku više o grupama.                     | `useradd -m -g developeri anaanic`           |
+| `-g GROUP_NAME`     | Postavlja **primarnu grupu korisnika** na `GROUP_NAME`, ako grupa postoji. U nastavku više o grupama.  | `useradd -m -g developeri anaanic`           |
 | `-G GROUP1,GROUP2`  | Postavlja **dodatne (sekundarne) grupe** korisnika na `GROUP1` i `GROUP2`                              | `useradd -m -G administrator,gameri anaanic` |
 | `-c COMMENT`        | Dodaje komentar (npr. puno ime i prezime)                                                              | `useradd -m -c "Ana Anić" anaanic`           |
 
-Lozinku nije preporučljivo dodavati pomoću zastavice, već **naknadno pomoću** zasebne naredbe `passwd`:
+Lozinku se ne preporučuje dodavati pomoću zastavice, već **naknadno pomoću** zasebne naredbe `passwd`:
 
 ```bash
 → sudo useradd -m -s /bin/bash -c "Ana Anić" anaanic # dodajemo korisnika "anaanic" s home direktorijem i zadanim shellom i punim imenom i prezimenom
@@ -812,7 +834,7 @@ Lozinku nije preporučljivo dodavati pomoću zastavice, već **naknadno pomoću*
 
 - stvorili smo home direktorij `/home/anaanic`
 - postavili smo zadani shell `/bin/bash`
-- dodali smo komentar "Ana Anić"
+- dodali smo komentar `"Ana Anić"`
 - dodali smo lozinku korisniku `anaanic`, **naknadno**
 
 Ako ostanemo u našem korisniku i pokušamo se prebaciti u home direktorij od `anaanic`, dobit ćemo grešku:
@@ -840,11 +862,11 @@ Ako se prijavimo kao `anaanic`, automatski će nas prebaciti u `/home/anaanic`, 
 
 Možemo se odjaviti naredbom `exit`.
 
-## 2.2 Naredba `usermod`
+## 2.3 Naredba `usermod`
 
 Do sad smo naučili da na Linuxu možemo imati više korisnika, od kojih su neki regularni korisnici, a neki su sustavni korisnici. Također, naučili smo da postoji i _superkorisnik_ `root` koji ima sve privilegije.
 
-**Grupe** (_eng. Group_) predstavljaju **skupine korisnika koji dijele iste privilegije**, preciznije: skupine korisnika koji imaju pristup istim resursima/datotekama u sustavu.
+**Grupe** predstavljaju **skupine korisnika koji dijele iste privilegije**, preciznije: skupine korisnika koji imaju pristup istim resursima/datotekama u sustavu.
 
 Možemo provjeriti koje grupe sadrži naš korisnik unosom naredbe `groups`:
 
@@ -934,23 +956,47 @@ Ako je sve prošlo u redu, trebali bismo se prebaciti u `root` korisnika bez pro
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/usermod-aG-anaanic.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
-> 🖼️ Dodavanje `sudo` ovlasti korisniku `anaanic` pomoću naredebe `usermod`, prebacivanje u `root`
+> 🖼️ Dodavanje `sudo` ovlasti korisniku `anaanic` pomoću naredbe `usermod`, prebacivanje u `root`
 
 > **💡Napomena**: Pazite da ne zaboravite na zastavicu `-a` (append), jer ako ju ne navedemo, lista grupa će biti pregažena i korisnik će biti uklonjen iz svih ostalih grupa, osim iz one koju smo naveli.
 
-| `usermod` zastavica | Opis zastavice                                                                         | Primjer                            |
-| ------------------- | -------------------------------------------------------------------------------------- | ---------------------------------- |
-| `-aG`               | Dodaje korisniku **sekundarne grupe** (mora se koristiti s `-G`)                       | `usermod -aG sudo john`            |
-| `-G`                | Postavlja dodatne (**sekundarne**) grupe (zamjenjuje postojeće ako se ne koristi `-a`) | `usermod -G dev,admin john`        |
-| `-g`                | Mijenja **primarnu grupu** korisnika                                                   | `usermod -g developers john`       |
-| `-d`                | Mijenja _home_ direktorij                                                              | `usermod -d /newhome/john john`    |
-| `-m`                | Premješta sadržaj u novi _home direktorij_ (koristi se s `-d`)                         | `usermod -d /newhome/john -m john` |
-| `-s`                | Mijenja zadani _shell_ korisnika                                                       | `usermod -s /bin/bash john`        |
-| `-l`                | Mijenja korisničko ime                                                                 | `usermod -l <newname> <oldname>`   |
-| `-L`                | Zaključava korisnički račun (onemogućuje prijavu)                                      | `usermod -L john`                  |
-| `-U`                | Otključava korisnički račun                                                            | `usermod -U john`                  |
-| `-e`                | Postavlja datum isteka korisničkog računa                                              | `usermod -e 2025-12-31 john`       |
-| `-c`                | Mijenja komentar (obično puno ime korisnika)                                           | `usermod -c "John Doe" john`       |
+Sada smo dodali korisnika u grupu `sudo`, a na isti način možemo i u bilo koju drugu grupu, dok ona postoji.
+
+Novu grupu možemo dodati pomoću naredbe `groupadd`:
+
+**Sintaksa:**
+
+```bash
+→ sudo groupadd <groupname>
+```
+
+- `<groupname>` - naziv nove grupe koju dodajemo
+
+_Primjer:_
+
+```bash
+→ sudo groupadd <groupname>
+
+# Primjer:
+→ sudo groupadd developeri # dodajemo grupu developeri u sustav
+→ sudo usermod -aG developeri anaanic # dodajemo korisnika anaanic u grupu developeri
+```
+
+## 2.4. Tablica čestih zastavica naredbe `usermod`
+
+| `usermod` zastavica | Opis zastavice                                                                                     | Primjer                            |
+| ------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| `-aG`               | Dodaje korisniku **sekundarne grupe** (mora se koristiti s `-G`)                                   | `usermod -aG sudo john`            |
+| `-G`                | Postavlja dodatne (**sekundarne**) grupe ako postoje (zamjenjuje postojeće ako se ne koristi `-a`) | `usermod -G dev,admin john`        |
+| `-g`                | Mijenja **primarnu grupu** korisnika, ako grupa postoji.                                           | `usermod -g developers john`       |
+| `-d`                | Mijenja _home_ direktorij                                                                          | `usermod -d /newhome/john john`    |
+| `-m`                | Premješta sadržaj u novi _home direktorij_ (koristi se s `-d`)                                     | `usermod -d /newhome/john -m john` |
+| `-s`                | Mijenja zadani _shell_ korisnika                                                                   | `usermod -s /bin/bash john`        |
+| `-l`                | Mijenja korisničko ime                                                                             | `usermod -l <newname> <oldname>`   |
+| `-L`                | Zaključava korisnički račun (onemogućuje prijavu)                                                  | `usermod -L john`                  |
+| `-U`                | Otključava korisnički račun                                                                        | `usermod -U john`                  |
+| `-e`                | Postavlja datum isteka korisničkog računa                                                          | `usermod -e 2025-12-31 john`       |
+| `-c`                | Mijenja komentar (obično puno ime korisnika)                                                       | `usermod -c "John Doe" john`       |
 
 <hr>
 
@@ -1009,7 +1055,31 @@ Pozivamo skriptu s argumentom korisničkog imena:
 
 Ako je sve prošlo u redu, korisnik `anaanic` više se ne može prijaviti u sustav. Međutim, i dalje ćemo se moći prebaciti u njega kao `root` ili administrator korisnik. Otvorite novu terminal sesiju i pokušajte se prijaviti kao `anaanic` korisnik, ili pokušajte putem SSH izvana.
 
-## 2.3 Naredba `userdel`
+<hr>
+
+_Primjer:_ Napravit ćemo grupu studenti i nekoliko studenata:
+
+```bash
+→ sudo groupadd studenti
+```
+
+Dodajemo nekoliko studenata:
+
+```bash
+→ sudo useradd -m -s /bin/bash -c "Luka Blasković" lukablaskovic
+→ sudo useradd -m -s /bin/bash -c "Ana Anić" anaanic
+→ sudo useradd -m -s /bin/bash -c "Marko Marić" markomaric
+```
+
+Dodajemo sve studente u grupu `studenti`:
+
+```bash
+→ sudo usermod -aG studenti lukablaskovic
+→ sudo usermod -aG studenti anaanic
+→ sudo usermod -aG studenti markomaric
+```
+
+## 2.5 Naredba `userdel`
 
 Naredba `userdel` se koristi za brisanje korisničkog računa iz sustava. Ova naredba također zahtijeva administratorske privilegije.
 
@@ -1052,7 +1122,193 @@ E sad, svake godine dobivate nove juniore i neda vam se ponovo raditi sve ispoč
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-# 3. Upravljanje servisima
+## Zadatak 4: Dozvole datoteka
+
+Izračunajte oktalnu reprezentaciju dozvola za sljedeće dozvole:
+
+- `-rwxr-xr--`
+- `-rw-rw-r--`
+- `-r--r--r--`
+- `-rwxrwxrwx`
+- `drw-r-xr-x`
+- `d-rwxrwxr--`
+
+Za sljedeće oktalne reprezentacije dozvola, ispišite znakovni niz (10 znakova) koji predstavlja tu dozvolu:
+
+- `640`
+- `711`
+- `775` (direktorij)
+- `774`
+- `664`
+
+# 3. Dozvole datoteka (eng. file permissions)
+
+Privilegije i dozvole su važan aspekt sigurnosti sustava. Na Linuxu, svaki korisnik i grupa imaju svoje privilegije i dozvole koje određuju što mogu ili ne mogu raditi u sustavu.
+
+Svaka datoteka ima svoje dozvole definirane za tri vrste korisnika:
+
+- **Vlasnik (oznaka `u`)** (_eng. owner_) - korisnik koji je stvorio datoteku
+- **Grupa (oznaka `g`)** (_eng. group_) - ostali korisnici koji su članovi grupe kojoj datoteka pripada
+- **Ostali (oznaka `o`)** (_eng. others_) - svi ostali korisnici u sustavu
+
+Rekli smo da svaki korisnik može biti član jedne primarne grupe i više dodatnih grupa. Svaka datoteka također ima svog **vlasnika** i **grupu** kojoj pripada.
+
+Navedene informacije rekli smo da dobivamo pomoću zastavice `-l` naredbe `ls`:
+
+```bash
+→ ls -l
+```
+
+<img src= "./screenshots/home-ls-l.png" style="width:100%; box-shadow: none !important;"></img>
+
+> 🖼️ Prikaz datoteka u _home_ direktoriju s pripadajućim dozvolama i vlasnicima
+
+Prisjetimo se:
+
+- prvi stupac prikazuje dozvole (npr. `-rw-r--r--`)
+- drugi stupac prikazuje broj čvrstih veza na datoteku (ovo nam je manje važno)
+- treći stupac prikazuje **vlasnika** datoteke
+- četvrti stupac prikazuje **grupu kojoj datoteka pripada**
+
+Prema zadanim postavkama, kada korisnik stvori datoteku, **on automatski postaje njen vlasnik, a grupa kojoj datoteka pripada je primarna grupa tog korisnika**.
+
+Primjer: ako korisnik `markomaric` stvori datoteku `test.txt`, vlasnik te datoteke će biti `markomaric`, a grupa kojoj datoteka pripada će biti `markomaric`.
+
+Postoji i 3 **vrste dozvola**:
+
+- **Čitanje (oznaka `r`)** (_eng. read_) - dozvola za čitanje datoteke
+- **Pisanje (oznaka `w`)** (_eng. write_) - dozvola za pisanje u datoteku
+- **Izvršavanje (oznaka `x`)** (_eng. execute_) - dozvola za izvršavanje datoteke
+
+Do sada smo već dodavali dozvolu za izvršavanje datoteke pomoću `chmod` naredbe.
+
+**Dozvola** je tipično prikazana kao niz od `10` odnosno (`1` + `9`) znakova:
+
+Zašto `1 + 9`? Jer prvi znak označava vrstu datoteke, a ostalih `9` znakova označava dozvole za vlasnika, grupu i ostale korisnike.
+
+```
+-rwxrw-r--
+```
+
+- **prvi znak** označava vrstu datoteke:
+
+  - `-` - obična datoteka
+  - `d` - direktorij
+  - `l` - simbolička veza (eng. symbolic link)
+
+- **sljedeća tri znaka** označavaju **dozvole vlasnika datoteke**:
+  - `r` - dozvola za čitanje
+  - `w` - dozvola za pisanje
+  - `x` - dozvola za izvršavanje
+
+_U našem primjeru: `rwx`_
+
+- **sljedeća tri znaka** označavaju **dozvole grupe**:
+  - `r` - dozvola za čitanje
+  - `w` - dozvola za pisanje
+  - `x` - dozvola za izvršavanje
+
+_U našem primjeru: `rw-`_
+
+- **posljednja tri znaka** označavaju **dozvole ostalih korisnika**:
+  - `r` - dozvola za čitanje
+  - `w` - dozvola za pisanje
+  - `x` - dozvola za izvršavanje
+
+_U našem primjeru: `r--`_
+
+<hr>
+
+Zaključujemo da:
+
+- **Vlasnik** može čitati, pisati i izvršavati datoteku (`rwx`)
+- **Grupa** može čitati i pisati datoteku, ali ne može je izvršavati (`rw-`)
+- **Ostali korisnici** mogu samo čitati datoteku (`r--`)
+
+Dozvole je također moguće prikazati i u numeričkom obliku, gdje se svaka dozvola predstavlja određenim brojem:
+
+| Dozvola | Broj |
+| ------- | ---- |
+| `r`     | 4    |
+| `w`     | 2    |
+| `x`     | 1    |
+| `-`     | 0    |
+
+**Za svaku vrstu korisnika** (vlasnik, grupa, ostali) **zbrajamo dozvole koje su dodijeljene** i dobivamo broj između i 7.
+
+Primjeri: Prikazat ćemo nekoliko dozvola i njihovu zbrojenu numeričku vrijednost.
+
+- Za dozvolu `rwx` zbrajamo: `4 + 2 + 1 = 7`.
+- Za dozvolu `rw-` zbrajamo: `4 + 2 + 0 = 6`.
+- Za dozvolu `r--` zbrajamo: `4 + 0 + 0 = 4`.
+- Za dozvolu `r-x` zbrajamo: `4 + 0 + 1 = 5`.
+
+Vratimo se na naš primjer za dozvolu `-rwxrw-r--`.
+
+**1. korak** - prvo izbacimo prvi znak `-` koji označava vrstu datoteke
+**2. korak** - zbrajamo dozvole za vlasnika: `rwx` = `4 + 2 + 1 = 7`
+**3. korak** - zbrajamo dozvole za grupu: `rw-` = `4 + 2 + 0 = 6`
+**4. korak** - zbrajamo dozvole za ostale: `r--` = `4 + 0 + 0 = 4`
+**5. korak** - konačni rezultat je `764` (u našem slučaju).
+
+Na kraju samo **spajamo** dobivene zbrojeve u jedan broj, tj. `764`, a na početku dodajemo oznaku datoteke.
+
+Dakle, dozvola `-rwxrw-r--` u numeričkom obliku je `764`.
+
+Ovakav zapis naziv se **oktalna reprezentacija dozvole** jer je zapis baziran na oktalnom brojevnom sustavu (baza je broj 8), tj. koristimo brojeve u rasponu od 0 do 7.
+
+Odlično, kako bi sada izmijenili dozvole datoteke, koristimo `chmod` naredbu, oktalnu reprezentaciju dozvola i naziv datoteke.
+
+**Sintaksa:**
+
+```bash
+→ chmod <oktalna_reprezentacija> <datoteka>
+
+# Primjer:
+→ chmod 764 lock_user.sh # dodaje dozvole: -rwxrw-r--
+```
+
+<img src="./screenshots/izmjenjena-dozvola-oktalnom-rep.png"  style="width:100%; box-shadow: none !important;"></img>
+
+> 🖼️ Prikaz izmijenjene dozvole datoteke `lock_user.sh` na `764` (-rwxrw-r--)
+
+<hr>
+
+#### Alat `chown`
+
+Kako bismo određenoj datoteci izmijenili vlasnika ili grupu kojoj datoteka pripada, koristimo `chown` naredbu.
+
+**Sintaksa:**
+
+```bash
+→ chown [opcije/zastavice] <novi_vlasnik>:<nova_grupa> <datoteka>
+
+# Primjer:
+→ chown anaanic:developeri lock_user.sh # postavlja vlasnika datoteke "lock_user.sh" na "anaanic" i grupu na "developeri"
+
+# Primjer: promjena samo vlasnika
+
+→ chown anaanic lock_user.sh # postavlja vlasnika datoteke "lock_user.sh" na "anaanic"
+
+# Primjer: promjena samo grupe
+
+→ chown :developeri lock_user.sh # postavlja grupu datoteke "lock_user.sh" na "developeri"
+```
+
+U nastavku se nalazi popis najčešće korištenih zastavica za `chown` naredbu:
+
+| `chown` zastavica | Opis zastavice                                                         | Primjer                                     |
+| ----------------- | ---------------------------------------------------------------------- | ------------------------------------------- |
+| `-R`              | Rekurzivno mijenja vlasnika i grupu za sve datoteke unutar direktorija | `chown -R anaanic:developeri /home/anaanic` |
+| `-h`              | Mijenja vlasnika i grupu za simboličke veze (eng. symbolic links)      | `chown -h anaanic:developeri symlink`       |
+| `-v`              | Ispisuje detalje o promjenama (verbose)                                | `chown -v anaanic:developeri symlink`       |
+
+```bash
+# Primjer:
+→ chown -R anaanic:developeri /home/anaanic # postavlja vlasnika i grupu za sve datoteke unutar direktorija "anaanic"
+```
+
+# 4. Upravljanje servisima
 
 Već smo se upoznali s osnovnim naredbama za upravljanje procesima, poput `ps`, `top`, `htop`, `kill`, `pkill` itd.
 
@@ -1122,7 +1378,7 @@ _Primjer:_ Provjera koji servisi nisu uspješno pokrenuti prilikom podizanja sus
 → systemctl disable <servis>
 ```
 
-## Zadatak 4: Upravljanje servisima
+## Zadatak 5: Upravljanje servisima
 
 Napišite bash skriptu koja prima naziv servisa kao argument (npr. `ssh`) i provjerava postoji li taj servis u sustavu naredbom `systemctl status`. Kako biste znali napisati `if` selekciju, provjerite što vraća varijabla `$?` kada servis postoji u sustavu, a što kada ne postoji.
 
@@ -1144,4 +1400,67 @@ Servis apache2 ne postoji u sustavu
 
 # Zadaci za Vježbu 5
 
-Objavim ih uskoro, ali to je to. Gradivo iz vježbi je gotovo! 🎉
+**Zadatak 1**
+
+Instalirajte `python3` paket na vašem VM-u. Unutar _home_ direktorija stvorite direktorij `python3` i datoteku `hello.py` koja ispisuje "Hello World!", a nakon 100 sekundi ispisuje "Goodbye World!".
+
+Pokrenite skriptu i prebacite se u drugi terminal ili pokrenite u pozadini. Unutar `htop` alata ispišite i objasnite sve detalje o procesu koji je pokrenut.
+
+Napišite barem 3 načina kako biste prekinuli taj proces naredbom `kill`.
+
+**Zadatak 2**
+
+Napravite direktorije `old_dir` i `new_dir` unutar vašeg _home_ direktorija i napunite ih proizvoljnim datotekama. Napišite bash skriptu koja će prebaciti datoteku po datoteku iz direktorija `old_dir` u `new_dir` i nakon svakog prebacivanja ispisati poruku "Datoteka prebačena" i pričekati 1 sekundu.
+
+Pokrenite skriptu sa zadanim, većim i manjim `NI` prioritetom i napravite screenshot `htop` alata.
+
+**Zadatak 3**
+
+Potrebno je definirati novu grupu `devteam` za vašu ekipu. Napravite novi direktorij `project` u _home_ direktoriju vašeg korisnika.
+
+Stvorite nekoliko novih korisnika i dodajte ih u grupu `devteam`.
+
+Za direktorij `project`, vi ostajete vlasnik, a grupu postavite na `devteam`.
+
+Definirajte dozvole za direktorij `project` tako da svi članovi grupe `devteam` mogu čitati, pisati i sadržaj, vi možete čitati, pisati i izvršavati, a ostali korisnici samo čitati.
+
+**Zadatak 4**
+
+Definirajte oktalne reprezentacije dozvola za sljedeće dozvole:
+
+- `rwxr-xr-x`
+- `rw-r--r--`
+- `rwx------`
+- `rw-rw-r--`
+- `rwxrwxrwx`
+- `r--r--r--`
+- `rw-------`
+
+Za svaku dozvolu napišite rečenicu koja opisuje radnje:
+
+Primjer:
+
+```text
+- Vlasnik može čitati, pisati i izvršavati, grupa može čitati i izvršavati, a ostali korisnici mogu samo čitati.
+
+- Svi imaju sve dozvole.
+
+- Vlasnik i grupa imaju sve dozvole, dok ostali korisnici ne mogu ništa.
+```
+
+**Zadatak 5**
+
+Napišite bash skriptu koja očekuje dva argumenta:
+
+1. Znakovna reprezentacija (9 znakova) dozvola (npr. `rwxr-xr--`)
+2. Apsolutnu putanju do neke datoteke (npr. `/home/lukablaskovic/test.txt`)
+
+Skripta mora izračunati oktalnu reprezentaciju dozvole i primijeniti je na datoteku na danoj putanji.
+
+Ako korisnik ne proslijedi točno 2 argumenta, ispišite poruku upozorenja i prekinite rad skripte.
+
+_Primjer:_
+
+```bash
+→ apply.sh rwxr-xr-- /home/lukablaskovic/test.txt
+```
