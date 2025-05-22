@@ -46,9 +46,9 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
   - [2.4. Tablica čestih zastavica naredbe `usermod`](#24-tablica-čestih-zastavica-naredbe-usermod)
   - [2.5 Naredba `userdel`](#25-naredba-userdel)
   - [Zadatak 3: Upravljanje korisnicima i grupama](#zadatak-3-upravljanje-korisnicima-i-grupama)
-  - [Zadatak 4: Dozvole datoteka](#zadatak-4-dozvole-datoteka)
 - [3. Dozvole datoteka (eng. file permissions)](#3-dozvole-datoteka-eng-file-permissions)
       - [Alat `chown`](#alat-chown)
+  - [Zadatak 4: Dozvole datoteka](#zadatak-4-dozvole-datoteka)
 - [4. Upravljanje servisima](#4-upravljanje-servisima)
   - [Zadatak 5: Upravljanje servisima](#zadatak-5-upravljanje-servisima)
 - [Zadaci za Vježbu 5](#zadaci-za-vježbu-5)
@@ -1122,25 +1122,6 @@ E sad, svake godine dobivate nove juniore i neda vam se ponovo raditi sve ispoč
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-## Zadatak 4: Dozvole datoteka
-
-Izračunajte oktalnu reprezentaciju dozvola za sljedeće dozvole:
-
-- `-rwxr-xr--`
-- `-rw-rw-r--`
-- `-r--r--r--`
-- `-rwxrwxrwx`
-- `drw-r-xr-x`
-- `d-rwxrwxr--`
-
-Za sljedeće oktalne reprezentacije dozvola, ispišite znakovni niz (10 znakova) koji predstavlja tu dozvolu:
-
-- `640`
-- `711`
-- `775` (direktorij)
-- `774`
-- `664`
-
 # 3. Dozvole datoteka (eng. file permissions)
 
 Privilegije i dozvole su važan aspekt sigurnosti sustava. Na Linuxu, svaki korisnik i grupa imaju svoje privilegije i dozvole koje određuju što mogu ili ne mogu raditi u sustavu.
@@ -1307,6 +1288,25 @@ U nastavku se nalazi popis najčešće korištenih zastavica za `chown` naredbu:
 # Primjer:
 → chown -R anaanic:developeri /home/anaanic # postavlja vlasnika i grupu za sve datoteke unutar direktorija "anaanic"
 ```
+
+## Zadatak 4: Dozvole datoteka
+
+Izračunajte oktalnu reprezentaciju dozvola za sljedeće dozvole:
+
+- `-rwxr-xr--`
+- `-rw-rw-r--`
+- `-r--r--r--`
+- `-rwxrwxrwx`
+- `drw-r-xr-x`
+- `d-rwxrwxr--`
+
+Za sljedeće oktalne reprezentacije dozvola, ispišite znakovni niz (10 znakova) koji predstavlja tu dozvolu:
+
+- `640`
+- `711`
+- `775` (direktorij)
+- `774`
+- `664`
 
 # 4. Upravljanje servisima
 
