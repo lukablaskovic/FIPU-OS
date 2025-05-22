@@ -1140,7 +1140,7 @@ Navedene informacije rekli smo da dobivamo pomoću zastavice `-l` naredbe `ls`:
 → ls -l
 ```
 
-<img src= "./screenshots/home-ls-l.png" style="width:100%; box-shadow: none !important;"></img>
+<img src= "https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/home-ls-l.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Prikaz datoteka u _home_ direktoriju s pripadajućim dozvolama i vlasnicima
 
@@ -1249,7 +1249,7 @@ Odlično, kako bi sada izmijenili dozvole datoteke, koristimo `chmod` naredbu, o
 → chmod 764 lock_user.sh # dodaje dozvole: -rwxrw-r--
 ```
 
-<img src="./screenshots/izmjenjena-dozvola-oktalnom-rep.png"  style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/izmjenjena-dozvola-oktalnom-rep.png?raw=true"  style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼️ Prikaz izmijenjene dozvole datoteke `lock_user.sh` na `764` (-rwxrw-r--)
 
