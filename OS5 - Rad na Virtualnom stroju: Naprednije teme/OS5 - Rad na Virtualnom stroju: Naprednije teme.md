@@ -41,6 +41,7 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
   - [Zadatak 2: Upravljanje procesima](#zadatak-2-upravljanje-procesima)
 - [2. Upravljanje korisnicima i grupama](#2-upravljanje-korisnicima-i-grupama)
   - [2.1 Naredba `useradd`](#21-naredba-useradd)
+      - [Preusmjeravanje (eng. piping)](#preusmjeravanje-eng-piping)
   - [2.2. Tablica čestih zastavica naredbe `useradd`](#22-tablica-čestih-zastavica-naredbe-useradd)
   - [2.3 Naredba `usermod`](#23-naredba-usermod)
   - [2.4. Tablica čestih zastavica naredbe `usermod`](#24-tablica-čestih-zastavica-naredbe-usermod)
@@ -761,7 +762,11 @@ sudo cat /etc/passwd
 
 > **💡Hint**: Općenito, kada čitamo velike datoteke nije loše preusmjeriti njihov _output_ u naredbu `grep`. Naredba `grep` (_global regular expression print_) je utility alat koji se koristi za pretraživanje _plaintext_ sadržaja pomoću nekog regularnog izraza (_eng. regular expression_).
 
+#### Preusmjeravanje (eng. piping)
+
 **Preusmjeravanje** (_eng. piping_) izvodimo pomoću znaka `|` (pipe). Zapamti kao okomitu cijev.
+
+Ova sintaksa omogućava preusmjeravanje izlaza jedne naredbe kao ulaz druge naredbe (lijevi argument postaje ulaz desnom argumentu). Na taj način možemo povezati više naredbi u lanac naredbi.
 
 **Sintaksa:**
 
@@ -769,7 +774,7 @@ sudo cat /etc/passwd
 → naredba | naredba_2 | naredba_3
 ```
 
-Na primjer, ako želimo brzo pronaći korisnika `markomaric` u datoteci `/etc/passwd`, možemo koristiti:
+Primjer: Želimo brzo pronaći korisnika `markomaric` u datoteci `/etc/passwd`, možemo koristiti:
 
 ```bash
 → cat /etc/passwd | grep markomaric # preusmjeri rezultat naredbe cat u naredbu grep (koja ga obrađuje)
@@ -1119,6 +1124,8 @@ Dodajte lozinke za sve korisnike.
 Kako su junior developeri na praksi, postavite datum isteka korisničkog računa na 1. listopada 2025. godine.
 
 E sad, svake godine dobivate nove juniore i neda vam se ponovo raditi sve ispočetka. Prijavite se kao senior i u njegovom _home_ direktoriju stvorite bash skriptu `create_junior.sh <username> <full_name> <password> <date>` koja će automatski dodati juniore u sustav pozivanjem svih odgovarajućih naredbi koje ste ručno upisivali.
+
+**Napomena:** Za dodavanje lozinke možete koristiti _piping_ tehniku (naredba_1 | naredba_2 ...) i naredbu `chpasswd` koja predstavlja sigurniju scripting alternativu za `passwd`.
 
 <div style="page-break-after: always; break-after: page;"></div>
 
