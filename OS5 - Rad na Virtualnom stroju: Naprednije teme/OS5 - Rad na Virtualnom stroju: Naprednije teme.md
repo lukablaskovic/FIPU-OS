@@ -108,7 +108,7 @@ Kako bi pratili promjene stanja procesa, možemo koristiti ugrađeni alat `top`.
 → top
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/top.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/top.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
 > 🖼 Rezultat naredbe `top` je interaktivni prozor koji prikazuje dinamičku listu procesa u realnom vremenu
 
@@ -160,7 +160,7 @@ Recimo da su neke narudžbe super hitne (npr. za VIP goste), njih ćemo nazivati
 
 Sljedeća skala ilustrira **prioritetni raspon** (_eng. Priority range_) koji koristi Linux kernel za upravljanje procesima (skala se može razlikovati od distribucije do distribucije, ali generalno je slična):
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/priority-range-linux-kernel.png?raw=true" style="width:90%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/priority-range-linux-kernel.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
 
 > 🖼 Prioritetni raspon koji koristi Linux kernel. Izvor: https://blogs.oracle.com/linux/post/task-priority
 
@@ -197,7 +197,7 @@ Moderniji alat koji se može koristiti za praćenje procesa je `htop`, koji je n
 → htop
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
 > 🖼 Moderniji interaktivni prikaz aktivnih procesa koristeći naredbu `htop`.
 
@@ -215,7 +215,7 @@ Rekli smo da je praktično koristiti `htop` jer pruža i jednostavnije sučelje 
 - `F6` - sortiranje procesa prema različitim kriterijima, primjer: `SortBy: CPU%`
 - `F4` - sortiranje procesa prema naredbi i argumentu (zadano ponašanje), primjer: `Filter: ModemManager`
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-filter.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-filter.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ Primjer filtriranja `python3` procesa u `htop` alatu.
 
@@ -337,7 +337,7 @@ _Primjer:_ Moderni web preglednici koriste **višestruke procese** (_multiproces
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/threads-illustration.png?raw=true" style="width:90%; box-shadow: none !important;"></img>
 
-> 🖼️ Ilustracija prikazuje više dretvi unutar istog procesa, od kojih svaka ima različito trajanje izvršavanja tijekom rada procesa.
+> 🖼️ Ilustracija prikazuje više dretvi unutar istog procesa (višedretvenost), od kojih svaka ima različito trajanje izvršavanja tijekom rada procesa.
 
 Dretveni prikaz koristeći `htop` će najvjerojatnije biti zadan, ako nije, možemo ga pokrenuti zastavicom `-H`:
 
@@ -353,7 +353,7 @@ Možemo otvoriti `Setup (F2)` i omogućiti opciju `Display options -> Display th
 
 Pod `Command` ćete sada uočiti dretve definirane **zelenom bojom**. Dodatno, možemo prikazati hijerarhiju pritiskom na tipku `F5` (_Tree view_).
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-tree.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-tree.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
 > 🖼️ `htop`: Prikaz hijerarhije procesa i dretvi, hijerarhijski odabirom `F5` opcije
 
@@ -371,7 +371,7 @@ Općenito, unutar `htop` alata možemo u gornjem desnom kutu vidjeti ukupan **br
 
 Kada omogućimo skrivene kernel dretve, možemo ih vidjeti u `htop` alatu označene isto zelenom bojom.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-kthr.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-kthr.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
 > 🖼️ `htop`: Prikaz skrivenih kernel dretvi - označene isto tako zelenom bojom
 
@@ -420,7 +420,7 @@ Možemo se spojiti sa SSH klijentom na naš virtualni stroj i pozvati naredbu u 
 
 Trebali biste vidjeti nove sesije koje razlikujete po oznaci `tty[N]`, npr. `tty1`, `tty2`, `tty3` itd. `tty` je stara oznaka za terminal sučelje, a `N` predstavlja broj terminala.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/tty3.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/tty3.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ Nova terminal sesija (`tty3`) u koju smo se prebacili pritiskom na `ALT + →`
 
@@ -469,7 +469,7 @@ Postoji skraćena verzija `kill` naredbe koja se koristi za zaustavljanje proces
 → pkill [opcije/zastavice] <ime_procesa>
 ```
 
-Na primjer, ako želimo prekinuti sve procese koji se zovu `htop`, možemo koristiti:
+_Primjer_: Želimo prekinuti sve procese koji se zovu `htop`, možemo koristiti:
 
 ```bash
 → pkill htop
@@ -499,7 +499,7 @@ Rekli smo da je `NI` prioritet procesa između `-20` i `19`, gdje `-20` predstav
 - `<prioritet>` - predstavlja prioritet koji želimo postaviti procesu, a može biti između `-20` i `19`
 - `<naredba>` - predstavlja naredbu koju želimo pokrenuti s određenim prioritetom (može biti bilo koja CLI naredba, uključujući i bash izraz ili skripta)
 
-Primjer: Ako definiramo bash skriptu `numbers.sh` koja ispisuje brojeve od `1` do `100`, možemo ju pokrenuti s različitim prioritetima:
+_Primjer_: Ako definiramo bash skriptu `numbers.sh` koja ispisuje brojeve od `1` do `100`, možemo ju pokrenuti s različitim prioritetima:
 
 ```bash
 → nano numbers.sh
@@ -588,7 +588,7 @@ Ako želimo promijeniti prioritet već pokrenut procesa (u fazi `R`), možemo ko
 → renice -n <prioritet> -p <PID>
 ```
 
-Na primjer, ako želimo povećati prioritet izvođenja procesa `./numbers.sh`, možemo prvo pronaći njegov `PID` koristeći `htop` ili `pidof` ili `pgrep`:
+_Primjer_: ako želimo povećati prioritet izvođenja procesa `./numbers.sh`, možemo prvo pronaći njegov `PID` koristeći `htop` ili `pidof` ili `pgrep`:
 
 ```bash
 → pgrep numbers # vraća PID pokrenutog procesa
@@ -675,7 +675,7 @@ Kako bismo provjerili **sve pohranjene korisnike**, možemo pročitati sadržaj 
 → cat /etc/passwd
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/cat-etc-passwd.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/cat-etc-passwd.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ Prikaz svih korisnika u konfiguracijskoj datoteci `/etc/passwd`
 
@@ -705,7 +705,7 @@ Kako bismo se prebacili u `root` korisnika, možemo koristiti naredbu:
 → sudo -i
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/sudo-i.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/sudo-i.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ Prebacivanje u `root` korisnika koristeći `sudo -i` naredbu
 
@@ -774,13 +774,13 @@ Ova sintaksa omogućava preusmjeravanje izlaza jedne naredbe kao ulaz druge nare
 → naredba | naredba_2 | naredba_3
 ```
 
-Primjer: Želimo brzo pronaći korisnika `markomaric` u datoteci `/etc/passwd`, možemo koristiti:
+_Primjer_: Želimo brzo pronaći korisnika `markomaric` u datoteci `/etc/passwd`, možemo koristiti:
 
 ```bash
 → cat /etc/passwd | grep markomaric # preusmjeri rezultat naredbe cat u naredbu grep (koja ga obrađuje)
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/passwd-grep-markomaric.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/passwd-grep-markomaric.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ Preusmjeravanje ukupnog sadržaja iz datoteke `/etc/passwd` u `grep` alat koji filtrira sadržaj prema regularnom izrazu, konkretno izraz je običan string: `markomaric`
 
@@ -911,7 +911,7 @@ Naredba `id` ispisuje informacije o korisniku, uključujući njegov **UID** (_Us
 
 - `uid=1000(lukablaskovic)` - _User ID_ korisnika `lukablaskovic` je `1000`
 - `gid=1000(lukablaskovic)` - _Group ID_ - primarna grupa korisnika `lukablaskovic` je `1000`
-- **ostale** (sekundarne) grupe su: `adm`, `cdrom`, `sudo`, `dip`, `plugdev`, `lxd`, a svaka ima svoj jedinstveni _Group ID_.
+- ostale (sekundarne) grupe su: `adm`, `cdrom`, `sudo`, `dip`, `plugdev`, `lxd`, a svaka ima svoj jedinstveni _Group ID_.
 
 > **💡Napomena**: privilegije koje dobivate u grupama možete najjednostavnije pronaći _Googlanjem_. Ove grupe su zadane grupe koje Ubuntu Server postavlja administratorskom korisniku, osim `sudo` prava za egzekuciju naredbi kao `root` korisnik, tu su i:
 >
@@ -959,7 +959,7 @@ Testirat ćemo da li korisnik `anaanic` može koristiti `sudo` privilegije:
 
 Ako je sve prošlo u redu, trebali bismo se prebaciti u `root` korisnika bez problema.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/usermod-aG-anaanic.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/usermod-aG-anaanic.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ Dodavanje `sudo` ovlasti korisniku `anaanic` pomoću naredbe `usermod`, prebacivanje u `root`
 
@@ -1100,14 +1100,14 @@ Naredba `userdel` se koristi za brisanje korisničkog računa iz sustava. Ova na
 | `userdel` zastavica | Opis zastavice | Primjer |
 | ------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
 | `-r` | Briše korisnički račun i **njegov _home_ direktorij** | `userdel -r anaanic` |
-| `-f` ili `--force` | Brisanje "na silu", čak i **ako je prijavljen ili ima aktivne procese** | `userdel -f anaanic` |
+| `-f` ili `--force` | Brisanje "na silu", čak i **ako je korisnik prijavljen/ima aktivne procese** | `userdel -f anaanic` |
 
 _Primjer:_ Brišemo korisnika `anaanic` i njezin _home_ direktorij:
 
 ```bash
 → sudo userdel -r anaanic
 
-→ sudo userdel -f anaanic # brišemo korisnika, čak i ako je prijavljena i izvršava procese
+→ sudo userdel -f anaanic # brišemo korisnika, čak i ako je prijavljen i izvršava procese
 ```
 
 ## Zadatak 3: Upravljanje korisnicima i grupama
@@ -1131,7 +1131,7 @@ E sad, svake godine dobivate nove juniore i neda vam se ponovo raditi sve ispoč
 
 # 3. Dozvole datoteka (eng. file permissions)
 
-Privilegije i dozvole su važan aspekt sigurnosti sustava. Na Linuxu, svaki korisnik i grupa imaju svoje privilegije i dozvole koje određuju što mogu ili ne mogu raditi u sustavu.
+**Dozvole** (_eng. permission_) su važan aspekt sigurnosti sustava. Na Linuxu, svaki korisnik i grupa imaju svoje privilegije i dozvole koje određuju što mogu ili ne mogu raditi u sustavu.
 
 Svaka datoteka ima svoje dozvole definirane za tri vrste korisnika:
 
@@ -1147,11 +1147,11 @@ Navedene informacije rekli smo da dobivamo pomoću zastavice `-l` naredbe `ls`:
 → ls -l
 ```
 
-<img src= "https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/home-ls-l.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src= "https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/home-ls-l.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ Prikaz datoteka u _home_ direktoriju s pripadajućim dozvolama i vlasnicima
 
-Prisjetimo se:
+**Prisjetimo se:**
 
 - prvi stupac prikazuje dozvole (npr. `-rw-r--r--`)
 - drugi stupac prikazuje broj čvrstih veza na datoteku (ovo nam je manje važno)
@@ -1160,7 +1160,7 @@ Prisjetimo se:
 
 Prema zadanim postavkama, kada korisnik stvori datoteku, **on automatski postaje njen vlasnik, a grupa kojoj datoteka pripada je primarna grupa tog korisnika**.
 
-Primjer: ako korisnik `markomaric` stvori datoteku `test.txt`, vlasnik te datoteke će biti `markomaric`, a grupa kojoj datoteka pripada će biti `markomaric`.
+_Primjer_: ako korisnik `markomaric` stvori datoteku `test.txt`, vlasnik te datoteke će biti `markomaric`, a grupa kojoj datoteka pripada će biti `markomaric`.
 
 Postoji i 3 **vrste dozvola**:
 
@@ -1213,7 +1213,7 @@ Zaključujemo da:
 - **Grupa** može čitati i pisati datoteku, ali ne može je izvršavati (`rw-`)
 - **Ostali korisnici** mogu samo čitati datoteku (`r--`)
 
-Dozvole je također moguće prikazati i u numeričkom obliku, gdje se svaka dozvola predstavlja određenim brojem:
+Dozvole je također moguće prikazati i u numeričkom obliku, gdje se svaka dozvola predstavlja određenom brojkom:
 
 | Dozvola | Broj |
 | ------- | ---- |
@@ -1245,7 +1245,7 @@ Dakle, dozvola `-rwxrw-r--` u numeričkom obliku je `764`.
 
 Ovakav zapis naziv se **oktalna reprezentacija dozvole** jer je zapis baziran na oktalnom brojevnom sustavu (baza je broj 8), tj. koristimo brojeve u rasponu od 0 do 7.
 
-Odlično, kako bi sada izmijenili dozvole datoteke, koristimo `chmod` naredbu, oktalnu reprezentaciju dozvola i naziv datoteke.
+Kako bismo sada izmijenili dozvole datoteke, koristimo `chmod` naredbu, oktalnu reprezentaciju dozvola i naziv datoteke.
 
 **Sintaksa:**
 
@@ -1256,7 +1256,7 @@ Odlično, kako bi sada izmijenili dozvole datoteke, koristimo `chmod` naredbu, o
 → chmod 764 lock_user.sh # dodaje dozvole: -rwxrw-r--
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/izmjenjena-dozvola-oktalnom-rep.png?raw=true"  style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/izmjenjena-dozvola-oktalnom-rep.png?raw=true"  style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ Prikaz izmijenjene dozvole datoteke `lock_user.sh` na `764` (-rwxrw-r--)
 
@@ -1315,6 +1315,8 @@ Za sljedeće oktalne reprezentacije dozvola, ispišite znakovni niz (10 znakova)
 - `774`
 - `664`
 
+<div style="page-break-after: always; break-after: page;"></div>
+
 # 4. Upravljanje servisima
 
 Već smo se upoznali s osnovnim naredbama za upravljanje procesima, poput `ps`, `top`, `htop`, `kill`, `pkill` itd.
@@ -1329,7 +1331,7 @@ Servisima upravlja _service manager_ sustav, najčešće je to `systemd` koji je
 → pidof systemd
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-search-systemd.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-search-systemd.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
 > 🖼️ `htop` prikaz: Prikaz aktivnog `systemd` procesa.
 
@@ -1385,6 +1387,8 @@ _Primjer:_ Provjera koji servisi nisu uspješno pokrenuti prilikom podizanja sus
 → systemctl disable <servis>
 ```
 
+Servisima ćemo se puno više baviti na kolegiju [Raspodijeljeni sustavi](https://fipu.unipu.hr/fipu/predmet/rassus_a).
+
 ## Zadatak 5: Upravljanje servisima
 
 Napišite bash skriptu koja prima naziv servisa kao argument (npr. `ssh`) i provjerava postoji li taj servis u sustavu naredbom `systemctl status`. Kako biste znali napisati `if` selekciju, provjerite što vraća varijabla `$?` kada servis postoji u sustavu, a što kada ne postoji.
@@ -1402,8 +1406,6 @@ Servis ssh je pokrenut
 
 Servis apache2 ne postoji u sustavu
 ```
-
-<div style="page-break-after: always; break-after: page;"></div>
 
 # Zadaci za Vježbu 5
 
