@@ -18,7 +18,7 @@ Virtualni stroj (eng. <i>Virtual Machine</i>) je programski proizvod koji emulir
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 19.5.2025.**
+**🆙 Posljednje ažurirano: 23.5.2025.**
 
 ## Sadržaj
 
@@ -624,7 +624,7 @@ Unutar Ubuntu Servera ćemo instalirati [OpenSSH](https://www.openssh.com/) posl
 
 #### Alat `systemctl`
 
-Nakon instalacije, virtualni stroj će automatski restartirati određene servise i pokrenuti OpenSSH poslužitelj. Da bismo provjerili je li SSH poslužitelj pokrenut, možemo koristiti paket `systemctl`.
+Nakon instalacije, virtualni stroj će automatski restartati određene servise i pokrenuti OpenSSH poslužitelj. Da bismo provjerili je li SSH poslužitelj pokrenut, možemo koristiti paket `systemctl`.
 
 Općenito, alat `systemctl` se koristi za upravljanje sustavnim servisima i procesima na Linux sustavima. Ovaj alat omogućava korisnicima da pokreću, zaustavljaju, restartaju i provjeravaju status raznih servisa koji se izvode na sustavu.
 
@@ -888,21 +888,21 @@ Uspješno smo se povezali na virtualni stroj putem SSH klijenta! 🚀
 
 Okruženje koje smo sada postavili možemo prikazati sljedećom ilustracijom:
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_2.png?raw=true"  style="width:50%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_2.png?raw=true"  style="width:30%; border-radius: 10px;" ></img>
 
 > 🖼️ Ilustracija komunikacije između domaćina i VM-a putem SSH protokola
 
-I dalje izvodimo VM putem hipervizora VirtualBox, ali sada imamo mogućnost povezivanja putem SSH klijenta. Naše računalo je domaćin VM-a, ali istovremeno i klijent u kontekstu SSH veze. Na VM smo instaliratli SSH poslužitelj koji omogućuje udaljeni pristup sustavu putem SSH protokola. Naše računalo domaćin koristi SSH klijent za povezivanje na definirani SSH poslužitelj.
+I dalje izvodimo VM putem hipervizora VirtualBox, ali sada imamo mogućnost povezivanja putem SSH klijenta. Naše računalo je domaćin VM-a, ali istovremeno i klijent u kontekstu SSH veze. Na VM smo instalirali SSH poslužitelj koji omogućuje udaljeni pristup sustavu putem SSH protokola. Naše računalo domaćin koristi SSH klijent za povezivanje na definirani SSH poslužitelj.
 
 **Sjetite se priče o "sve je datoteka".** U ovom slučaju, SSH klijent i poslužitelj komuniciraju putem TCP/IP protokola, a sve se odvija unutar složenog sustava mrežnih sučelja i portova. Naša su računala povezana putem fizičkih mrežnih adaptera, dok virtualni stroj koristi virtualne mrežne adaptere za komunikaciju s vanjskim svijetom. Sve to omogućuje nam da upravljamo našim VM-om kao da je lokalno računalo, unatoč tome što se zapravo nalazi u virtualiziranom okruženju.
 
 Na jednak način kao što smo se povezivali s VM-om koji se izvodi u VirtualBoxu, možemo se povezati i s **bilo kojim drugim udaljenim poslužiteljem koji podržava SSH protokol** i za koji imamo potrebne **autorizacijske ovlasti**. Ovo je posebno korisno za administraciju strojeva koji su u oblaku, gdje možemo upravljati svojim resursima putem SSH veze.
 
-Također, prisjetimo se naše tvrtke s početka ove skripte. Recimo da su ipak odlučili koristiti Cloud okruženje za postavljanje svoja 3 virtualna stroja. U tom slučaju, svaki od njih će imati svoju javnu IP adresu (obzirom da je u Cloudu) i, ako je tako podešeno, svi mogu biti dostupni putem SSH veze.
+Također, prisjetimo se naše tvrtke s početka ove skripte. Recimo da su ipak odlučili koristiti Cloud okruženje za postavljanje svoja 3 virtualna stroja. U tom slučaju, svaki od njih će imati svoju javnu IP adresu (s obzirom da je u Cloudu) i, ako je tako podešeno, svi mogu biti dostupni putem SSH veze.
 
 U tom slučaju, našu situaciju možemo ilustrirati na sljedeći način:
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_3.png?raw=true"  style="width:40%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_3.png?raw=true"  style="width:30%; border-radius: 10px;" ></img>
 
 > 🖼️ Ilustracija komunikacije između našeg računala i VM-a u Cloudu putem SSH protokola
 
