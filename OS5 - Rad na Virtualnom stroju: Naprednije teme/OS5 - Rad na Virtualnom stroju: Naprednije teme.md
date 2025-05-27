@@ -225,6 +225,8 @@ Rekli smo da je praktično koristiti `htop` jer pruža i jednostavnije sučelje 
 2. `RES` - **fizička memorija**
 3. `SHR` - **dijeljena memorija**
 
+> Ukoliko nije navedena, zadana mjerna jedinica koju prikazuju `top/htop` alati je `KiB` - **kibibajt** (1 KiB = 1024 B).
+
 **1. Virtualna memorija (VIRT)** predstavlja ukupnu količinu memoriju kojoj proces ima pristup, uključujući i memoriju koja nije fizički prisutna u sustavu. Ova vrijednost je često veća od fizičke memorije (RES) jer uključuje i **_swap_** memoriju, koja se koristi kada fizička memorija (RAM) postane nedovoljna.
 
 - _swap_ predstavlja dio diska koji se koristi kao proširenje fizičke memorije. Zamislite ju kao _backup_ memoriju koju sustav koristi kada ponestaje fizičke memorije.
@@ -268,7 +270,7 @@ PID  USER          PRI NI VIRT RES  SHR  S CPU% MEM% TIME+    COMMAND
 
 - PID `1041` - jedinstveni identifikator procesa, pokreće ga korisnik `lukablaskovic`
 - Prioritet je `20`, a _nice value_ je `0`. Dakle, radi se o normalnom procesu (ne _real-time_) koji ima **zadani prioritet**.
-- Proces koristi ukupno `5512 B` virtualne memorije, od čega `3712 B` fizičke memorije. Veliki dio fizičke memorije je dijeljen s drugim procesima (`2944 B`).
+- Proces koristi ukupno `5512 KiB` virtualne memorije, od čega `3712 KiB` fizičke memorije. Veliki dio fizičke memorije je dijeljen s drugim procesima (`2944 KiB`).
 - Proces je trenutno aktivan (`R`), zauzima `1.3%` CPU-a i `0.2%` fizičke memorije. Procesor je koristio ukupno `~15` minuta od pokretanja.
 - Naredba koja je pokrenula proces je `htop`.
 
@@ -283,7 +285,7 @@ PID  USER          PRI NI VIRT RES  SHR  S CPU% MEM% TIME+    COMMAND
 
 - PID `986` - jedinstveni identifikator procesa, pokreće ga korisnik `lukablaskovic`
 - Prioritet je `20`, a _nice value_ je `0`. Dakle, radi se o normalnom procesu (ne _real-time_) koji ima **zadani prioritet**.
-- Proces koristi ukupno `5780 B` virtualne memorije, od čega `4736 B` fizičke memorije. Veliki dio fizičke memorije je dijeljen s drugim procesima (`3200 B`).
+- Proces koristi ukupno `5780 KiB` virtualne memorije, od čega `4736 KiB` fizičke memorije. Veliki dio fizičke memorije je dijeljen s drugim procesima (`3200 KiB`).
 - Proces trenutno spava (`S`), ne zauzima CPU, ali koristi `0.2%` fizičke memorije. Procesor je koristio ukupno `~4` sekunde od pokretanja.
 - Naredba koja je pokrenula proces je `-bash`.
 
@@ -298,7 +300,7 @@ PID   USER PRI NI VIRT   RES   SHR  S CPU% MEM% TIME+    COMMAND
 
 - PID `340` - jedinstveni identifikator procesa, pokreće ga korisnik `root` odnosno [_superkorisnik_](https://en.wikipedia.org/wiki/Superuser)
 - Radi se o _real-time_ procesu što je jasno iz oznake `RT`, a `NI` je `0`.
-- Proces koristi ukupno `347 MB` virtualne memorije, od čega `26240 B` fizičke memorije (`~0.02 MB`), što indicira da se radi o procesu koji koristi jako puno virtualne memorije, ali vrlo malo fizičke memorije. Manji dio fizičke memorije je dijeljen s drugim procesima (`7296 B`).
+- Proces koristi ukupno `347 MB` virtualne memorije, od čega `26240 KiB` fizičke memorije (`~25.625 MiB`), što indicira da se radi o procesu koji koristi jako puno virtualne memorije, ali vrlo malo fizičke memorije. Manji dio fizičke memorije je dijeljen s drugim procesima (`7296 KiB`).
 - Proces trenutno spava (`S`), ne zauzima CPU, ali koristi `1.3%` fizičke memorije. Procesor je koristio ukupno `~0` sekundi od pokretanja.
 - Naredba koja je pokrenula proces je `/sbin/multipathd -d -s`.
 
