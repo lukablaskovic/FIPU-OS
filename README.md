@@ -31,3 +31,4 @@ Kolegij slušaju:
 2. [Zastavice CLI naredbi](https://youtu.be/TADw8BZA9Tg) ([OS2](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS2%20-%20Zastavice%20CLI%20naredbi))
 3. [Bash skriptiranje](https://youtu.be/T0yg0FqOb6o) ([OS3](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS3%20-%20Bash%20skriptiranje))
 4. [Rad na virtualnom stroju: Uvod](https://youtu.be/2YSd__CFYWg) ([OS4](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju%3A%20Uvod))
+5. [Rad na virtualnom stroju: Naprednije teme](https://youtu.be/AIZhCQRhoYA) ([OS5](https://github.com/lukablaskovic/FIPU-OS/tree/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju%3A%20Naprednije%20teme))
