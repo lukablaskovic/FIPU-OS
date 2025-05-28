@@ -21,7 +21,7 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 22.5.2025.**
+**🆙 Posljednje ažurirano: 28.5.2025.**
 
 ## Sadržaj
 
@@ -697,7 +697,7 @@ username:x:UID:GID:comment:home_directory:shell
 - `home_directory` - putanja do korisničkog direktorija (npr. `/home/lukablaskovic`)
 - `shell` - zadani shell koji se koristi prilikom prijave (npr. `/bin/bash`)
 
-Vidjet ćete veliki broj korisnika, uz vašeg koji se nalazi pri dnu. Radi se o sustavnim korisnicima (eng. system users) koji su potrebni za rad sustava i raznih servisa.
+Vidjet ćete veliki broj korisnika, uz vašeg koji se nalazi pri dnu. Radi se o sustavnim korisnicima (_eng. system users_) koji su potrebni za rad sustava i raznih servisa.
 
 Na vrhu ćete vidjeti `root` korisnika koji je **superkorisnik i ima sve privilegije u sustavu**.
 
@@ -1224,7 +1224,7 @@ Dozvole je također moguće prikazati i u numeričkom obliku, gdje se svaka dozv
 | `x`     | 1    |
 | `-`     | 0    |
 
-**Za svaku vrstu korisnika** (vlasnik, grupa, ostali) **zbrajamo dozvole koje su dodijeljene** i dobivamo broj između i 7.
+**Za svaku vrstu korisnika** (vlasnik, grupa, ostali) **zbrajamo dozvole koje su dodijeljene** i dobivamo broj između 0 i 7.
 
 Primjeri: Prikazat ćemo nekoliko dozvola i njihovu zbrojenu numeričku vrijednost.
 
@@ -1323,7 +1323,7 @@ Za sljedeće oktalne reprezentacije dozvola, ispišite znakovni niz (10 znakova)
 
 Već smo se upoznali s osnovnim naredbama za upravljanje procesima, poput `ps`, `top`, `htop`, `kill`, `pkill` itd.
 
-**Servis** (eng. service) je posebna vrsta procesa koji se pokreće u pozadini i obavlja određene funkcije ili zadatke. Servisi su obično **dugotrajni procesi** koji se pokreću prilikom pokretanja sustava i ostaju aktivni sve dok se sustav ne isključi.
+**Servis** (_eng. service_) je posebna vrsta procesa koji se pokreće u pozadini i obavlja određene funkcije ili zadatke. Servisi su obično **dugotrajni procesi** koji se pokreću prilikom pokretanja sustava i ostaju aktivni sve dok se sustav ne isključi.
 
 Servisima upravlja _service manager_ sustav, najčešće je to `systemd` koji je postavljen kao zadani servis manager na većini modernih Linux distribucija, uključujući Ubuntu Server.
 
@@ -1433,7 +1433,7 @@ Stvorite nekoliko novih korisnika i dodajte ih u grupu `devteam`.
 
 Za direktorij `project`, vi ostajete vlasnik, a grupu postavite na `devteam`.
 
-Definirajte dozvole za direktorij `project` tako da svi članovi grupe `devteam` mogu čitati, pisati i sadržaj, vi možete čitati, pisati i izvršavati, a ostali korisnici samo čitati.
+Definirajte dozvole za direktorij `project` tako da svi članovi grupe `devteam` mogu čitati, pisati, vi možete čitati, pisati i izvršavati, a ostali korisnici samo čitati.
 
 **Zadatak 4**
 
