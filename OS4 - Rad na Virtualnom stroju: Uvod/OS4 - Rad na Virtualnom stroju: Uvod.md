@@ -279,7 +279,7 @@ Posljednji korak je konfiguracija korisničkog profila. Unesite:
 - korisničko ime,
 - lozinku.
 
-**Ove podaci nisu povezani s domaćinom**, već su isključivo vezani za Ubuntu Server na VM-u.
+**Ovi podaci nisu povezani s domaćinom**, već su isključivo vezani za Ubuntu Server na VM-u.
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/profile-config.png?raw=true" style="width:70%; border-radius: 10px;" ></img>
 
