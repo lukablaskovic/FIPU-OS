@@ -9,6 +9,7 @@
 </p>
 
 **Nositelj**: [doc. dr. sc. Ivan Lorencin](https://fipu.unipu.hr/fipu/ivan.lorencin)  
+**Izvođač** [dr. sc. Sandi Baressi Šegota](https://fipu.unipu.hr/fipu/sandi.baressi_segota)  
 **Asistent**: [Luka Blašković, mag. inf.](https://fipu.unipu.hr/fipu/luka.blaskovic)
 
 **Ustanova**: [Sveučilište Jurja Dobrile u Puli](https://www.unipu.hr/), [Fakultet informatike u Puli](https://fipu.unipu.hr/)
