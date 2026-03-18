@@ -12,7 +12,9 @@
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/icons/OS2.png?raw=true" style="width:9%; border-radius: 8px; float:right;"></img>
 
 <div style="float: clear; margin-right:5px;">
-Zastavice (<i>eng. flags ili options</i>) predstavljaju posebnu vrstu argumenata koji se koriste za izmjenu ili proširenje zadanog ponašanja naredbi u CLI sučelju. Za razliku od argumenata koje smo dosad koristili prvenstveno za prosljeđivanje konkretnih podataka, poput putanja do datoteka ili direktorija, zastavice služe za parametrizaciju načina izvršavanja naredbe, odnosno za uključivanje dodatnih funkcionalnosti ili promjenu načina prikaza i obrade rezultata.
+Zastavice (<i>eng. flags ili options</i>) predstavljaju posebnu vrstu argumenata koji se koriste za izmjenu ili proširenje zadanog ponašanja naredbi u CLI sučelju.
+
+Za razliku od argumenata koje smo dosad koristili prvenstveno za prosljeđivanje konkretnih podataka, poput putanja do datoteka ili direktorija, zastavice služe za parametrizaciju načina izvršavanja naredbe, odnosno za uključivanje dodatnih funkcionalnosti ili promjenu načina prikaza i obrade rezultata.
 
 U pravilu se zastavice navode uz prefiks jedne crtice (<code>-</code>) za kratke oblike ili dviju crtica (<code>--</code>) za duže, opisne oblike. Njihova je osnovna svrha kontrola ponašanja naredbe, a ne prijenos sadržajnih podataka. Primjerice, zastavicom se može zatražiti detaljniji prikaz informacija, rekurzivna obrada direktorija ili sortiranje izlaza prema određenom kriteriju.
 
@@ -36,7 +38,7 @@ U ovom poglavlju studenti će se upoznati s najčešće korištenim zastavicama 
   - [🚩Zastavica: `-l`](#zastavica--l)
   - [🚩Zastavica: `-R`](#zastavica--r)
   - [2.1 Ostale zastavice naredbe `ls`](#21-ostale-zastavice-naredbe-ls)
-  - [2.2 Tablica čestih zastavica naredbe `ls`](#22-tablica-čestih-zastavica-naredbe-ls)
+  - [2.2 Tablica čestih zastavica naredbi `ls` i `tree` te primjeri kombiniranja](#22-tablica-čestih-zastavica-naredbi-ls-i-tree-te-primjeri-kombiniranja)
 - [3. Zastavice naredbi `cd`, `pwd`, `mkdir` i `rmdir`](#3-zastavice-naredbi-cd-pwd-mkdir-i-rmdir)
 - [Zadatak 1: Vježba osnovnih zastavica](#zadatak-1-vježba-osnovnih-zastavica)
 - [4. Zastavice naredbi `cp`, `mv` i `rm`](#4-zastavice-naredbi-cp-mv-i-rm)
@@ -47,7 +49,7 @@ U ovom poglavlju studenti će se upoznati s najčešće korištenim zastavicama 
   - [🚩Zastavica: `-n`](#zastavica--n)
   - [4.1 Tablica čestih zastavica naredbi `cp`, `mv` i `rm`](#41-tablica-čestih-zastavica-naredbi-cp-mv-i-rm)
 - [Zadatak 2: Vježba zastavica naredbi `cp`, `mv` i `rm`](#zadatak-2-vježba-zastavica-naredbi-cp-mv-i-rm)
-- [5. Praktični primjer: Git CLI](#5-praktični-primjer-git-cli)
+- [5. Praktični primjer: Git CLI](#5-praktični-primjer-git-cli) - [Instalacija Git CLI](#instalacija-git-cli)
 - [Zadaci za Vježbu 2](#zadaci-za-vježbu-2)
 
 # 1. Uvod
@@ -69,11 +71,11 @@ U nastavku su navedene osnovne naredbe koje smo obradili, zajedno s opisima:
 - `mv` - premješta datoteku ili direktorij
 - `echo` - ispisuje tekst u terminalu ili preusmjerava tekst u datoteku
 
-U ovoj skripti studenti će se upoznati s konceptom **opcija**, odnosno **zastavica** (_eng. options/flags_) 🚩
+U ovoj skripti studenti će se upoznati s konceptom **opcija**, odnosno **zastavica** (_eng. options/flags_).
 
 <hr>
 
-U _bashu_, **zastavice** ili **opcije** (_eng. flags_) posebni su argumenti koji modificiraju ponašanje naredbi.
+U _bashu_, **zastavice** ili **opcije** posebni su argumenti koji modificiraju ponašanje naredbi.
 
 **Zastavice se obično koriste kako bi se naredbama dodale funkcionalnosti** ili kako bi se **promijenili neki interni parametri naredbe**.
 
@@ -115,7 +117,8 @@ U pravilu se zastavice pišu **prije argumenata**, ali to nije uvijek slučaj. N
 Dakle, moguće je i sljedeće:
 
 ```bash
-→ naredba argument1 -z argument2 --zastavica2 argument3 # argument1 ovdje se odnosi na "naredba", dok se argumenti argument2 i argument3 odnose na zastavice -z odnosno --zastavica2
+→ naredba argument1 -z argument2 --zastavica2 argument3
+# argument1 ovdje se odnosi na "naredba", dok se argumenti argument2 i argument3 odnose na zastavice -z odnosno --zastavica2
 ```
 
 - izgleda zbunjujuće, ali bit će jasnije kod naredbe `tree` koju ćemo obraditi kasnije
@@ -212,7 +215,7 @@ Također, sljedeće naredbe su ekvivalentne:
 
 Ako koristite zadane postavke unutar grafičkog sučelja (GUI), skrivene datoteke i direktoriji **obično nisu vidljivi**.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/screenshots/fs-vjezba2-no-hidden.png?raw=true" style="width:60%; border-radius:20px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/screenshots/fs-vjezba2-no-hidden.png?raw=true" style="width:70%; border-radius:20px;" ></img>
 
 > Slika 3. Datoteka `.skrivena_datoteka.txt` često nije vidljiva u GUI-ju ako se koriste zadane postavke
 
@@ -220,7 +223,7 @@ Ako koristite zadane postavke unutar grafičkog sučelja (GUI), skrivene datotek
 - [Kako prikazati skrivene datoteke/direktorije na macOS GUI](https://www.pcmag.com/how-to/how-to-access-your-macs-hidden-files)
 - [Kako prikazati skrivene datoteke na Ubuntu/Linux OS GUI](https://help.ubuntu.com/stable/ubuntu-help/files-hidden.html.en)
 
-**Postoji varijanta ove zastavice s velikim slovom** `-A` koja također ispisuje sve datoteke, ali ne ispisuje posebne direktorije `.` i `..`.
+**Postoji varijanta ove zastavice s velikim slovom** `-A` koja također ispisuje sve datoteke, ali ne ispisuje posebne direktorije `.` i `..`
 
 ```bash
 → ls -A # ne ispisuje posebne direktorije "." i ".."
@@ -287,7 +290,7 @@ _Primjer:_
 → ls -l /mnt/c/Users/username/Books
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/ls-l-books.png?raw=true" style="width:70%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/ls-l-books.png?raw=true" style="width:80%" ></img>
 
 > Slika 6. Naredba `ls -l` za detaljan ispis sadržaja direktorija `Books`
 
@@ -299,7 +302,7 @@ Ako bismo željeli uključiti i skrivene datoteke u naš detaljni ispis, jednost
 → ls -l -a
 ```
 
-**ZAPAMTI!** Redoslijed <u>kratkih</u> zastavica u pravilu nije bitan, sve dok pojedina zastavica ne očekuje dodatni argument.
+**🚨 ZAPAMTI!** Redoslijed <u>kratkih</u> zastavica u pravilu nije bitan, sve dok pojedina zastavica ne očekuje dodatni argument.
 
 ```bash
 → ls -a -l
@@ -313,10 +316,10 @@ Ili spojeni zapis kratkih zastavica koji uključuje oba ova ponašanja (`-la`):
 → ls -la
 # ili
 → ls -al
-# Sve isto!
+# Sve isto! (dok je riječ o kratkim zastavicama koje ne očekuju dodatne argumente)
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/ls-l-a.png?raw=true" style="width:70%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/ls-l-a.png?raw=true" style="width:80%" ></img>
 
 > Slika 7. Naredba `ls -l -a` za detaljan ispis sadržaja direktorija `Books`, uključujući i skrivene datoteke
 
@@ -327,6 +330,8 @@ U ovoj skripti nećemo se detaljno baviti dozvolama, ali već možete uočiti ne
 - `r` (read) - dozvola za čitanje
 - `w` (write) - dozvola za pisanje
 - `x` (execute) - dozvola za izvršavanje
+
+> Oznake `+` i `@` koje se ponekad pojavljuju na kraju niza dozvola označavaju dodatne ACL (Access Control List) dozvole koje nisu prikazane u standardnom formatu.
 
 Na primjeru od ranije:
 
@@ -411,7 +416,7 @@ Ako nije instalirana, na Ubuntu/Linux OS možete je instalirati naredbom:
 → tree [FLAGS] <putanja>
 ```
 
-Primjer korištenja naredbe `tree`:
+_Primjer korištenja naredbe `tree`:_
 
 ```bash
 → tree
@@ -430,7 +435,7 @@ Ako bismo htjeli vidjeti skrivenu datoteku `.skrivena_datoteka.txt`, dodajemo za
 → tree -a
 ```
 
-Rezultat:
+_Rezultat:_
 
 ```
 .
@@ -438,7 +443,7 @@ Rezultat:
 └── datoteka.txt
 ```
 
-Što uočavate? Zastavica `-a` kod naredbe `tree` također uključuje skrivene datoteke, ali ne i posebne direktorije `.` i `..`. Ipak, na početku ispisa vidimo `.` koji predstavlja trenutni direktorij iz kojeg pozivamo CLI naredbu.
+**Što uočavate?** Zastavica `-a` kod naredbe `tree` također uključuje skrivene datoteke, ali ne i posebne direktorije `.` i `..`. Ipak, na početku ispisa vidimo `.` koji predstavlja trenutni direktorij iz kojeg pozivamo CLI naredbu.
 
 Prema tome, možete uočiti da implementacije CLI programa, kao što je to `tree`, mogu uključivati srodne zastavice koje imaju slično ponašanje kao i kod drugih naredbi, ali nisu nužno identične.
 
@@ -500,21 +505,21 @@ Naredba `ls` ima mnogo zastavica; pokazat ćemo još nekoliko korisnih koje se �
 > Slika 9. Naredba `ls -l -h` ispisuje veličine datoteka u "ljudski čitljivom" formatu
 
 - `-t` (zapamti kao "time") → sortira datoteke po vremenu zadnje izmjene (od **najnovijih** prema **najstarijima**).
-- `-S` (zapamti kao "Size") → sortira datoteke po veličini (od **najvećih** prema **najmanjima**).
-- `-1` (zapamti kao "one") → ispisuje svaku datoteku u zasebnom redu (korisno za ispis u skriptama).
+- `-S` (zapamti kao "Size") → sortira datoteke po memorijskoj veličini (od **najvećih** prema **najmanjima**).
+- `-1` (zapamti kao "one") → ispisuje svaku datoteku u zasebnom redu
 - `--color` (u GNU `ls`) → obojit će ispis prema tipu stavke; točne boje ovise o temi i postavkama terminala, na macOS-u je tipično koristiti zastavicu `-G` umjesto `--color`.
 
 > **💡Hint**: Kod naredbe `ls` gotovo je sve zastavice moguće međusobno kombinirati (npr. `-la`, `-lR`, `-aR`).
 
 _Primjeri kombiniranja zastavica:_
 
-1. Detaljni ispis svih datoteka i direktorija u trenutnom direktoriju, sortiranih prema vremenu zadnje izmjene:
+1. Detaljni ispis svih datoteka i direktorija u trenutnom direktoriju, sortiranih prema vremenu zadnje izmjene (od najnovijih prema najstarijima):
 
 ```bash
 → ls -lt # kombiniranjem: -l (detaljan ispis), -t (sortiranje prema vremenu)
 ```
 
-2. Detaljni ispis svih datoteka i direktorija u trenutnom direktoriju, uključujući i skrivene datoteke, sortiranih po veličini:
+2. Detaljni ispis svih datoteka i direktorija u trenutnom direktoriju, uključujući i skrivene datoteke, sortiranih po veličini (od najvećih prema najmanjima):
 
 ```bash
 → ls -laS # kombiniranjem: -l (detaljan ispis), -a (sve datoteke), -S (sortiranje po veličini)
@@ -543,7 +548,7 @@ _Primjeri kombiniranja zastavica:_
 
 > Slika 10. Naredba `ls -A --color -1` ispisuje sve datoteke i direktorije, uključujući skrivene, ali bez `.` i `..`, obojeno i sa svakom stavkom u zasebnom retku
 
-## 2.2 Tablica čestih zastavica naredbe `ls`
+## 2.2 Tablica čestih zastavica naredbi `ls` i `tree` te primjeri kombiniranja
 
 | Zastavica | Primjeri kombiniranja           | Objašnjenje                                                                                                         |
 | --------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -557,6 +562,9 @@ _Primjeri kombiniranja zastavica:_
 | `-1`      | `ls -1`                         | Prikazuje popis datoteka/direktorija u jednom stupcu (svaku stavku u posebnom retku).                               |
 | `-X`      | `ls -X` / `ls -l -X` / `ls -lX` | Sortira datoteke prema ekstenziji.                                                                                  |
 | `--color` | `ls --color`                    | Prikazuje ispis u boji prema tipu stavke (GNU `ls`).                                                                |
+| `-L`      | `tree -L 2`                     | Ograničava ispis naredbe `tree` na određeni broj razina ugniježđenosti.                                             |
+| `-a`      | `tree -a`                       | Prikazuje sve stavke, uključujući skrivene datoteke i direktorije.                                                  |
+| `-h`      | `tree -h`                       | Prikazuje veličine u čitljivom formatu (`B`, `K`, `M`, `G`).                                                        |
 
 > 💡**Napomena:** zastavice treba izvježbati i koristiti u praksi kako bi se bolje razumjele i zapamtile. Također, nisu sve zastavice dostupne u svakoj implementaciji naredbe `ls`; primjerice `--color` tipičan je za GNU `ls`.
 
@@ -566,18 +574,18 @@ _Primjeri kombiniranja zastavica:_
 
 Naredba `cd` ima opcije `-L` i `-P`, ali se u osnovnom radu koriste rijetko pa ih ovdje nećemo detaljno obrađivati.
 
-Naredba `pwd` također ima dvije opcije (`-L` i `-P`), no ni njima se u ovoj skripti nećemo detaljnije baviti.
+Naredba `pwd` također ima dvije opcije (`-L` i `-P`), no također nam nisu jako zanimljive.
 
-Naredbe `mkdir` i `rmdir` imaju korisnu zastavicu `-p` koja kod `mkdir` omogućuje stvaranje, a kod `rmdir` brisanje više ugniježđenih direktorija odjednom.
+Naredbe `mkdir` i `rmdir` podržavaju korisnu zastavicu `-p`. Kod naredbe `mkdir` ona omogućuje stvaranje više ugniježđenih direktorija u jednom koraku, dok kod naredbe `rmdir` omogućuje brisanje više ugniježđenih direktorija odjednom.
 
-U prošloj skripti, rekli smo da ne možemo napraviti direktorij unutar nepostojećeg direktorija, odnosno:
+Na prošlim vježbama, rekli smo da ne možemo napraviti direktorij unutar nepostojećeg direktorija, odnosno:
 
 ```bash
 # ne možemo stvoriti direktorij "test" unutar nepostojećeg direktorija "files_manipulation"
 → mkdir files_manipulation/test
 ```
 
-- Ipak, zastavica `-p` omogućit će upravo to.
+- Ipak, zastavica `-p` omogućit će nam upravo to.
 
 ```bash
 → mkdir -p files_manipulation/test
@@ -606,7 +614,7 @@ Ekvivalentno možemo koristiti i naredbu `rmdir -p` za brisanje ugniježđenih d
    - datoteke možete stvoriti i jednom naredbom `touch`, jednostavno navodeći sve datoteke koje želite stvoriti kao argumente
 
 ```
-[  96]  .
+[  96]  . vjezba_ls
 └── [ 128]  faks
     ├── [ 256]  1_semestar
     │   ├── [   0]  diferencijalni_i_integralni_racun.txt
@@ -626,10 +634,12 @@ Ekvivalentno možemo koristiti i naredbu `rmdir -p` za brisanje ugniježđenih d
 
 2. Unutar direktorija `vjezba_ls` ispišite rekurzivno sadržaj direktorija `faks`, u boji, svaku stavku u zasebnom redu bez skrivenih datoteka.
 
+_Primjer:_
+
 ```bash
 faks
 
-./faks:
+./faks
 1_semestar
 2_semestar
 
@@ -651,6 +661,8 @@ programiranje_u_skriptnim_jezicima.txt
 ```
 
 3. Unutar direktorija `vjezba_ls` ispišite **detaljan** prikaz datoteka iz 1. semestra, sortiran po datumu zadnje izmjene, od najnovije prema najstarijoj.
+
+_Primjer:_
 
 ```bash
 total 0
@@ -727,7 +739,7 @@ Korisnik odgovara na pitanje s `y` (_yes_) ili `n` (_no_), odnosno **unosom odgo
 _Primjer:_
 
 ```bash
-→ mkdir system_32
+→ mkdir system_32 # bez brige, nije stvarni direktorij!
 → touch system_32/super_important_file.exe
 
 → rm -i system_32/super_important_file.exe
@@ -786,9 +798,15 @@ _Primjer s rekurzivnim kopiranjem:_
 → cd ..
 → mkdir dir2
 
-# Primjer: kopirat ćemo cijeli direktorij "dir1" u direktorij "dir2"
+# Primjer: kopirat ćemo ukupan sadržaj direktorija "dir1" u direktorij "dir2" (ne premještajmo sam direktorij)
 → cp -r dir1 dir2
 ```
+
+_Rezultat:_
+
+<img src="./CLI-screenshots/cp-r.png" style="width:60%" ></img>
+
+> Slika 13. Naredba `cp -r` kopira cijeli direktorij "dir1" i sav njegov sadržaj u direktorij "dir2" (ne dobivamo direktorij unutar direktorija)
 
 Kod **premještanja** (`mv`), rekurzivno ponašanje je zadano i ne navodi se eksplicitno ovom zastavicom:
 
@@ -811,8 +829,14 @@ _Primjer:_
 
 # nalazimo se unutar direktorija: "vjezba_mv"
 # Primjer: premještanje cijelog direktorija sa sadržajem u drugi direktorij (dir1 -> dir2)
-→ mv dir1 dir2 # premješta "dir1" u "dir2"
+→ mv dir1 dir2 # premješta "dir1" u "dir2" (doslovno cijeli direktorij)
 ```
+
+_Rezultat:_
+
+<img src="./CLI-screenshots/mv-dir1-dir2.png" style="width:60%" ></img>
+
+> Slika 14. Naredba `mv` premješta cijeli direktorij "dir1" i sav njegov sadržaj u direktorij "dir2" (dobivamo direktorij unutar direktorija)
 
 #### Wildcard `*` <!-- omit in toc -->
 
@@ -862,7 +886,7 @@ _Primjer rekurzivnog brisanja:_
 → rm -r dir1
 ```
 
-> 🚨Oprez: **Rekurzivno brisanje direktorija i njegovog sadržaja može biti opasno**, stoga je potrebno pažljivo provjeriti navodite li ispravan direktorij prije brisanja. Dobra je praksa kombinirati zastavicu `-r` sa zastavicom `-i`, koja u tom slučaju pita korisnika za potvrdu. Mnoge moderne implementacije `rm` imaju i zaštitu od brisanja korijenskog direktorija ili drugih kritičnih lokacija datotečnog sustava.
+> **🚨Oprez**: **Rekurzivno brisanje direktorija i njegovog sadržaja može biti opasno**, stoga je potrebno pažljivo provjeriti navodite li ispravan direktorij prije brisanja. Dobra je praksa kombinirati zastavicu `-r` sa zastavicom `-i`, koja u tom slučaju pita korisnika za potvrdu. Mnoge moderne implementacije `rm` imaju i zaštitu od brisanja korijenskog direktorija ili drugih kritičnih lokacija datotečnog sustava.
 
 _Primjer rekurzivnog brisanja s potvrdom:_
 
@@ -927,7 +951,8 @@ _Primjer s detaljima o rekurzivnom brisanju i potvrdama:_
 
 → cd ..
 
-# Primjer: kombinirat ćemo zastavice -v, -i i -r za upit prije brisanja svake datoteke i ispisati obrisanu datoteku/direktorij nakon svake operacije
+# Primjer: kombinirat ćemo zastavice -v, -i i -r za upit prije brisanja svake datoteke
+# i ispisati obrisanu datoteku/direktorij nakon svake operacije
 → rm -vir vjezba_v_rm
 ```
 
@@ -1099,20 +1124,20 @@ _Primjer s premještanjem:_
 
 1. Stvorite direktorij `vjezba_cp_mv_rm` i unutar njega sljedeću strukturu direktorija koristeći isključivo naredbu `mkdir`.
 
-- naredbu `mkdir` **smijete pozvati najviše 5 puta**. Hint: neka zastavica
+- naredbu `mkdir` **smijete pozvati najviše 5 puta**. Hint: odgovarajuća zastavica
 
 ```bash
 [ 160]  .
 ├── [ 128]  Documents
-│   ├── [  64]  faks
-│   └── [  64]  sve_ostalo
+│   ├── [  64]  faks
+│   └── [  64]  sve_ostalo
 ├── [ 160]  Games
-│   ├── [  64]  action
-│   ├── [  64]  puzzle
-│   └── [  64]  sandbox
+│   ├── [  64]  action
+│   ├── [  64]  puzzle
+│   └── [  64]  sandbox
 ```
 
-2. Koristeći `touch` naredbu, unutar direktorija `sve_ostalo` stvorite sljedeće datoteke:
+2. Koristeći naredbu `touch`, unutar direktorija `sve_ostalo` stvorite sljedeće datoteke:
 
 ```
 salabahter_ikt.txt
@@ -1120,10 +1145,11 @@ salabahter_os.txt
 salabahter_programiranje.txt
 ```
 
-- stvorite novu datoteku `salabahter_ikt.txt` unutar direktorija `faks` i unesite u nju sadržaj: `"Salabahter iz IKT-a"` naredbom `echo`
-- kopirajte odjednom sadržaj direktorija `sve_ostalo` u direktorij `faks`, ne prepisujte datoteku koja već postoji i ispišite detalje o radnji
+- stvorite novu datoteku `salabahter_ikt.txt` unutar direktorija `faks` i unesite u nju sadržaj `"Salabahter iz IKT-a"` (kroz CLI ili GUI)
 
-3. Unutar direktorija `Games` stvorite 5 datoteka jednom naredbom, a koje predstavljaju kratice (_shortcut_ - s nastavkom `.lnk`) na igre koje spadaju u kategorije `action`, `puzzle` i `sandbox`.
+- zatim odjednom kopirajte sav sadržaj direktorija `sve_ostalo` u direktorij `faks`, pri čemu se postojeća datoteka ne smije prepisati, te ispišite detalje o radnji
+
+3. Unutar direktorija `Games` stvorite **svih 5 datoteka jednom naredbom**. Datoteke predstavljaju kratice (shortcut, s nastavkom `.lnk`) na igre koje pripadaju kategorijama `action`, `puzzle` i `sandbox`.
 
 - `minecraft.lnk`
 - `portal2.lnk`
@@ -1131,7 +1157,7 @@ salabahter_programiranje.txt
 - `the_witness.lnk`
 - `the_legend_of_zelda.lnk`
 
-Koristeći naredbe `cp` i `mv`, premjestite datoteke u odgovarajuće direktorije i ispišite detalje o radnji. Neke igre se mogu nalaziti u više kategorija pa morate kopirati datoteke, a ne premještati.
+Koristeći naredbe `cp` i `mv`, rasporedite datoteke u odgovarajuće direktorije i ispišite detalje o radnji. Neke igre pripadaju u više kategorija pa je u tim slučajevima potrebno kopirati datoteke, a ne samo premještati.
 
 1. action i puzzle: `minecraft.lnk`
 2. puzzle i action: `portal2.lnk`
@@ -1139,9 +1165,52 @@ Koristeći naredbe `cp` i `mv`, premjestite datoteke u odgovarajuće direktorije
 4. puzzle: `the_witness.lnk`
 5. action, puzzle i sandbox: `the_legend_of_zelda.lnk`
 
-Napišite odgovarajuću naredbu ili skup naredbi kojom ćete obrisati sve kratice unutar direktorija `Games`, uz potvrdu prije brisanja svake datoteke. Nakon brisanja direktoriji trebaju ostati netaknuti, ali prazni.
+Napišite odgovarajuću naredbu ili skup naredbi kojim ćete obrisati sve kratice unutar poddirektorija direktorija `Games`, uz potvrdu prije brisanja svake datoteke. Nakon brisanja direktoriji trebaju ostati netaknuti, ali prazni.
 
 # 5. Praktični primjer: Git CLI
+
+**Git** je distribuirani sustav za upralvjanje verzijama (_eng. distributed version control system_) koji se koristi za praćenje promjena u datotekama tijekom razvoja softvera (ali i drugih projekata).
+
+Razvio ga je [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) 2005. godine za potrebe razvoja Linux kernela, a danas je jedan od najpopularnijih alata za upravljanje verzijama u svijetu softverskog razvoja.
+
+Git omogućuje:
+
+- praćenje povijesti promjena u projektu
+- suradnju više developera na istom programskom kodu
+- vraćanje projekta na ranije verzije (_rollback_)
+- paralelni razvoj kroz grane (_branches_)
+
+Za razliku od centraliziranih sustava (npr. SVN), **Git je distribuiran** - svaki korisnik ima cijeli repozitorij lokalno, uključujući kompletnu povijest.
+
+**Ključni pojmovi:**
+
+- **Repozitorij**: direktorij u kojoj Git prati promjene
+- **Commit**: zapis (_snapshot_) trenutnog stanja projekta
+- **Branch**: paralelna linija razvoja unutar repozitorija
+- **Merge**: spajanje promjena s jedne grane na drugu
+- **Remote**: udaljeni repozitorij (npr. na GitHubu/GitLabu)
+
+<img src="./screenshots/git.png" style="width:40%" ></img>
+
+> Slika 17. Git CLI omogućuje upravljanje verzijama i suradnju na projektima
+
+#### Instalacija Git CLI
+
+Na osobnim računalima, Git je najsigurnije preuzeti ručno sa službene stranice (https://git-scm.com/) i slijediti upute za instalaciju. Nakon instalacije, Git CLI je dostupan kroz terminal.
+
+**Git CLI** je alat u naredbenom retku koji omogućuje interakciju s Git repozitorijima. Kroz Git CLI možemo izvršavati različite naredbe za upravljanje verzijama, grana, commitova i drugih aspekata Git repozitorija.
+
+Git CLI nije dio _bash shell-a_, niti je sam _shell_ program. Umjesto toga, radi se o zasebnom programu koji se može pozivati iz _bash shell-a_ ili drugih terminala (kao što je to program `tree` koji smo koristili ranije). Git CLI se koristi za izvršavanje Git naredbi, a _bash shell_ je okruženje u kojem se te naredbe izvršavaju.
+
+Kako biste provjerili je li Git CLI ispravno instaliran, otvorite terminal i unesite:
+
+```bash
+git --version # duga zastavica :)
+# ili
+git -v # kratka zastavica :)
+```
+
+- ako vidite verziju, npr. `git version 2.53.0`, to znači da je Git CLI ispravno instaliran i spreman za korištenje
 
 # Zadaci za Vježbu 2
 
@@ -1151,7 +1220,7 @@ Zadatke riješite izvršavanjem naredbi u kloniranom GitHub repozitoriju, tako d
 
 **Zadatak 1**
 
-U radnom okruženju stvorite direktorije `vjezba_2/data` i `vjezba_2/backup` koristeći dvije naredbe `mkdir`.
+radnom direktoriju stvorite direktorije `vjezba_2/data` i `vjezba_2/backup` koristeći **dvije** naredbe `mkdir`.
 
 Unutar direktorija `data` stvorite sljedeće datoteke:
 
@@ -1169,17 +1238,31 @@ Naredbom `echo` unesite sljedeći sadržaj u datoteke:
 
 **Zadatak 2**
 
-Kopirajte sav sadržaj direktorija `data` u direktorij `backup`, uključujući i skrivene datoteke. Ako je potrebno, upotrijebite više od jedne naredbe. Ispišite detalje o radnji.
+Kopirajte **sav sadržaj** direktorija `data` u direktorij `backup`, uključujući i **skrivene datoteke**. Po potrebi upotrijebite više od jedne naredbe. Ispišite detalje o radnji.
 
-Prebacite se u direktorij `data` i napravite detaljan ispis direktorija `../backup`. Ispis mora biti detaljan, uključivati sve skrivene datoteke i biti sortiran po veličini.
+Zatim se prebacite u direktorij `data` i napravite detaljan ispis sadržaja direktorija `../backup`. Ispis mora:
+
+- biti detaljan,
+
+- uključivati skrivene datoteke,
+
+- biti sortiran po veličini (od najveće prema najmanjoj datoteci)
 
 **Zadatak 3**
 
-Jednom naredbom (interaktivni način rada) izbrišite sve datoteke u direktoriju `data` osim datoteke `.env` koristeći odgovarajuće zastavice. Ispišite detalje o radnji.
+U direktoriju `data` izbrišite sve datoteke osim datoteke `.env`, pri čemu brisanje mora biti **interaktivno**. Ispišite detalje o radnji.
 
-U direktorij `data` kopirajte sve datoteke iz direktorija `backup`, uključujući skrivene, koristeći odgovarajuću naredbu ili više njih, ali spriječite prepisivanje datoteka koje već postoje. Ispišite detalje o radnji.
+Nakon toga u direktorij `data` kopirajte sav sadržaj direktorija `backup`, uključujući **skrivene datoteke**. Po potrebi upotrijebite jednu ili više naredbi, ali **spriječite prepisivanje datoteka koje već postoje**. Ispišite detalje o radnji.
 
-Detaljno ispišite sadržaj direktorija `data` tako da ispis uključuje skrivene datoteke, ali ne i posebne direktorije `.` i `..`, bude sortiran po datumu zadnje izmjene i sadrži po jednu stavku u svakom retku.
+Na kraju detaljno ispišite sadržaj direktorija `data` tako da ispis:
+
+- uključuje skrivene datoteke,
+
+- ne uključuje posebne direktorije `.` i `..`,
+
+- bude sortiran prema datumu zadnje izmjene (od najnovije prema najstarijoj datoteci),
+
+- prikazuje po jednu stavku u svakom retku.
 
 **Zadatak 4**
 
@@ -1188,5 +1271,5 @@ Otvorite direktorij na vašem računalu po želji, ali neka ne sadrži više od 
 Prebacite se u direktorij i napišite sljedeće naredbe:
 
 1. Ispišite detaljno sadržaj glavnog direktorija, uključujući sve skrivene datoteke, i sortirajte ga po veličini.
-2. Ispišite detaljno sadržaj glavnog direktorija bez skrivenih datoteka, sortirajte ga po veličini i prikažite jedinice (`KB`, `MB`, `GB`) uz veličinu datoteka.
+2. Ispišite detaljno sadržaj glavnog direktorija bez skrivenih datoteka, sortirajte ga po veličini i prikažite jedinice uz veličinu datoteka.
 3. Ispišite sav sadržaj direktorija, uključujući poddirektorije, njihove datoteke i skrivene datoteke. Ispis neka bude u boji i sortiran po datumu zadnje izmjene, s najnovijim stavkama na početku.
