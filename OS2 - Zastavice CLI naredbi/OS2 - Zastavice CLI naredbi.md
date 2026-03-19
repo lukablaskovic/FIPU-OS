@@ -25,7 +25,7 @@ U ovom poglavlju studenti će se upoznati s najčešće korištenim zastavicama 
 <div style="clear: both; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 18.3.2026.**
+**🆙 Posljednje ažurirano: 19.3.2026.**
 
 ## Sadržaj
 
@@ -54,6 +54,7 @@ U ovom poglavlju studenti će se upoznati s najčešće korištenim zastavicama 
   - [5.2 Osnovne Git CLI naredbe](#52-osnovne-git-cli-naredbe)
     - [1. Način: Lokalni rad s Git-om](#1-način-lokalni-rad-s-git-om)
     - [2. Način: Rad s udaljenim repozitorijem](#2-način-rad-s-udaljenim-repozitorijem)
+  - [5.3 Zastavice Git CLI naredbi](#53-zastavice-git-cli-naredbi)
 - [Zadaci za Vježbu 2](#zadaci-za-vježbu-2)
 
 # 1. Uvod
@@ -802,7 +803,7 @@ _Primjer s rekurzivnim kopiranjem:_
 → cd ..
 → mkdir dir2
 
-# Primjer: kopirat ćemo ukupan sadržaj direktorija "dir1" u direktorij "dir2" (ne premještajmo sam direktorij)
+# Primjer: kopirat ćemo ukupan sadržaj direktorija "dir1" u direktorij "dir2" (ne premještamo sam direktorij)
 → cp -r dir1 dir2
 ```
 
@@ -1173,7 +1174,7 @@ Napišite odgovarajuću naredbu ili skup naredbi kojim ćete obrisati sve kratic
 
 # 5. Praktični primjer: Git CLI
 
-**Git** je distribuirani sustav za upralvjanje verzijama (_eng. distributed version control system_) koji se koristi za praćenje promjena u datotekama tijekom razvoja softvera (ali i drugih projekata).
+**Git** je distribuirani sustav za upravljanje verzijama (_eng. distributed version control system_) koji se koristi za praćenje promjena u datotekama tijekom razvoja softvera (ali i drugih projekata).
 
 Razvio ga je [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) 2005. godine za potrebe razvoja Linux kernela, a danas je jedan od najpopularnijih alata za upravljanje verzijama u svijetu softverskog razvoja.
 
@@ -1189,7 +1190,7 @@ Za razliku od centraliziranih sustava (npr. SVN), **Git je distribuiran** - svak
 **Ključni pojmovi:**
 
 - **Repozitorij**: direktorij u kojoj Git prati promjene
-- **Commit**: zapis (_snapshot_) trenutnog stanja projekta
+- **Commit**: zapis (_eng. snapshot_) trenutnog stanja projekta
 - **Branch**: paralelna linija razvoja unutar repozitorija
 - **Merge**: spajanje promjena s jedne grane na drugu
 - **Remote**: udaljeni repozitorij (npr. na GitHubu/GitLabu)
@@ -1202,7 +1203,7 @@ Za razliku od centraliziranih sustava (npr. SVN), **Git je distribuiran** - svak
 
 Na osobnim računalima, Git je najsigurnije preuzeti ručno sa [službene stranice](https://git-scm.com/) i slijediti upute za instalaciju. Nakon instalacije, Git CLI je dostupan kroz terminal.
 
-**Git CLI** je alat u naredbenom retku koji omogućuje interakciju s Git repozitorijima. Kroz Git CLI možemo izvršavati različite naredbe za upravljanje verzijama, grana, commitova i drugih aspekata Git repozitorija.
+**Git CLI** je alat u naredbenom retku koji omogućuje interakciju s Git repozitorijima. Kroz Git CLI možemo izvršavati različite naredbe za upravljanje verzijama, grana, _commitova_ i drugih aspekata Git repozitorija.
 
 Git CLI nije dio _bash shell-a_, niti je sam _shell_ program. Umjesto toga, radi se o zasebnom programu koji se može pozivati iz _bash shell-a_ ili drugih terminala (kao što je to program `tree` koji smo koristili ranije). Git CLI se koristi za izvršavanje Git naredbi, a _bash shell_ je okruženje u kojem se te naredbe izvršavaju.
 
@@ -1268,9 +1269,9 @@ Mi smo naučili koristiti CLI zastavice, pa ćemo koristiti `ls -a` da vidimo i 
 .  ..  .git
 ```
 
-> `.git` je skriveni direktorij koji Git koristi za pohranu svih informacija o verzijama, granama, commitovima i drugim aspektima repozitorija. Sadržaj `.git` direktorija je ključan za funkcioniranje Git repozitorija, ali ga **obično ne trebamo ručno mijenjati**.
+> `.git` je skriveni direktorij koji Git koristi za pohranu svih informacija o verzijama, granama, _commitovima_ i drugim aspektima repozitorija. Sadržaj `.git` direktorija je ključan za funkcioniranje Git repozitorija, ali ga **obično ne trebamo ručno mijenjati**.
 
-Jednom kada imate `.git` direktorij, tada možete unutar roditeljskog direktorija (`lokalni_git_projekt`) stvarati datoteke, mijenjati ih i koristiti Git CLI naredbe za praćenje promjena, stvaranje commitova i druge radnje.
+Jednom kada imate `.git` direktorij, tada možete unutar roditeljskog direktorija (`lokalni_git_projekt`) stvarati datoteke, mijenjati ih i koristiti Git CLI naredbe za praćenje promjena, stvaranje _commitova_ i druge radnje.
 
 **3. Korak**
 
@@ -1303,7 +1304,7 @@ Sadržaj datoteke možete brzo provjeriti naredbom `cat` ili kroz GUI:
 
 **4. Korak**
 
-Sada kada imamo datoteku, možemo koristiti Git CLI naredbe za praćenje promjena i stvaranje commitova. Na primjer:
+Sada kada imamo datoteku, možemo koristiti Git CLI naredbe za praćenje promjena i stvaranje _commitova_. Na primjer:
 
 ```bash
 → git add README.md # dodaj datoteku u staging area
@@ -1311,7 +1312,7 @@ Sada kada imamo datoteku, možemo koristiti Git CLI naredbe za praćenje promjen
 → git add . # dodaj sve datoteke u staging area (ako ih je previše)
 ```
 
-_Staging area_ predstavlja privremenu zonu gdje se pripremaju promjene prije nego što se trajno zabilježe u povijesti projekta kroz commit.
+_Staging area_ predstavlja privremenu zonu gdje se pripremaju promjene prije nego što se trajno zabilježe u povijesti projekta kroz _commit_.
 
 > U većim projektima (koji imaju mnogo datoteka) često se koristi jednostavno `git add .` što znači: evidentiraj u _staging area_ sve promjene u trenutnom direktoriju i njegovim poddirektorijima.
 
@@ -1327,23 +1328,23 @@ Kako biste provjerili koje su datoteke dodane u staging area, možete koristiti 
 
 **5. Korak**
 
-Sljedeći korak je stvaranje commit-a, što znači da trajno bilježimo promjene koje su trenutno u staging area. To radimo naredbom `git commit`:
+Sljedeći korak je stvaranje _commita_, što znači da trajno bilježimo promjene koje su trenutno u staging area. To radimo naredbom `git commit`:
 
 _Git Commit_ predstavlja zapis trenutnog stanja projekta (_eng. snapshot_) i **uključuje obaveznu poruku** koja opisuje promjene koje su napravljene. Poruka se navodi pomoću zastavice `-m` koja očekuje argument u obliku stringa.
 
 **Sintaksa:**
 
 ```bash
-→ git commit -m "Poruka commit-a"
+→ git commit -m "Poruka *commita*"
 ```
 
-Obzirom da smo mi naučili osnovnu strukturu parsiranja _bash_ naredbe, sada možete uočiti da `git` predstavlja naziv programa, `commit` je podnaredba (subcommand) koja specificira radnju, a `-m "Poruka commit-a"` je zastavica i njezin argument koji daje dodatne informacije o tome što se commit-a. Struktura je sljedeća:
+Obzirom da smo mi naučili osnovnu strukturu parsiranja _bash_ naredbe, sada možete uočiti da `git` predstavlja naziv programa, `commit` je podnaredba (subcommand) koja specificira radnju, a `-m "Poruka *commita*"` je zastavica i njezin argument koji daje dodatne informacije o tome što se _commita_. Struktura je sljedeća:
 
 ```bash
-naredba podnaredba zastavica argument_zastavice
+→ naredba podnaredba zastavica argument_zastavice
 ```
 
-Primjer stvaranja commit-a:
+Primjer stvaranja _commita_:
 
 ```bash
 → git commit -m "Dodana datoteka README.md"
@@ -1359,7 +1360,7 @@ Primjer stvaranja commit-a:
 
 Uspješno ste izradili commit koristeći Git CLI! Sada imate trajni zapis promjena u vašem projektu.
 
-To možete provjeriti naredbom `git log` koja prikazuje povijest commitova:
+To možete provjeriti naredbom `git log` koja prikazuje povijest _commitova_:
 
 ```bash
 → git log
@@ -1367,7 +1368,7 @@ To možete provjeriti naredbom `git log` koja prikazuje povijest commitova:
 
 <img src="./CLI-screenshots/git-log.png" style="width:60%" ></img>
 
-> Slika 19. Naredba `git log` prikazuje povijest commitova, uključujući poruke, datume i hash-eve commitova
+> Slika 19. Naredba `git log` prikazuje povijest _commitova_, uključujući poruke, datume i hash-eve _commitova_
 
 ---
 
@@ -1383,7 +1384,7 @@ Sada ćemo obrisati datoteku `README.md` i provjeriti status promjena nakon bris
 
 > Slika 20. Nakon brisanja datoteke `README.md`, naredba `git status` prikazuje da je datoteka obrisana, ali promjena još nije praćena (nije dodana u _staging area_)
 
-Moramo dodati brisanje datoteke u _staging area_ da bi se promjena zabilježila u sljedećem commit-u:
+Moramo dodati brisanje datoteke u _staging area_ da bi se promjena zabilježila u sljedećem _commitu_:
 
 ```bash
 → git add .
@@ -1397,13 +1398,13 @@ Moramo dodati brisanje datoteke u _staging area_ da bi se promjena zabilježila 
 
 > Slika 21. Nakon dodavanja brisanja datoteke `README.md` u staging area, naredba `git status` prikazuje da je datoteka obrisana i promjena je sada praćena (_staged_)
 
-Sada možemo stvoriti commit koji bilježi brisanje datoteke:
+Sada možemo stvoriti _commit_ koji bilježi brisanje datoteke:
 
 ```bash
 → git commit -m "Obrisana datoteka README.md"
 ```
 
-Provjerite povijest commitova da vidite oba commit-a:
+Provjerite povijest _commitova_. Trebali biste vidjeta oba.
 
 ```bash
 → git log
@@ -1411,7 +1412,7 @@ Provjerite povijest commitova da vidite oba commit-a:
 
 <img src="./CLI-screenshots/git-status-added-and-deleted-commits.png" style="width:60%" ></img>
 
-> Slika 22. Povijest commitova prikazuje oba commit-a: prvi za dodavanje datoteke `README.md`, a drugi za brisanje iste datoteke
+> Slika 22. Povijest _commitova_ prikazuje oba _commita_: prvi za dodavanje datoteke `README.md`, a drugi za brisanje iste datoteke
 
 #### Vraćanje na raniji commit <!-- omit from toc -->
 
@@ -1419,16 +1420,16 @@ Glavna svrha Git-a je upravo **verzioniranje** (_eng. Software versioning_) i mo
 
 Sada smo samo zagrebali površinu Git CLI-a - ima tu još mnogo naredbi, opcija i mogućnosti koje ćemo obrađivati na sljedećim vježbama. Za sada je važno da razumijete osnovne koncepte i da ste se upoznali s Git CLI-jem kroz praktičan primjer.
 
-Kako bismo vratili stanje našeg projekta na raniji commit, možemo koristiti naredbu `git checkout` ili `git reset`, ovisno o tome što želimo postići. Za sada ćemo pokazati kako koristiti `git checkout` za pregled ranijih commitova.
+Kako bismo vratili stanje našeg projekta na raniji _commit_, možemo koristiti naredbu `git checkout` ili `git reset`, ovisno o tome što želimo postići. Za sada ćemo pokazati kako koristiti `git checkout` za pregled ranijih _commitova_.
 
 ```bash
-→ git checkout <hash_commit-a>
+→ git checkout <hash_*commita*>
 ```
 
-- `<hash_commit-a>` je jedinstveni identifikator commit-a koji se prikazuje u povijesti commitova (npr. `35b6bcab18335e600d42c924ad4db20052a3c385`)
-- _hash vrijednost commita_ možete kopirati iz naredbe `git log` ili drugog alata koji prikazuje povijest commitova (npr. GitHub Desktop)
+- `<hash_*commita*>` je jedinstveni identifikator _commita_ koji se prikazuje u povijesti _commitova_ (npr. `35b6bcab18335e600d42c924ad4db20052a3c385`)
+- _hash vrijednost commita_ možete kopirati iz naredbe `git log` ili drugog alata koji prikazuje povijest _commitova_ (npr. GitHub Desktop)
 
-Nakon izvršavanja `git checkout <hash_commit-a>`, vaš projekt će se vratiti na stanje koje je bilo u tom commit-u. To znači da će datoteka `README.md` biti vraćena ako je bila prisutna u tom commit-u, ili će biti obrisana ako je commit koji ste odabrali bio onaj nakon brisanja datoteke. Provjerite.
+Nakon izvršavanja `git checkout <hash_*commita*>`, vaš projekt će se vratiti na stanje koje je bilo u tom _commitu_. To znači da će datoteka `README.md` biti vraćena ako je bila prisutna u tom _commitu_, ili će biti obrisana ako je _commit_ koji ste odabrali bio onaj nakon brisanja datoteke. Provjerite.
 
 ```bash
 → ls -a
@@ -1436,9 +1437,9 @@ Nakon izvršavanja `git checkout <hash_commit-a>`, vaš projekt će se vratiti n
 
 Trebali biste vidjeti datoteku `README.md`.
 
-Ako sada provjerite `git log`, vidjet ćete da ste i dalje na istoj grani (`master` ili `main`), ali se HEAD (pokazivač na trenutni commit) nalazi na ranijem commit-u.
+Ako sada provjerite `git log`, vidjet ćete da ste i dalje na istoj grani (`master` ili `main`), ali se HEAD (pokazivač na trenutni _commit_) nalazi na ranijem _commitu_.
 
-Super stvar je, što se sada **možete vratiti na prethodni commit naredbama**:
+Super stvar je, što se sada **možete vratiti na prethodni _commit_ naredbama**:
 
 ```bash
 → git checkout -
@@ -1446,7 +1447,7 @@ Super stvar je, što se sada **možete vratiti na prethodni commit naredbama**:
 → git switch - # nešto modernija sintaksa
 ```
 
-Provjerite ponovno `git log` i `ls -a` da vidite da ste se vratili na najnoviji commit i da je datoteka `README.md` ponovno obrisana.
+Provjerite ponovno `git log` i `ls -a` da vidite da ste se vratili na najnoviji _commit_ i da je datoteka `README.md` ponovno obrisana.
 
 **Toliko za sada!** Pogledat ćemo još kako raditi s udaljenim repozitorijima (npr. GitHub, GitLab).
 
@@ -1486,7 +1487,7 @@ Unutar njega, naredbom `git clone` klonirajte udaljeni repozitorij koji ste upra
 → git clone https://github.com/lukablaskovic/os-vjezbe.git
 ```
 
-Na ovaj način, stvorit će se lokalna kopija repozitorija na vašem računalu, uključujući sve datoteke i povijest commitova pohranjen unutar `.git` direktorija. Glavna ideja je sinkronizacija između lokalne kopije i udaljenog repozitorija - promjene koje napravite lokalno možete "gurnuti" (_eng. push_) na GitHub, a promjene koje su napravljene na GitHub-u od strane drugih suradnika možete "povući" (pull) u svoju lokalnu kopiju - na taj način možete učinkovito surađivati na projektima i imati dobru kontrolu nad verzijama.
+Na ovaj način, stvorit će se lokalna kopija repozitorija na vašem računalu, uključujući sve datoteke i povijest _commitova_ pohranjen unutar `.git` direktorija. Glavna ideja je sinkronizacija između lokalne kopije i udaljenog repozitorija - promjene koje napravite lokalno možete "gurnuti" (_eng. push_) na GitHub, a promjene koje su napravljene na GitHub-u od strane drugih suradnika možete "povući" (_eng. pull_) u svoju lokalnu kopiju - na taj način možete učinkovito surađivati na projektima i imati dobru kontrolu nad verzijama.
 
 Dakle, `git init` preskačemo jer smo klonirali gotovi repozitorij, ali sve ostale Git CLI naredbe koje smo ranije pokazali (npr. `git add`, `git commit`, `git log`, `git checkout`) su i dalje dostupne i rade na isti način unutar kloniranog repozitorija.
 
@@ -1525,9 +1526,9 @@ Kako ne biste svaku datoteku pojedinačno dodavali u _staging area_, jednostavno
 
 <img src="./CLI-screenshots/git-status-4-zadatka.png" style="width:60%" ></img>
 
-> Slika 25. Nakon dodavanja svih datoteka u staging area, naredba `git status` prikazuje da su sve datoteke praćene i spremne za commit.
+> Slika 25. Nakon dodavanja svih datoteka u staging area, naredba `git status` prikazuje da su sve **datoteke praćene** i **spremne za _commit_**.
 
-Sada stvorite commit s porukom "Dodani zadaci za Vježbu 2":
+Sada stvorite _commit_ s porukom `"Dodani zadaci za Vježbu 2"`.
 
 ```bash
 → git commit -m "Dodani zadaci za Vježbu 2"
@@ -1535,7 +1536,7 @@ Sada stvorite commit s porukom "Dodani zadaci za Vježbu 2":
 → git log # provjera
 ```
 
-Zadnji korak je tzv. _pushanje_ odnosno učitavanje lokalne kopije našeg repozitorija na GitHub, kako bi promjene bile vidljive i dostupne online:
+Zadnji korak je tzv. _pushanje_ odnosno **učitavanje lokalne kopije našeg repozitorija na GitHub**, kako bi promjene bile vidljive i dostupne online.
 
 To radimo naredbom `git push`:
 
@@ -1557,11 +1558,26 @@ To https://github.com/lukablaskovic/os-vjezbe.git
    0699efe..eea4fed  main -> main
 ```
 
-Čestitam! Uspješno ste klonirali repozitorij, dodali nove datoteke, stvorili commit i pushali promjene na GitHub koristeći Git CLI!
+Čestitam! Uspješno ste klonirali repozitorij, dodali nove datoteke, stvorili _commit_ i pushali promjene na GitHub koristeći Git CLI!
 
-Provjerite promjene na GitHub-u tako da otvorite repozitorij u pregledniku i vidite da su datoteke `zadatak_1.txt`, `zadatak_2.txt`, `zadatak_3.txt` i `zadatak_4.txt` sada prisutne, a commit "Dodani zadaci za Vježbu 2" je vidljiv u povijesti commitova. Sada možete nastaviti raditi na zadacima ispod i učitati ih na GitHub kada završite.
+Provjerite promjene na GitHub-u tako da otvorite repozitorij u pregledniku i vidite da su datoteke `zadatak_1.txt`, `zadatak_2.txt`, `zadatak_3.txt` i `zadatak_4.txt` sada prisutne, a _commit_ "Dodani zadaci za Vježbu 2" je vidljiv u povijesti _commitova_. Sada možete nastaviti raditi na zadacima ispod i učitati ih na GitHub kada završite.
 
 Sve ovo moguće je odraditi i kroz određene GUI alate (npr. GitHub Desktop, GitKraken, SourceTree), ali je važno da se upoznate i s Git CLI-jem jer vam daje potpunu kontrolu nad svim aspektima Git repozitorija - puno toga se ne može kroz GUI ili je ograničeno. Osim toga, mi ćemo aktivno koristiti i učiti Git CLI kroz sve vježbe, budući da je učenje CLI-ja jedan od temeljnih ishoda učenja na ovom kolegiju.
+
+## 5.3 Zastavice Git CLI naredbi
+
+Git CLI naredbe također imaju svoje zastavice koje omogućuju dodatne opcije i funkcionalnosti. Neke od najčešćih zastavica su:
+
+| Naredba        | Primjer                         | Opis                                                                                                                                                                                                              |
+| -------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `git init`     | `git init -q`                   | Inicijalizira novi Git repozitorij. Zastavica `-q` (quiet) smanjuje količinu izlaznih informacija.                                                                                                                |
+| `git add`      | `git add -A`                    | Dodaje sve promjene (uključujući brisanja) u staging area. Zastavica `-A` znači "all". Može se navesti i pojedinačna datoteka, npr. `git add README.md`.                                                          |
+| `git commit`   | `git commit -m "Poruka"`        | Stvara _commit_ s obaveznom porukom. Zastavica `-m` očekuje argument koji je poruka _commita_.                                                                                                                    |
+| `git log`      | `git log --oneline`             | Prikazuje povijest _commitova_. Zastavica `--oneline` prikazuje sažeti prikaz _commitova_, gdje je svaki _commit_ prikazan u jednom retku.                                                                        |
+| `git checkout` | `git checkout <hash_*commita*>` | Vraća stanje projekta na raniji _commit_. `<hash_*commita*>` je jedinstveni identifikator _commita_.                                                                                                              |
+| `git push`     | `git push`                      | Pusha lokalne promjene na udaljeni repozitorij. Zastavice se obično ne koriste kod `git push`, ali se mogu koristiti za specificiranje grane ili udaljenog repozitorija, npr. `git push origin main`.             |
+| `git pull`     | `git pull`                      | Povlači promjene s udaljenog repozitorija u lokalnu kopiju. Zastavice se obično ne koriste kod `git pull`, ali se mogu koristiti za specificiranje grane ili udaljenog repozitorija, npr. `git pull origin main`. |
+| `git status`   | `git status -s`                 | Prikazuje status promjena. Zastavica `-s` (short) prikazuje sažeti prikaz statusa, gdje su promjene prikazane u jednom retku s oznakama koje označavaju vrstu promjene.                                           |
 
 # Zadaci za Vježbu 2
 
@@ -1571,9 +1587,23 @@ Zadatke riješite izvršavanjem naredbi u kloniranom GitHub repozitoriju, tako d
 
 **Zadatak 1**
 
-radnom direktoriju stvorite direktorije `vjezba_2/data` i `vjezba_2/backup` koristeći **dvije** naredbe `mkdir`.
+Proučite **Git CLI** poglavlje i popratne naredbe iz 5. poglavlja. Izradite (ako već nemate) GitHub račun i stvorite novi repozitorij za vježbe (ako ga još nemate).
 
-Unutar direktorija `data` stvorite sljedeće datoteke:
+Koristeći Git CLI naredbe, klonirajte repozitorij na svoje računalo i pripremite **novi direktorij za druge vježbe**.
+
+**VAŽNO:**
+
+- Pokušajte riješiti zadatke u nastavku koristeći isključivo CLI, a nakon svakog riješenog zadatka stvorite commit s odgovarajućom porukom (npr. `"Riješen zadatak 1"`).
+
+- _Pushajte_ promjene na GitHub nakon rješavanja svakog zadatka.
+
+- Jednom kada riješite sve zadatke, pokrenite naredbu `history` i kopirajte sve naredbe koje ste koristili od naredbe `git clone` pa nadalje, i zalijepite ih u `vjezba_2_history.txt` datoteku. Napravite novi commit s porukom `"Dodana povijest naredbi za Vježbu 2"` i _pushajte_ promjene. Ovo možete napraviti i jednom naredbom koja preusmjerava sadržaj naredbe `history` u datoteku, npr. `history > vjezba_2_history.txt`.
+
+**Zadatak 2**
+
+U radnom direktoriju stvorite direktorije `vjezba_2/data` i `vjezba_2/backup` koristeći **dvije** naredbe `mkdir`.
+
+Unutar `data` stvorite sljedeće datoteke:
 
 ```bash
 script.js
@@ -1587,11 +1617,13 @@ Naredbom `echo` unesite sljedeći sadržaj u datoteke:
 - `style.css`: `body { background-color: #f0f0f0; }`
 - `.env`: `VJEZBE=OS`
 
-**Zadatak 2**
+Kojom naredbom možete provjeriti sadržaj datoteke u CLI-ju? Provjerite sadržaj svih datoteka.
 
-Kopirajte **sav sadržaj** direktorija `data` u direktorij `backup`, uključujući i **skrivene datoteke**. Po potrebi upotrijebite više od jedne naredbe. Ispišite detalje o radnji.
+**Zadatak 3**
 
-Zatim se prebacite u direktorij `data` i napravite detaljan ispis sadržaja direktorija `../backup`. Ispis mora:
+**Kopirajte sav sadržaj** direktorija `data` u direktorij `backup`, uključujući i **skrivene datoteke**. Po potrebi upotrijebite više od jedne naredbe. Ispišite detalje o radnji.
+
+Zatim se prebacite u direktorij `data` i napravite ispis sadržaja direktorija `../backup`. Ispis mora:
 
 - biti detaljan,
 
@@ -1599,11 +1631,11 @@ Zatim se prebacite u direktorij `data` i napravite detaljan ispis sadržaja dire
 
 - biti sortiran po veličini (od najveće prema najmanjoj datoteci)
 
-**Zadatak 3**
+**Zadatak 4**
 
 U direktoriju `data` izbrišite sve datoteke osim datoteke `.env`, pri čemu brisanje mora biti **interaktivno**. Ispišite detalje o radnji.
 
-Nakon toga u direktorij `data` kopirajte sav sadržaj direktorija `backup`, uključujući **skrivene datoteke**. Po potrebi upotrijebite jednu ili više naredbi, ali **spriječite prepisivanje datoteka koje već postoje**. Ispišite detalje o radnji.
+Nakon toga u direktorij `data` kopirajte sav sadržaj direktorija `backup` (samo sadržaj - bez direktorija), uključujući **skrivene datoteke**. Po potrebi upotrijebite jednu ili više naredbi, ali **spriječite prepisivanje datoteka koje već postoje**. Ispišite detalje o radnji.
 
 Na kraju detaljno ispišite sadržaj direktorija `data` tako da ispis:
 
@@ -1615,12 +1647,14 @@ Na kraju detaljno ispišite sadržaj direktorija `data` tako da ispis:
 
 - prikazuje po jednu stavku u svakom retku.
 
-**Zadatak 4**
+Kojom još naredbom možete ispisati sadržaj direktorija `data`? Napišite naredbom i primjer rezultata.
 
-Otvorite direktorij na vašem računalu po želji, ali neka ne sadrži više od 20 datoteka. Direktorij mora sadržavati ugniježđene direktorije s nekoliko datoteka unutar njih.
+**Zadatak 5**
+
+Otvorite direktorij na vašem računalu po želji kroz CLI, ali neka ne sadrži više od 20 datoteka. Direktorij mora sadržavati ugniježđene direktorije s nekoliko datoteka unutar njih.
 
 Prebacite se u direktorij i napišite sljedeće naredbe:
 
-1. Ispišite detaljno sadržaj glavnog direktorija, uključujući sve skrivene datoteke, i sortirajte ga po veličini.
+1. Ispišite detaljno sadržaj glavnog direktorija, uključujući sve skrivene datoteke, i sortirajte ga po veličini (od najveće prema najmanjoj datoteci).
 2. Ispišite detaljno sadržaj glavnog direktorija bez skrivenih datoteka, sortirajte ga po veličini i prikažite jedinice uz veličinu datoteka.
-3. Ispišite sav sadržaj direktorija, uključujući poddirektorije, njihove datoteke i skrivene datoteke. Ispis neka bude u boji i sortiran po datumu zadnje izmjene, s najnovijim stavkama na početku.
+3. Ispišite sav sadržaj direktorija, uključujući poddirektorije, njihove datoteke i skrivene datoteke koristeći stablastu strukturu.
