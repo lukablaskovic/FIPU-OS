@@ -260,7 +260,7 @@ Na ovaj način ćete pokrenuti program Windows File Explorer i otvoriti trenutni
 
 Prilikom korištenja `ls -A` nećete vidjeti `.` i `..`, ali ćete i dalje vidjeti skrivene datoteke koje počinju s `.`.
 
-<img src="./CLI-screenshots/ls--A.png" style="width:50%; border-radius:20px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/ls--A.png?raw=true" style="width:50%; border-radius:20px;" ></img>
 
 > Slika 4. Naredba `ls -A` ispisuje skrivene datoteke, ali ne ispisuje posebne direktorije `.` i `..`
 
@@ -809,7 +809,7 @@ _Primjer s rekurzivnim kopiranjem:_
 
 _Rezultat:_
 
-<img src="./CLI-screenshots/cp-r.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/cp-r.png?raw=true" style="width:60%" ></img>
 
 > Slika 13. Naredba `cp -r` kopira cijeli direktorij "dir1" i sav njegov sadržaj u direktorij "dir2" (ne dobivamo direktorij unutar direktorija)
 
@@ -839,7 +839,7 @@ _Primjer:_
 
 _Rezultat:_
 
-<img src="./CLI-screenshots/mv-dir1-dir2.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/mv-dir1-dir2.png?raw=true" style="width:60%" ></img>
 
 > Slika 14. Naredba `mv` premješta cijeli direktorij "dir1" i sav njegov sadržaj u direktorij "dir2" (dobivamo direktorij unutar direktorija)
 
@@ -1195,7 +1195,7 @@ Za razliku od centraliziranih sustava (npr. SVN), **Git je distribuiran** - svak
 - **Merge**: spajanje promjena s jedne grane na drugu
 - **Remote**: udaljeni repozitorij (npr. na GitHubu/GitLabu)
 
-<img src="./screenshots/git.png" style="width:40%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/screenshots/git.png?raw=true" style="width:40%" ></img>
 
 > Slika 17. Git CLI omogućuje upravljanje verzijama i suradnju na projektima
 
@@ -1322,7 +1322,7 @@ Kako biste provjerili koje su datoteke dodane u staging area, možete koristiti 
 → git status
 ```
 
-<img src="./CLI-screenshots/git-status-new-file.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/git-status-new-file.png?raw=true" style="width:60%" ></img>
 
 > Slika 18. Naredba `git status` prikazuje koje su datoteke dodane u staging area i koje promjene nisu praćene. Za sada je `README.md` jedina datoteka u staging area, a drugih promjena nema.
 
@@ -1366,7 +1366,7 @@ To možete provjeriti naredbom `git log` koja prikazuje povijest _commitova_:
 → git log
 ```
 
-<img src="./CLI-screenshots/git-log.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/git-log.png?raw=true" style="width:60%" ></img>
 
 > Slika 19. Naredba `git log` prikazuje povijest _commitova_, uključujući poruke, datume i hash-eve _commitova_
 
@@ -1380,7 +1380,7 @@ Sada ćemo obrisati datoteku `README.md` i provjeriti status promjena nakon bris
 → git status
 ```
 
-<img src="./CLI-screenshots/git-status-deleted.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/git-status-deleted.png?raw=true" style="width:60%" ></img>
 
 > Slika 20. Nakon brisanja datoteke `README.md`, naredba `git status` prikazuje da je datoteka obrisana, ali promjena još nije praćena (nije dodana u _staging area_)
 
@@ -1394,7 +1394,7 @@ Moramo dodati brisanje datoteke u _staging area_ da bi se promjena zabilježila 
 → git add README.md # bez obzira što je obrisana!
 ```
 
-<img src="./CLI-screenshots/git-status-delete-added-staging.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/git-status-delete-added-staging.png?raw=true" style="width:60%" ></img>
 
 > Slika 21. Nakon dodavanja brisanja datoteke `README.md` u staging area, naredba `git status` prikazuje da je datoteka obrisana i promjena je sada praćena (_staged_)
 
@@ -1410,7 +1410,7 @@ Provjerite povijest _commitova_. Trebali biste vidjeta oba.
 → git log
 ```
 
-<img src="./CLI-screenshots/git-status-added-and-deleted-commits.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/git-status-added-and-deleted-commits.png?raw=true" style="width:60%" ></img>
 
 > Slika 22. Povijest _commitova_ prikazuje oba _commita_: prvi za dodavanje datoteke `README.md`, a drugi za brisanje iste datoteke
 
@@ -1459,13 +1459,13 @@ Otvorite [GitHub račun](https://github.com/) ako ga već nemate.
 
 Odaberite `Repositories` → `New` da biste stvorili novi repozitorij.
 
-<img src="./screenshots/github-new-repo.png" style="width:60%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top:10px" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/screenshots/github-new-repo.png?raw=true" style="width:60%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top:10px" ></img>
 
 > Slika 23. Na GitHub-u možete stvoriti novi repozitorij klikom na `New`. Odaberite javni repozitorij i dodajte `README.md` datoteku.
 
 Nakon što stvorite repozitorij, otvorite ga, odaberite `Code` i kopirajte URL repozitorija klikom na ikonu kopiranja.
 
-<img src="./screenshots/copy-public-git-url.png" style="width:60%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top:10px" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/screenshots/copy-public-git-url.png?raw=true" style="width:60%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top:10px" ></img>
 
 > Slika 24. Kopirajte URL repozitorija s GitHub-a klikom na ikonu kopiranja.
 
@@ -1524,7 +1524,7 @@ Kako ne biste svaku datoteku pojedinačno dodavali u _staging area_, jednostavno
 → git status
 ```
 
-<img src="./CLI-screenshots/git-status-4-zadatka.png" style="width:60%" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS2%20-%20Zastavice%20CLI%20naredbi/CLI-screenshots/git-status-4-zadatka.png?raw=true" style="width:60%" ></img>
 
 > Slika 25. Nakon dodavanja svih datoteka u staging area, naredba `git status` prikazuje da su sve **datoteke praćene** i **spremne za _commit_**.
 
