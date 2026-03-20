@@ -816,7 +816,7 @@ _Rezultat:_
 Kod **premještanja** (`mv`), rekurzivno ponašanje je zadano i ne navodi se eksplicitno ovom zastavicom:
 
 ```bash
-mv <izvor> <odredište> # nema zastavice -r
+→ mv <izvor> <odredište> # nema zastavice -r
 ```
 
 _Primjer:_
@@ -854,7 +854,7 @@ Općenito, [zamjenski znakovi (_wildcards_)](https://tldp.org/LDP/GNU-Linux-Tool
 **Sintaksa:**
 
 ```bash
-naredba dir1/dir2/* # wildcard nije zastavica, već poseban znak unutar putanje
+→ naredba dir1/dir2/* # wildcard nije zastavica, već poseban znak unutar putanje
 ```
 
 ```bash
