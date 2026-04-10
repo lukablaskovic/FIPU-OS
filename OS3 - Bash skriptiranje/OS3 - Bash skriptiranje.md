@@ -20,7 +20,7 @@ Osim interaktivne upotrebe, bash se široko primjenjuje za izradu skripti – je
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 9.4.2025.**
+**🆙 Posljednje ažurirano: 9.4.2026.**
 
 ## Sadržaj
 
@@ -28,18 +28,19 @@ Osim interaktivne upotrebe, bash se široko primjenjuje za izradu skripti – je
 - [(3) Bash skriptiranje](#3-bash-skriptiranje)
   - [Sadržaj](#sadržaj)
 - [1. Uvod](#1-uvod)
-- [2. Priprema skripte](#2-priprema-skripte)
+- [2. Priprema bash skripte](#2-priprema-bash-skripte)
   - [2.1 CLI uređivači teksta](#21-cli-uređivači-teksta)
     - [2.1.1 `nano` uređivač](#211-nano-uređivač)
     - [2.1.2 `vim` uređivač](#212-vim-uređivač)
 - [3. Programski koncepti u bashu](#3-programski-koncepti-u-bashu)
   - [3.1 Varijable i argumenti](#31-varijable-i-argumenti)
-    - [3.1.1 Supstitucija varijabli](#311-supstitucija-varijabli)
+    - [3.1.1 Supstitucija naredbi](#311-supstitucija-naredbi)
     - [3.1.2 Argumenti](#312-argumenti)
   - [3.2 Uvjetni izrazi i operatori](#32-uvjetni-izrazi-i-operatori)
     - [3.2.1 Tablica operatora za usporedbu brojeva](#321-tablica-operatora-za-usporedbu-brojeva)
     - [3.2.2 Tablica operatora za usporedbu stringova](#322-tablica-operatora-za-usporedbu-stringova)
     - [3.2.3 Tablica operatora za provjere datoteka](#323-tablica-operatora-za-provjere-datoteka)
+    - [Izlazni statusi](#izlazni-statusi)
   - [3.3 Kombiniranje više naredbi](#33-kombiniranje-više-naredbi)
   - [Zadatak 1: Provjera datoteke prema apsolutnoj putanji](#zadatak-1-provjera-datoteke-prema-apsolutnoj-putanji)
   - [3.4 Petlje (iteracije)](#34-petlje-iteracije)
@@ -55,49 +56,52 @@ Osim interaktivne upotrebe, bash se široko primjenjuje za izradu skripti – je
 
 # 1. Uvod
 
-Do sad smo naučili osnovne koncepte **interaktivnog rada** u bash shellu, odnosno navigaciju datotečnim sustavom, korištenje osnovnih naredbi za rad s datotekama i direktorijima te koncept zastavica.
+Do sad smo naučili osnovne koncepte **interaktivnog rada** u bash _shellu_, odnosno navigaciju datotečnim sustavom, korištenje osnovnih naredbi za rad s datotekama i direktorijima, koncept parametra i zastavica, te osnove rada sa Git CLI-jem.
 
-Drugi način korištenja basha je **skriptiranje** gdje skripte predstavljaju tekstualne datoteke u koje pišemo bash naredbe koje želimo izvršiti. Ipak, kako se radi o programskom jeziku, možemo koristi i ostale programske koncepte, poput varijabli, uvjetnih izraza, petlji, funkcija itd.
+Drugi i jednako važan način korištenja basha je **kroz skriptiranje**, gdje skripte predstavljaju tekstualne datoteke u koje pišemo bash naredbe koje želimo izvršiti.
+
+Iako bash ima određene elemente programskog jezika (premda nije [_general-purpose_](https://en.wikipedia.org/wiki/General-purpose_programming_language) poput, primjerice, Pythona), omogućuje korištenje uobičajenih programskih koncepata kao što su varijable, uvjetni izrazi, petlje i funkcije.
 
 ✅ **Zašto učimo bash skriptiranje?**
 
 Vjerojatno se pitate zašto učiti bash skriptiranje kada postoje puno moderniji programski jezici pomoću kojih možemo učinkovitije razvijati složene projekte. Navest ćemo nekoliko razloga:
 
-1. **Automatizacija zadataka**: bash skripte idealne su za programiranje automatskog _backupa_, sustavsku administraciju, _deployment_, analizu logova i ostale rutinske zadatke koje želimo obavljati automatski.
-   - Na primjer, možemo napisati skriptu koja će automatski preuzeti sigurnosnu kopiju našeg web poslužitelja svaki dan u određeno vrijeme.
-2. **Jednostavan i brz**: bash je jednostavan za korištenje i već prisutan na gotovo svim Unix/Linux sustavima - nema potrebe za instalacijom.
-3. **Idealan za "glue code"**: bash je izvrstan za povezivanje različitih alata i skripti, neovisno o programskom jeziku, tehnologiji ili platformi. Možemo ga zamisliti kao ljepilo koje drži sve dijelove našeg sustava zajedno jednom kad ga _deployamo_ u produkcijsko okruženje.
-4. **DevOps i CI/CD**: alati često koriste bash skripte za automatizaciju procesa izgradnje, testiranja i isporuke softvera ([CI/CD](https://en.wikipedia.org/wiki/CI/CD)). Razumijevanje basha poboljšat će vašu produktivnost i omogućiti vam da bolje razumijevanje kako aplikacije rade na nižoj razini apstrakcije.
+1. **Automatizacija zadataka**: bash skripte idealne su za programiranje automatskog _backupa_, sustavsku administraciju, automatizirani _deployment_ aplikacija, analizu logova i ostale rutinske zadatke s kojima se često susrećemo u razvoju programskih rješenja.
+   - Na primjer, možemo napisati skriptu koja će automatski preuzeti sigurnosnu kopiju podataka s našeg web poslužitelja, svaki dan u određeno vrijeme.
+2. **Jednostavan i brz**: bash je jednostavan za korištenje i već prisutan na gotovo svim Unix/Linux sustavima (kako desktop, tako i serverima).
+3. **Idealan za tzv. "glue code"**: bash je izvrstan za povezivanje različitih alata i skripti, neovisno o programskom jeziku, tehnologiji ili platformi. Primjerice, jednom skriptom možemo redom pokrenuti instalaciju ovisnosti, izgradnju aplikacije, migracije baze podataka, kopiranje datoteka i ponovno pokretanje servisa. Upravo zato bash često služi kao svojevrsno „ljepilo” koje povezuje sve dijelove sustava u jednu cjelinu.
+4. **DevOps i CI/CD**: [DevOps](https://en.wikipedia.org/wiki/DevOps) prakse i CI-CD (eng. Continuous Integration/Continuous Deployment) temelj su modernog razvoja softvera, a bash i srodne shell skripte se često koriste za automatizaciju i orkestraciju različitih faza razvoja, testiranja i implementacije softvera.
+   - Primjer ovakve automatizacije: nakon svakog commita na GitHub, pokreni CI/CD pipeline koji će izgraditi i testirati aplikaciju, a zatim ju implementirati na produkcijski server.
 
 ❌ **Kada nećemo pisati bash skriptu**
 
-1. Kada logika postane dovoljno kompleksna i počinje se javljati potreba za naprednijim strukturama podataka, bibliotekama... → tada je bolje koristiti nešto modernije: Python, Go, JavaScript/TypeScript, Java, C#...
-2. Za izradu aplikacija namijenjenih krajnjim korisnicima.
+1. Kada logika postane dovoljno kompleksna i počinje se javljati potreba za naprednijim strukturama podataka, bibliotekama ili već gotovim konstruktima koje razvija zajednica developera... → tada je bolje koristiti nešto modernije: Python, Go, JavaScript/TypeScript, Java, C#...
+2. Za izradu aplikacija namijenjenih krajnjim korisnicima (osim ako nam krajnji korisnici nisu sistemski administratori, DevOps inženjeri i sl.)
 3. Kada trebamo raditi s velikim količinama podataka, pisati složene algoritme i sl.
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS3%20-%20Bash%20skriptiranje/screenshots/OS3_illustration_Bash.png?raw=true" style="width:90%; border-radius:20px;" ></img>
 
-U ovoj skripti studenti će se upoznati s osnovama pisanja bash skripti, s ciljem lakšeg obavljanja sistemskih operacija u budućim kolegijima, osobito onima vezanim uz DevOps praksu. Fokus će biti na osnovnim vještinama koje omogućuju automatizaciju rutinskih zadataka, čime će studenti steći čvrstu osnovu za razumijevanje i primjenu skriptiranja u kontekstu administracije sustava.
+U ovoj skripti studenti će se upoznati s osnovama pisanja bash skripti, s ciljem lakšeg obavljanja sistemskih operacija na budućim kolegijima koji uključuju neki oblik razvoja softvera. Također će naučiti koristiti CLI uređivače teksta, koji se vrlo često koriste u radu s udaljenim poslužiteljima koji nemaju grafičko sučelje.
 
 <div style="page-break-after: always; break-after: page;"></div>
 
-# 2. Priprema skripte
+# 2. Priprema bash skripte
 
-Bash skripte definiramo kraticom `.sh` i one su jednostavne tekstualne datoteke koje sadrže niz bash naredbi koje se izvršavaju redom.
+Bash skripte najčešće prepoznajemo po nastavku `.sh`, a riječ je o običnim tekstualnim datotekama koje sadrže niz naredbi ljuske bash i izvršavaju se redoslijedom kojim su zapisane - vrlo slično kao programski kod.
 
-Stvorit ćemo novu datoteku `hello.sh` u radnom direktoriju:
+Stvorit ćemo novu datoteku `hello.sh` u trenutnom radnom direktoriju:
 
 ```bash
 → touch hello.sh
 ```
 
-Osim s naredbom `touch`, zadnji put smo vidjeli da datoteku možemo stvoriti i pomoću naredbe `echo` i odmah ju popuniti zadanim sadržajem:
+Osim s naredbom `touch`, zadnji put ste vidjeli da datoteku možemo stvoriti i pomoću naredbe `echo` i odmah ju ispuniti nekim sadržajem:
 
 ```bash
 → echo "Pozdrav iz bash skripte" > hello.sh
 ```
 
-Sadržaj datoteke možemo ispisati pomoću naredbe `cat`:
+Sadržaj datoteke (pa i bash skripte) možemo ispisati pomoću naredbe `cat`:
 
 ```bash
 → cat hello.sh
@@ -105,13 +109,13 @@ Sadržaj datoteke možemo ispisati pomoću naredbe `cat`:
 
 _Rezultat:_
 
-```bash
+```text
 Pozdrav iz bash skripte
 ```
 
-Ipak, skripta iznad nije izvršna, tj. ne možemo je pokrenuti kao program budući da nema niti jedne ispravne naredbe.
+Ipak, skripta iznad nije izvršna, tj. ne možemo je pokrenuti kao program budući da nema niti jedne ispravne naredbe (samo smo unijeli obični tekst u datoteku).
 
-- za ispis u terminal koristimo naredbu `echo` pa ćemo nju dodati u sadržaj datoteke
+- za ispis u terminal koristimo naredbu `echo` tako da ćemo nju dodati u sadržaj datoteke
 
 ```bash
 → echo "echo 'Pozdrav iz bash skripte'" > hello.sh
@@ -120,9 +124,17 @@ Ipak, skripta iznad nije izvršna, tj. ne možemo je pokrenuti kao program budu�
 **Uočite sljedeće:**
 
 - Prvi `echo` koristimo za pisanje u datoteku (i stvaranje nove ako ne postoji)
-- Drugi `echo` upisujemo u datoteku, ali ga ne izvršavamo (još)
+- Drugi `echo` upisujemo u samu datoteku, ali ga ne izvršavamo (još)
 
-Skripta je sada ispravna budući da sadrži bash naredbu, možemo ju pokrenuti naredbom `bash`:
+Skripta je sada ispravna budući da sadrži ispravnu bash naredbu, možemo ju pokrenuti naredbom `bash`:
+
+**Sintaksa:**
+
+```bash
+→ bash <putanja_do_skripte>
+```
+
+- gdje je `<putanja_do_skripte>` relativna ili apsolutna putanja do skripte koju želimo pokrenuti
 
 ```bash
 → bash hello.sh
@@ -145,7 +157,7 @@ Uočite razlike koje smo napravili:
 
 U slučaju basha, koristimo `#!/bin/bash`
 
-- Ova oznaka omogućuje operacijskom sustavu da prepozna da je skripta **napisana u bash jeziku** i da ju **izvrši pomoću bash interpretera**.
+- Ova oznaka omogućuje operacijskom sustavu da prepozna da je skripta **napisana u bash ljusci** i da ju **izvrši pomoću bash interpretera**.
 
 Oznaku dodajemo na **početak skripte**:
 
@@ -154,7 +166,7 @@ Oznaku dodajemo na **početak skripte**:
 echo "Pozdrav iz bash skripte"
 ```
 
-- za sada možete dodati ručno (npr. GUI editor), a nastavku ćemo naučiti kako to učiniti pomoću CLI uređivača teksta
+- za sada možete dodati ručno (npr. GUI editor), a nastavku ćemo naučiti kako to učiniti pomoću jednog od CLI uređivača teksta
 
 Nakon definiranja skripte, moramo dodati i **dozvolu za izvršavanje** skripte pomoću `chmod` naredbe:
 
@@ -188,6 +200,11 @@ _Rezultat:_
 Pozdrav iz bash skripte
 ```
 
+**Zašto je dobra praksa dodati `shebang` oznaku** iako skriptu često možemo pokrenuti i bez nje?
+
+- ako ne definiramo oznaku, operacijski sustav često "pretpostavi" o kojoj je vrsti skripte riječ, tj. koristi _fallback_ interpreter (npr. [skriptu ljuske](https://en.wikipedia.org/wiki/Shell_script) `sh`), koji može imati različite funkcionalnosti i sintaksu od basha, što može dovesti do neočekivanih rezultata ili grešaka prilikom izvršavanja skripte
+- također, ovakve skripte često se izvršavaju u različitim okruženjima i na različitim operacijskim sustavima, pa je važno jasno definirati koji interpreter se koristi kako bi se osigurala kompatibilnost i ispravno izvršavanje skripte
+
 <div style="page-break-after: always; break-after: page;"></div>
 
 ## 2.1 CLI uređivači teksta
@@ -206,7 +223,7 @@ Postoje mnogi CLI uređivači, a neki od poznatijih su:
 - `neovim` - modernija verzija `vim` uređivača koja nudi poboljšanja i dodatne mogućnosti - danas dosta popularan u programerskoj zajednici
 - `micro` - moderan uređivač teksta koji je jednostavan za korištenje i nudi mnoge mogućnosti _out-of-the-box_, poput sintaktičkog isticanja, automatskog dovršavanja, multijezične podrške i sl.
 
-Preporuka je da koristite `nano` ili `vim` uređivače, a ako ste već upoznati s nekim drugim uređivačem, slobodno ga koristite.
+Preporuka je da koristite `nano` ili `vim` uređivače, a ako ste već upoznati s nekim drugim uređivačem, slobodno ga možete nastaviti koristiti za potrebe ovih vježbi.
 
 **Provjerite imate li instalirane uređivače:**
 
@@ -217,21 +234,23 @@ Preporuka je da koristite `nano` ili `vim` uređivače, a ako ste već upoznati 
 
 Ako nisu instalirani, dobit ćete grešku.
 
-- Ako koristite **WSL** ili **Git Bash**, oba uređivača su vjerojatno već instalirana. Ako nisu, preporuka je da ih instalirate pomoću [apt](<https://en.wikipedia.org/wiki/APT_(software)>) alata
+- Ako koristite **WSL**, oba uređivača su vjerojatno već instalirana. Ako nisu, preporuka je da ih instalirate pomoću [apt](<https://en.wikipedia.org/wiki/APT_(software)>) alata
+
+- Ako koristite **Git Bash**, uređivači su vjerojatno već instalirani - ako nisu, preporuka je reinstalirati Git Bash ili skinuti preko pacmana.
 
 ```bash
 → sudo apt install nano
 → sudo apt install vim
 ```
 
-- Ako koristite **macOS**, uređivači oba su vjerojatno već instalirana. Ako nisu, preporuka je da ih instalirate pomoću [Homebrew](https://brew.sh/) alata
+- Ako koristite **macOS**, oba su vjerojatno već instalirana. Ako nisu, preporuka je da ih instalirate pomoću [Homebrew](https://brew.sh/) alata
 
 ```bash
 → brew install nano
 → brew install vim
 ```
 
-- Ako koristite **Linux**, ovisno o distribuciji možete imati jedan ili drugi već instaliran. Ako nisu, preporuka je da ih instalirate pomoću `apt` alata kao što već prikazano iznad
+- Ako koristite **Linux**, ovisno o distribuciji možete imati jedan ili drugi već instaliran. Ako nisu, preporuka je da ih instalirate, pogađate, pomoću apt alata
 
 Jednom kad ste instalirali uređivače, možete ih koristiti za uređivanje datoteka iz terminala 😎
 
@@ -241,7 +260,7 @@ Jednom kad ste instalirali uređivače, možete ih koristiti za uređivanje dato
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS3%20-%20Bash%20skriptiranje/illustrations/nano.png?raw=true" style="width:20%;" ></img>
 
-> 🖼️ Logotip `nano` uređivača teksta, web: https://www.nano-editor.org/
+> Slika 1. Logotip `nano` uređivača teksta, web: https://www.nano-editor.org/
 
 **Sintaksa:**
 
@@ -260,7 +279,7 @@ Na primjer, da otvorimo datoteku `hello.sh` u `nano` uređivaču, jednostavno up
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS3%20-%20Bash%20skriptiranje/screenshots/nano_scr.png?raw=true" style="width:50%; border-radius:20px;" ></img>
 
-> 🖼️ Izgled `nano` uređivača. Uočite osnovne naredbe prikazane na dnu sučelja
+> Slika 2. Izgled `nano` uređivača. Uočite osnovne naredbe prikazane na dnu sučelja
 
 Unutar `nano` uređivača možemo uređivati datoteku navigacijom pomoću tipkovnice, a jednom kad završimo s uređivanjem i želimo pohraniti promjene, koristimo naredbe:
 
@@ -279,12 +298,58 @@ Unutar `nano` uređivača možemo uređivati datoteku navigacijom pomoću tipkov
 | `Ctrl + C`  | Prekida izvršavanje trenutne naredbe (Nije kopiranje!)                                         |
 | `Ctrl + A`  | Pomakni kursor na početak retka                                                                |
 | `Ctrl + E`  | Pomakni kursor na kraj retka                                                                   |
+| `Ctrl + G`  | Otvori pomoć (Manual) s popisom svih naredbi i njihovim objašnjenjima                          |
+| `Alt + U`   | Poništi posljednju akciju (Undo), na Macu je često `Esc + U`                                   |
+| `Alt + E`   | Ponavlja prethodno poništenu akciju (Redo), na Macu je često `Esc + E`                         |
+| `Ctrl + J`  | Poravnaj trenutni paragraf (Justify)                                                           |
 
 Kako biste brže navigirali kroz datoteku, možete koristiti `CTRL + SPACE` za preskakanje riječi (ovisno o verziji može biti i `ALT + →` odnosno `ALT + ←`). Osim toga, možete koristiti i `CTRL + Y` za pomicanje prema gore, odnosno `CTRL + V` za pomicanje prema dolje.
 
 `nano` cheat sheet: [dostupan ovdje](https://www.nano-editor.org/dist/latest/cheatsheet.html)
 
 > **💡 Napomena:** Ako koristite `nano` uređivač unutar `WSL` ili `Git Bash`, možda ćete primijetiti da se neki od tipkovničkih prečaca razlikuju od onih u drugim verzijama `nano` uređivača. To je zbog razlika u terminalima i njihovim postavkama. Ako naiđete na probleme, provjerite dokumentaciju za svoj terminal ili pokušajte koristiti drugi uređivač. Možete upotrijebiti naredbu `CTRL + G` koja otvara _Manual_ u kojem možete pronaći sve naredbe i njihove definicije.
+
+Ako hoćete koristiti `nano` uređivač, preporuka je da proučite sve naredbe i isprobate ih kako biste se upoznali s njima. Također, možete prilagoditi postavke `nano` uređivača kroz konfiguracijsku datoteku `~/.nanorc`.
+
+### Konfiguracijske datoteke <!-- omit in toc -->
+
+Konfiguracijske datoteke su skrivene tekstualne datoteke koje se često nalaze u home direktoriju korisnika (npr. `~/.nanorc` za `nano` uređivač, `~/.bashrc` za bash _shell_, `~/.vimrc` za `vim` uređivač i sl.) i **sadrže postavke i prilagodbe za različite programe i alate**. Ove datoteke omogućuju korisnicima da prilagode ponašanje programa, definiraju alias-e, funkcije, varijable okruženja i druge postavke koje utječu na radne procese.
+
+Provjerite koje konfiguracijske datoteke imate na svojem računalu:
+
+```bash
+→ ls -a ~ # ispisuje sve skrivene datototeke u home direktoriju
+```
+
+Radni primjer: ako otvorite `~/.nanorc` datoteku, možete pronaći različite postavke koje utječu na ponašanje `nano` uređivača, poput prikaza brojeva linija, automatskog uvlačenja, sintaktičkog isticanja, prikaz pomoći i slično.
+
+Otvorit ćemo `~/.nanorc` datoteku u `nano` uređivaču:
+
+```bash
+→ nano ~/.nanorc
+```
+
+Kako bismo podesili da `nano` prikazuje brojeve linija, dodajemo sljedeću liniju u konfiguracijsku datoteku:
+
+```bash
+set linenumbers
+```
+
+Sada moramo spremiti promjene i izaći iz uređivača (`CTRL + O`, `ENTER`, `CTRL + X`), a zatim ponovno pokrenuti `nano` uređivač da bi se promjene primijenile ili restartirati aktivni shell koristeći naredbu `source`:
+
+```bash
+→ source ~/.nanorc # ponovno učitaj konfiguracijsku datoteku i primijeni ju na trenutni shell
+```
+
+Drugi primjer: kako bismo sakrili dostupne naredbe kao pomoć na dnu sučelja, dodajemo sljedeću liniju u konfiguracijsku datoteku:
+
+```bash
+set nohelp
+```
+
+Opet spremamo promjene, izlazimo iz uređivača i ponovno pokrećemo `nano` uređivač da bi se promjene primijenile. Preporuka je ipak pustiti dostupne naredbe.
+
+> **💡 Napomena:** U OS skriptama naredbe iz interaktivnog _shella_ namjerno su označene strelicom `→`, dok se naredbe iz skripti prikazuju bez nje, radi lakšeg razlikovanja i razumijevanja.
 
 <div style="page-break-after: always; break-after: page;"></div>
 
@@ -294,7 +359,7 @@ Kako biste brže navigirali kroz datoteku, možete koristiti `CTRL + SPACE` za p
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS3%20-%20Bash%20skriptiranje/illustrations/vim.png?raw=true" style="width:20%;" ></img>
 
-> 🖼️ Logotip `vim` uređivača teksta, web: https://www.vim.org/
+> Slika 3. Logotip `vim` uređivača teksta, web: https://www.vim.org/
 
 **Sintaksa:**
 
@@ -317,7 +382,7 @@ Na primjer, da otvorimo datoteku `hello.sh` u `vim` uređivaču, jednostavno upi
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS3%20-%20Bash%20skriptiranje/screenshots/vim_scr.png" style="width:50%; border-radius:20px;" ></img>
 
-> 🖼️ Izgled `vim` uređivača. Uočite da je sučelje dosta jednostavnije od `nano` sučelja. Ipak, `vim` je kompleksniji za korištenje.
+> Slika 4. Izgled `vim` uređivača. Uočite da je sučelje dosta jednostavnije od `nano` sučelja. Ipak, `vim` je kompleksniji za korištenje.
 
 **Načini rada:**
 
@@ -471,6 +536,13 @@ echo "Pozdrav, $ime $prezime, rođen $godina_rodenja" # ispisuje Pozdrav, Marko 
 echo 'Pozdrav, $ime $prezime, rođen $godina_rodenja' # ispisuje Pozdrav, $ime $prezime, rođen $godina_rodenja
 ```
 
+Osim toga, dobra praksa je koristiti sintaksu interpolacije varijabli `${naziv_varijable}` (slično kao u JavaScriptu) kada kombiniramo varijable i tekst, jer je čitljivije i manje sklono greškama:
+
+```bash
+# main.sh
+echo "Pozdrav, ${ime} ${prezime}, rođen ${godina_rodenja}" # ispisuje Pozdrav, Marko Marković, rođen 1999
+```
+
 **Zapamtite sljedeće:**
 
 - Varijable **ne smiju sadržavati razmake**, tj. ne možemo pisati `ime = Sanja` već samo `ime=Sanja`
@@ -481,9 +553,9 @@ echo 'Pozdrav, $ime $prezime, rođen $godina_rodenja' # ispisuje Pozdrav, $ime $
 
 > 💡**Napomena**: bash ne podržava tipizaciju varijabli, sve se pohranjuje kao znakovni niz (string), ali ovisno o kontekstu može interpretirati varijable kao brojeve, datume i sl.
 
-### 3.1.1 Supstitucija varijabli
+### 3.1.1 Supstitucija naredbi
 
-U bashu, **rezultate izvođenja naredbi možemo spremiti u varijable** pomoću tzv. supstitucije varijabli. To nam omogućuje da pohranimo izlaz (rezultat) izvođenja neke naredbe u varijablu i kasnije ga koristimo u skripti.
+U bashu, **rezultate izvođenja naredbi možemo spremiti u varijable** pomoću tzv. supstitucije naredbi. To nam omogućuje da **pohranimo izlaz (rezultat) izvođenja neke naredbe u varijablu** i kasnije ga koristimo u skripti.
 
 **Sintaksa:**
 
@@ -523,12 +595,12 @@ Sadržaj direktorija: main.sh
 test.sh
 ```
 
-Moguće je koristiti i zastavice u supstituciji varijabli, npr. `ls -l`:
+Moguće je koristiti i zastavice u supstituciji naredbi, npr. `ls -l`:
 
 ```bash
 # main.sh
-detaljni_sadrzaj=$(ls -l)
-echo "Detaljni sadržaj direktorija: $detaljni_sadrzaj"
+detaljni_sadrzaj=$(ls -l) # naredba se pozove ovdje!
+echo "Detaljni sadržaj direktorija: $detaljni_sadrzaj" # a rezultat naredbe se ispisuje ovdje
 ```
 
 _Rezultat:_
@@ -543,14 +615,14 @@ Detaljni sadržaj direktorija: total 8
 
 U bash skriptama možemo čitati argumente koji se prosljeđuju prilikom pokretanja skripte.
 
-Argumente označavamo posebnim varijablama: `$1`, `$2`, `$3`, ... do `$n`, gdje `$1` predstavlja prvi argument, `$2` drugi argument, itd. do `$n` koji predstavlja n-ti argument.
+Argumente označavamo posebnim varijablama: `$1`, `$2`, `$3`, ... do `$n`, gdje `$1` predstavlja prvi argument, `$2` drugi argument, itd. do `$n` koji predstavlja n-ti argument (`$n` nije doslovna varijabla, već označava n-ti argument).
 
 Zamislimo da je naša **skripta ustvari bash naredba**, a njene argumente navodimo nakon naziva naredbe (skripte).
 
 **Sintaksa:**
 
 ```bash
-→ ./main.sh <vrijednost_arg_1> <vrijednost_arg_2>
+→ ./main.sh <vrijednost_arg_1> <vrijednost_arg_2> <vrijednost_arg_3> ... <vrijednost_arg_n>
 ```
 
 _Primjer:_ pozivanje skripte s argumentima `FIPU` i `Pula`.
@@ -640,6 +712,8 @@ echo "Naziv skripte je: $0"
 # ispisuje: Naziv skripte je: ./main.sh
 ```
 
+> **🚨 ZAPAMTI!** **Redoslijed argumenata je bitan**, jer `$0` uvijek predstavlja naziv skripte (tj. naredbe kojom je ista pokrenuta), a `$1`, `$2`, ... `$n` predstavljaju argumente proslijeđene skripti onim redoslijedom kojim su proslijeđeni.
+
 ## 3.2 Uvjetni izrazi i operatori
 
 Kao i drugim programskim jezicima, uvjetni izrazi (_eng. conditional expressions_) koriste se za donošenje logičkih odluka unutar različitih blokova koda na temelju evaluiranih izraza.
@@ -670,7 +744,7 @@ fi # zatvara if blok
 
 **Zapamtite sljedeće:**
 
-- Uvjeti se definiraju unutar uglatih zagrada `[]` (ili ugniježđenih `[[ ]]` - u nastavku), a **između njih se nalaze uvjetni izrazi**
+- Uvjeti se definiraju unutar uglatih zagrada `[]` (ili ugniježđenih `[[ ]]` - _u nastavku_), a **između njih se nalaze uvjetni izrazi**
 - `then` oznaka označava početak bloka koda koji se izvršava ako je uvjet točan
 - **Postoji razmak** između uvjeta i uglatih zagrada, kao i između uglatih zagrada i `then` oznake. **Bez razmaka, bash će javiti grešku!**
 
@@ -746,6 +820,13 @@ if [ "$1" = "admin123" ] && [ "$2" = "tajna_lozinka" ]; then # uvjete odvajamo o
 else
     echo "Prijava neuspješna"
 fi
+
+# moguće je i koristiti sintaksu interpolacije oko varijabli: ${...}
+if [ ${1} = "admin123" ] && [ ${2} = "tajna_lozinka" ]; then
+    echo "Prijava uspješna"
+else
+    echo "Prijava neuspješna"
+fi
 ```
 
 _Rezultat:_
@@ -764,10 +845,10 @@ Prijava neuspješna
 
 <hr>
 
-Osim sintakse `[ uvjet ]` (jedan par uglatih zagradi), možemo koristiti i **dvostruke uglate zagrade** `[[ uvjet ]]` koje su fleksibilnije i podržavaju više operatora i funkcija.
+Osim sintakse `[ uvjet ]` (jedan par uglatih zagradi), možemo koristiti i **sintaksu dvostruke uglate zagrade** `[[ uvjet ]]` koje su fleksibilnije i podržavaju više operatora i funkcija.
 
 - sintaksu jednostrukih uglatih nazivamo još i _POSIX-style_
-- sintaksu dvostrukih uglatih nazivamo još _bash-style_ (ova je modernija i preporučuje se u novim verzijama basha)
+- sintaksu dvostrukih uglatih nazivamo još _bash-style_ (modernija i preporučuje se u novim verzijama basha)
 
 **Uvjetni izraz `if` s dvostrukim uglatim zagradama**:
 
@@ -861,7 +942,7 @@ Kako bismo uspoređivali stringove ovom sintaksom, koristimo različite operator
 | `<`         | Manje od (leksikografska usporedba) | `[[ "$a" < "$b" ]]`                   |
 | `>`         | Veće od (leksikografska usporedba)  | `[[ "$a" > "$b" ]]`                   |
 | `-z`        | String je null (tj. duljine nula)   | `[ -z "$a" ]`                         |
-| `-n`        | String nije null                    | `[ -n "$a" ]`                         |
+| `-n`        | String nije null (postoji?)         | `[ -n "$a" ]`                         |
 
 _Primjer:_ Želimo provjeriti postoji li varijabla `ime` i je li jednaka stringu `"Marko"`.
 
@@ -882,22 +963,22 @@ fi
 
 ### 3.2.3 Tablica operatora za provjere datoteka
 
-Jedna od najčešćih primjena uvjetnih izraza je provjera datoteka i njihovog stanja.
+Jedna od najčešćih primjena uvjetnih izraza je provjera datoteka i njihovog stanja. Rad s datotekama, procesima i njihovim stanjima omogućuje nam izradu automatiziranih skripti o kojima smo govorili na početku.
 
 - s ovim operatorima koristimo **putanju do datoteke** - relativnu ili apsolutnu
 - bolja opcija je putanju pohraniti u varijablu, npr. `file="/Users/lukablaskovic/Github/FIPU-OS/OS3 - Bash skriptiranje/vjezba/main.sh"` pa koristiti to kao argument
 
-| Operator | Značenje                                  | Primjer             |
-| -------- | ----------------------------------------- | ------------------- |
-| `-e`     | Datoteka ili direktorij postoji           | `[ -e "$file" ]`    |
-| `-f`     | Zapis je regularna datoteka.              | `[ -f "$file" ]`    |
-| `-d`     | Zapis je direktorij.                      | `[ -d "$dir" ]`     |
-| `-s`     | Datoteka postoji i nije prazna.           | `[ -s "$file" ]`    |
-| `-r`     | Datoteka se može pročitati (_readable_)   | `[ -r "$file" ]`    |
-| `-w`     | U datoteku se može pisati (_writable_)    | `[ -w "$file" ]`    |
-| `-x`     | Datoteku se može pokretati (_executable_) | `[ -x "$file" ]`    |
-| `-nt`    | Datoteka `a` je novija od datoteke `b`.   | `[ "$a" -nt "$b" ]` |
-| `-ot`    | Datoteka `a` je starija od datoteke `b`.  | `[ "$a" -ot "$b" ]` |
+| Operator | Značenje                                                              | Primjer             |
+| -------- | --------------------------------------------------------------------- | ------------------- |
+| `-e`     | Datoteka ili direktorij postoji. (Zapamti **e**xists)                 | `[ -e "$file" ]`    |
+| `-f`     | Zapis je regularna datoteka. (Zapamti **f**ile)                       | `[ -f "$file" ]`    |
+| `-d`     | Zapis je direktorij. (Zapamti **d**irectory)                          | `[ -d "$dir" ]`     |
+| `-s`     | Datoteka postoji i nije prazna. (Zapamti **s**ize)                    | `[ -s "$file" ]`    |
+| `-r`     | Datoteka se može pročitati (Zapamti **r**eadable)                     | `[ -r "$file" ]`    |
+| `-w`     | U datoteku se može pisati (Zapamti **w**ritable)                      | `[ -w "$file" ]`    |
+| `-x`     | Datoteku se može pokretati (Zapamti e**x**ecutable)                   | `[ -x "$file" ]`    |
+| `-nt`    | Datoteka `a` je novija od datoteke `b`. (Zapamti **n**ewer **t**han)  | `[ "$a" -nt "$b" ]` |
+| `-ot`    | Datoteka `a` je starija od datoteke `b`. (Zapamti **o**lder **t**han) | `[ "$a" -ot "$b" ]` |
 
 _Primjer:_ Želimo provjeriti postoji li datoteka `main.sh` u trenutnom radnom direktoriju.
 
@@ -929,14 +1010,16 @@ _Primjer:_ Unutar `main.sh` skripte želimo provjeriti ima li skripta `test.sh` 
 test=./test.sh
 
 if [ -x "$test" ]; then
-    echo "Datoteku je moguće pokretati"
+    echo "Datoteku je već moguće pokretati"
 else
-chmod +x $test
-    echo "Omogućeno pisanje u datoteku"
+chmod +x $test # dodajemo dozvolu u skriptnom bashu
+    echo "Omogućeno pokretanje datoteke"
 fi
 ```
 
 <hr>
+
+### Izlazni statusi
 
 U bashu ne postoje boolean operatori u pravom smislu riječi (true/false), već ih nazivamo **izlaznim statusima** (_eng. exit status_) ili **izlaznim kodovima** (_eng. exit codes_).
 
@@ -1016,16 +1099,20 @@ Naglasimo još da je logičke izraze koje definiramo operatorima iz tablica izna
 → [ -e main.sh ] && echo "Datoteka postoji"
 
 # ako datoteka main.sh ne postoji, vrijednosti se evaluiraju u false && true || true, tj. ispisuje: Datoteka ne postoji
-→ [ -e main.sh ] && echo "Datoteka ne postoji" || echo "Datoteka ne postoji"
+→ [ -e main.sh ] && echo "Datoteka postoji" || echo "Datoteka ne postoji"
 ```
 
 > 💡**Ukratko:** Sve bash naredbe vraćaju izlazne statusne (`0` je uspješan, a ostali su neuspješni).
 >
-> - Posljednji status možemo provjeriti sa `$?` varijablom.
+> - Posljednji status tj. status posljednje bash naredbe/skripte možemo provjeriti s `?` varijablom.
 > - Logički izrazi koje definiramo unutar uglatih zagrada i pišemo operatorima iz tablica iznad, će se naposljetku interpretirati kao boolean izrazi, ali i oni vraćaju izlazne statuse.
 > - Skripti možemo prosljeđivati i argumente prilikom pozivanja, a dohvaćamo ih pomoću varijabli `$1`, `$2`, `$3`, ... do `$n`.
 > - Također možemo koristiti i posebne varijable `$@ `(svi argumenti) i `$#` (broj proslijeđenih argumenata).
 > - Sve navedeno možemo izvršavati i u interaktivnom načinu rada, ne samo unutar bash skripti.
+
+Kada bolje pogledate, bash skripta je ništa drugo nego sekvenca bash naredbi koje se izvršavaju jedna za drugom, odnosno jedna kompleksna bash naredba.
+
+Na ovaj način developeri izrađuju vlastite CLI alate (poput Git CLI, Netlify CLI, AWS CLI, Docker CLI) koji se u konačnici sastoje od niza naredbi, a korisniku se apstrahira izvođenje kroz jednostavne argumente i+ili zastavice.
 
 ## 3.3 Kombiniranje više naredbi
 
@@ -1045,19 +1132,19 @@ _Rješenje:_
 # main.sh
 #!/bin/bash
 if [[ -n $1 && $1 == "admin" ]]; then
-ime=$HOSTNAME
-         echo "Pozdrav $ime"
-         ls -la
-         chmod +x "$(pwd)/test.sh"
-ls -la
+    ime=$HOSTNAME
+    echo "Pozdrav $ime"
+    ls -la
+    chmod +x "$(pwd)/test.sh"
+    ls -la
 else
-echo "Niste admin"
+    echo "Niste admin"
 fi
 ```
 
 <hr>
 
-_Primjer:_ Imamo direktorij `skriptni_jezici_dz`, a u njemu 3 datoteke: `index.html`, `index.js` i `style.css`. Napravit ćemo ove datoteke i uredit ih CLI uređivačem, a zatim u direktorij dodati `main.sh` skriptu koja će izvršiti sljedeće:
+_Primjer:_ Imamo direktorij `skriptni_jezici_dz`, a u njemu 3 datoteke: `index.html`, `index.js` i `style.css`. Napravit ćemo ove datoteke i urediti ih CLI uređivačem, a zatim u direktorij dodati `main.sh` skriptu koja će izvršiti sljedeće:
 
 1. Provjeriti postoje li datoteke `index.html`, `index.js` i `style.css`, ako ne postoje, ispisati poruku da jedna ili više datoteka ne postoji
 2. Dodat ćemo argument `ispis` koji će, ako je prisutan u skripti, ispisati sadržaje svake datoteke u terminal
@@ -1167,6 +1254,8 @@ Ili pokrećemo skriptu s argumentom `ispis`:
 → ./main.sh ispis
 ```
 
+_Ispis:_
+
 ```
 Sve datoteke postoje.
 
@@ -1192,6 +1281,41 @@ Sadržaj datoteke style.css:
 body {
 background-color: lightblue;
 }
+```
+
+Što ako se pokušamo prebaciti direktorij natrag i onda pokrenuti skriptu?
+
+```bash
+→ cd ..
+→ ./skriptni_jezici_dz/main.sh
+```
+
+Rezultat:
+
+```text
+Jedna ili više datoteka ne postoji
+```
+
+Ali postoje? Zašto skripta javlja da ne postoje?
+
+<details>
+  <summary>Spoiler alert! Odgovor na pitanje</summary>
+<p>
+<b>U skriptnom bashu, kad navodimo relativnu putanju do datoteke, ona se odnosi na trenutni radni direktorij, a ne na direktorij u kojem se nalazi skripta.</b> U našem slučaju, kad smo se prebacili direktorij natrag, trenutni radni direktorij više nije <code>skriptni_jezici_dz</code>, već njegov roditeljski direktorij. Dakle, skripta traži datoteke <code>index.html</code>, <code>index.js</code> i <code>style.css</code> u trenutnom radnom direktoriju (roditeljskom direktoriju), gdje one ne postoje, pa javlja da jedna ili više datoteka ne postoji.
+</p>
+</details>
+
+Ovaj problem možemo riješiti apsolutnim putanjama. Primjerice, ako znamo da se u varijabli `HOME` nalazi apsolutna putanja do našeg home direktorija, moguće je izgraditi putanju do `skripni_jezici_dz`.
+
+```bash
+path="$HOME/skriptni_jezici_dz"
+```
+
+Sada moramo koristiti tu varijablu `path` kao prefiks za svaku datoteku koju želimo provjeriti:
+
+```bash
+if [ -e "$path/index.html" ] && [ -e "$path/index.js" ] && [ -e "$path/style.css" ]; then
+...
 ```
 
 ## Zadatak 1: Provjera datoteke prema apsolutnoj putanji
@@ -1509,7 +1633,7 @@ unset voce[1] # dealociramo drugi element niza (banana)
 echo "Elementi niza su: ${voce[@]}" # Ispisuje: jabuka kivi
 ```
 
-> **💡Napomena**: U bashu postoji i naredba `set` međutim ona se ne koristi za dodjeljivanje vrijednosti varijablama već za **izmjenu opcija aktivnog shella**. Za dodjeljivanje vrijednosti nekoj varijabli koristimo jednostavnu sintaksu `varijabla=vrijednost` bez razmaka.
+> **💡Napomena**: U bashu postoji i naredba `set` međutim ona se ne koristi za dodjeljivanje vrijednosti varijablama već za **izmjenu opcija aktivnog _shella_**. Za dodjeljivanje vrijednosti nekoj varijabli koristimo jednostavnu sintaksu `varijabla=vrijednost` bez razmaka.
 
 #### Iteracija kroz datoteke
 
@@ -1638,7 +1762,7 @@ basename "/Users/lukablaskovic/Github/FIPU-OS/OS3 - Bash skriptiranje/vjezba_sat
 ```bash
 for datoteka in "$radni_dir"/*.js; do # prolazimo kroz svaku .js datoteku u radnom direktoriju
     if [ -f "$datoteka" ]; then # provjeravamo je li zapis regularna datoteka
-        echo "Datoteka je: $(basename "$datoteka")" # ispisujemo samo naziv datoteke bez putanje (supstitucija varijabli)
+        echo "Datoteka je: $(basename "$datoteka")" # ispisujemo samo naziv datoteke bez putanje (supstitucija naredbi)
     fi
 done
 ```
@@ -1810,7 +1934,7 @@ ostatak=$((operand_1 % operand_2)) # ispravno! ostatak 0
 echo "Ostatak je: $ostatak" # ispisuje: Ostatak je: 0
 
 potencija=$((operand_1 ** operand_2)) # ispravno! potencija 100000
-echo "Potencija je: $potenciranje" # ispisuje: Potencija je: 100000
+echo "Potencija je: $potencija" # ispisuje: Potencija je: 100000
 ```
 
 <hr>
@@ -1825,7 +1949,7 @@ _Primjer:_ Napišite bash skriptu koja će izvršiti sljedeće:
 # main.sh
 #!/bin/bash
 
-broj_zapisa=1
+broj_zapisa=0 # inicijaliziramo broj_zapisa na 0
 radni_dir=$(pwd)
 
 for zapis in "$radni_dir"/*; do # prolazimo kroz svaku datoteku u radnom direktoriju
@@ -2125,7 +2249,7 @@ function zip_html() {
     echo "HTML datoteke su komprimirane u $zip_datoteka"
 }
 
-zip_html "$direktorij" # pozivamo funkciju s apsolutnom putanjom do direktorija "1. JavaScript osnove"
+./zip_html "$direktorij" # pozivamo funkciju s apsolutnom putanjom do direktorija "1. JavaScript osnove"
 ```
 
 Recimo da imamo sljedeću datotečnu strukturu:
@@ -2220,8 +2344,8 @@ varijabla=vrijednost # definiranje varijable bez navodnika
 echo $varijabla # ispisivanje varijable
 echo "${varijabla}" # ispisivanje varijable unutar navodnih znakova
 
-radni_dir=$(pwd) # supstitucija varijabli - koristeći $()
-slozeni_ispis=$(ls -la) # supstitucija varijabli - koristeći $()
+radni_dir=$(pwd) # supstitucija naredbi - koristeći $()
+slozeni_ispis=$(ls -la) # supstitucija naredbi - koristeći $()
 ```
 
 **Argumenti skripte**:
@@ -2296,7 +2420,7 @@ echo "${#niz[@]}" # ispis broja elemenata niza
 
 ```bash
 # Iteracija kroz niz
-for element in (1 2 3); do # prolazimo kroz svaki element niza
+for element in 1 2 3; do # prolazimo kroz svaki element niza
     echo "Element je: $element" # ispisujemo element
 done
 
@@ -2409,3 +2533,21 @@ Napišite bash skriptu koja će proći kroz sve datoteke unutar direktorija `scr
 Napišite bash skriptu koja će primiti 1 argument: naziv direktorija. Skripta mora provjeriti nalazi li se direktorij u istom direktoriju kao i skripta. Ako se direktorij ne nalazi u istom direktoriju, prekida rad i ispisuje poruku da direktorij ne postoji.
 
 Ako postoji, skripta mora proći kroz sve datoteke unutar direktorija i komprimirati ih naredbom `zip` u jednu zip datoteku. Ime zip datoteke neka bude `svi_zapisi.zip`. Ako korisnik proslijedi više od jednog argumenta, skripta mora prekinuti rad i ispisati poruku da je potrebno proslijediti samo jedan argument.
+
+**Zadatak 5**
+
+Napišite bash skriptu koja će primiti 1 argument: apsolutnu putanju do postojećeg Git repozitorija.
+
+Skripta mora izvršiti sljedeće:
+
+Ako korisnik ne proslijedi točno jedan argument, ispisati poruku o pogrešci i prekinuti izvršavanje.
+Provjeriti:
+
+- postoji li direktorij na zadanoj putanji
+- i je li taj direktorij Git repozitorij (sadrži .git direktorij)
+
+Ako provjere nisu zadovoljene, ispisati odgovarajuću poruku i prekinuti izvršavanje.
+
+Ako je sve ispravno skripta izrađuje novu datoteku `repozitorij_info.txt`.
+
+Nakon izrade datoteke, skripta ju dodajte u _staging area_, izvršava commit s proizvoljnom porukom i na kraju ispisuje Git logove.
