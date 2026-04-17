@@ -20,7 +20,9 @@ Osim interaktivne upotrebe, bash se široko primjenjuje za izradu skripti – je
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 9.4.2026.**
+**🆙 Posljednje ažurirano: 17.4.2026.**
+
+- samo mali ispravak kod aritmetičkih izraza
 
 ## Sadržaj
 
@@ -1894,7 +1896,7 @@ $((aritmeticki_izraz))
 - gdje je `aritmeticki_izraz` bilo koji aritmetički izraz koji želimo izračunati
 - ako navodimo varijable unutar aritmetičkog izraza, navodimo ih bez oznake `$`, npr. `$((varijabla + varijabla_2))`
 
-_Primjer:_ Ispravan i pogrešan način korištenja aritmetičkog izraza `++`.
+_Primjer:_ Ispravan i pogrešan način korištenja aritmetičkih izraza (`++` _increment_ i `--` _decrement_):
 
 ```bash
 # main.sh
@@ -1904,7 +1906,11 @@ brojac=10 # inicijaliziramo brojac
 
 brojac=$brojac -1 # GREŠKA! bash će ovo tumačiti kao dvije odvojene naredbe (brojac=$brojac i -1)
 brojac=$((brojac - 1)) # ispravno! bash će ovo tumačiti kao aritmetički izraz
-brojac=$((brojac--)) # ispravno! bash će ovo tumačiti kao aritmetički izraz
+((brojac--)) # ispravno! bash će ovo tumačiti kao aritmetički izraz
+((brojac++)) # ispravno!, ali
+brojac++ # neispravno
+brojac=$brojac++ # neispravno! i
+brojac=$((brojac++)) # također neispravno!
 ```
 
 _Primjer:_ U nastavku je prikazano nekoliko aritmetičkih izraza koje možemo koristiti u bashu.
