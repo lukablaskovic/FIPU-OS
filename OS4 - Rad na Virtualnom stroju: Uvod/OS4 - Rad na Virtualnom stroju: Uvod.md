@@ -19,7 +19,7 @@ Računalo na kojem se virtualni stroj izvodi naziva se domaćin (eng. <i>host</i
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 4.5.2026.**
+**🆙 Posljednje ažurirano: 7.5.2026.**
 
 ## Sadržaj
 
@@ -29,9 +29,9 @@ Računalo na kojem se virtualni stroj izvodi naziva se domaćin (eng. <i>host</i
 - [1. Virtualizacija](#1-virtualizacija)
 - [2. Virtualni stroj](#2-virtualni-stroj)
   - [2.1 Instalacija VirtualBoxa](#21-instalacija-virtualboxa)
-      - [Windows](#windows)
-      - [macOS](#macos)
-      - [Linux](#linux)
+    - [Windows](#windows)
+    - [macOS](#macos)
+    - [Linux](#linux)
   - [2.2 Ubuntu Server](#22-ubuntu-server)
   - [2.3 Izrada virtualnog stroja](#23-izrada-virtualnog-stroja)
   - [2.4 Instalacija Ubuntu Servera](#24-instalacija-ubuntu-servera)
@@ -43,7 +43,11 @@ Računalo na kojem se virtualni stroj izvodi naziva se domaćin (eng. <i>host</i
       - [Alat `lsof`](#alat-lsof)
     - [3.2.2. Povezivanje na SSH poslužitelj](#322-povezivanje-na-ssh-poslužitelj)
       - [Alat `ip`](#alat-ip)
+      - [Povezivanje na SSH poslužitelj](#povezivanje-na-ssh-poslužitelj)
+      - [1. Port forwarding na NAT mrežnom adapteru](#1-port-forwarding-na-nat-mrežnom-adapteru)
       - [Alat `ss`](#alat-ss)
+      - [Rješenje 2: Promjena mrežnog adaptera u Bridged Adapter](#rješenje-2-promjena-mrežnog-adaptera-u-bridged-adapter)
+      - [Screenshot u virtualnom stroju](#screenshot-u-virtualnom-stroju)
 - [Zadaci za Vježbu 4](#zadaci-za-vježbu-4)
 
 # 1. Virtualizacija
@@ -242,9 +246,9 @@ Jednom kad ste preuzeli ISO datoteku, otvorite VirtualBox i slijedite sljedeće 
 
 1. Kliknite na `New` gumb putem sučelja i unesite naziv virtualnog stroja (npr. `"Ubuntu Server"`)
 2. Odaberite ISO datoteku koju ste preuzeli
-3. Type postavite na `"Linux"`, a Subtype na `Ubuntu`
+3. Type postavite na `"Linux"`, a Subtype na `Ubuntu` (ako se ne postavi automatski)
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/new-vm.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
+<img src="./CleanShot 2026-05-07 at 22.57.39@2x.png" style="width:100%; border-radius: 10px;" ></img>
 
 > Slika 6. VirtualBox: Izrada novog virtualnog stroja
 
@@ -258,6 +262,10 @@ Za naše potrebe, možemo dodijeliti `2 GB RAM-a` i `2` procesorske jezgre. Opci
 
 Potrebno je još odrediti veličinu virtualnog diska. Prisjetite da virtualizacijom mi ustvari "rentamo" resurse našeg računala (domaćina), pa tako i prostor na disku. U ovom slučaju, odabrat ćemo opciju `"Create a Virtual Hard Disk Now"` i dodijeliti `20` GB prostora.
 
+<img src="./CleanShot 2026-05-07 at 22.55.05@2x.png" style="width:100%; border-radius: 10px;" ></img>
+
+> Slika 8. Izrada virtualnog diska i dodjela prostora (25 GB nam je sasvim dovoljno)
+
 Hipervizor će stvoriti virtualni disk koji će se ponašati gotovo identično kao fizički disk. Na njemu ćemo instalirati operacijski sustav Ubuntu Server i druge potrebne .aplikacije.
 
 > 💡 **Napomena**: Kao što dodjeljujete memoriju sa stvarnog diska, isto ju tako možete i osloboditi kada vam virtualni stroj više nije potreban – time će se prostor na vašem disku ponovno osloboditi.
@@ -266,11 +274,22 @@ Prije same izrade, provjerite još jedanput sve postavke virtualnog stroja. Ako 
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/summary.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
 
-> Slika 8. VirtualBox: Pregled postavki virtualnog stroja
+> Slika 9. VirtualBox: Pregled konačnih postavki virtualnog stroja prije izrade
 
 To je to! Virtualni stroj možemo pokrenuti klikom na gumb "Start" 😎
 
 ## 2.4 Instalacija Ubuntu Servera
+
+Prije nego krenete s instalacijom, isprobajte radi li vam tzv. **Host key** VirtualBoxa. Radi se o posebnoj tipki na tipkovnici kojom se upravlja VirtualBoxom kada virtualni stroj preuzme miš i tipkovnicu.
+
+Host key na Windowsu/Linuxu: `Right Ctrl`
+Host key na macOS-u: `Left Command`
+
+Preporuka je postaviti VirtualBox u **Scaled mode** kako bi se prozor virtualnog stroja prilagodio veličini zaslona. To možete učiniti pritiskom na `Host key` + `C` (npr. `Right Ctrl` + `C` na Windowsu ili `Left Command` + `C` na macOS-u).
+
+<img src="./CleanShot 2026-05-07 at 23.58.52@2x.png" style="width:50%; border-radius: 10px;" ></img>
+
+> Slika 10. VirtualBox: Uključivanje Scaled Mode prikaza
 
 Jednom kada pokrenete virtualni stroj, morate proći kroz postupak instalacije operacijskog sustava. Slijedite sljedeće korake:
 
@@ -279,7 +298,7 @@ Jednom kada pokrenete virtualni stroj, morate proći kroz postupak instalacije o
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/try-or-install-ubuntu-server.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
 
-> Slika 9. Ubuntu Server (VM): Odabir: "Try or Install Ubuntu Server"
+> Slika 11. Ubuntu Server (VM): Odabir: "Try or Install Ubuntu Server"
 
 Sada ćete morati odabrati sučelje tipkovnice. Ovisno o vašoj tipkovnici, odaberite odgovarajuće opcije ili bolje, odaberite `Identify keyboard` opciju kako bi sustav automatski prepoznao vašu tipkovnicu unosom nekoliko znakova.
 
@@ -289,9 +308,9 @@ Mrežno sučelje ostavite zadano i odaberite `Done`, preskočite opciju `Configu
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ubuntu-server-base.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
 
-> Slika 10. Ubuntu Server (VM): Odabir zadanih mrežnih postavki, bez _proxya_
+> Slika 12. Ubuntu Server (VM): Odabir zadanih mrežnih postavki, bez _proxya_
 
-Sljedeći korak je konfiguracija diska. Odaberite opciju `Use an entire disk`. Ova opcija će izbrisati sve podatke na virtualnom disku koji smo ranije stvorili kroz VirtualBox hipervizor (svakako je već prazan). Odaberite `Done` pa `Continue` kako bi nastavili s instalacijom.
+Sljedeći korak je konfiguracija diska. Odaberite opciju `Use an entire disk`. Ova opcija će izbrisati sve podatke na **virtualnom disku** koji smo ranije stvorili kroz VirtualBox hipervizor (svakako je već prazan). Odaberite `Done` pa `Continue` kako bi nastavili s instalacijom.
 
 Posljednji korak je konfiguracija korisničkog profila. Unesite:
 
@@ -304,15 +323,15 @@ Posljednji korak je konfiguracija korisničkog profila. Unesite:
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/profile-config.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
 
-> Slika 11. Ubuntu Server (VM): Konfiguracija korisničkog profila
+> Slika 13. Ubuntu Server (VM): Konfiguracija korisničkog profila
 
-Pitati će vas još želite li dodatne opcije: `Ubuntu Pro`, `OpenSSH server` i `Featured server snaps` - sve možete odbiti.
+Pitati će vas još želite li dodatne opcije: `Ubuntu Pro`, `OpenSSH server` i `Featured server snaps` - **sve možete odbiti**.
 
 To je to! Instalacija će započeti i potrajati nekoliko sekundi do par minuta, ovisno o brzini računala.
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/installing.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
 
-> Slika 12. Ubuntu Server (VM): Instalacija u tijeku
+> Slika 14. Ubuntu Server (VM): Instalacija u tijeku
 
 Nakon završetka instalacije, odaberite opciju `Reboot now`. Nakon ponovnog pokretanja, trebali biste vidjeti sljedeći ispis greške:
 
@@ -326,7 +345,11 @@ Please remove the installation medium, then press ENTER:
 
 Zatvorite VM i odaberite opciju `Settings` (ikona zupčanika ⚙️) u VirtualBoxu. U lijevom izborniku odaberite `Storage`, a zatim odaberite `Empty` sliku diska. Jednostavno ju uklonite i odaberite `OK`.
 
-Uočite `Ubuntu Server.vdi` virtualni disk koji smo ranije stvorili - **on mora ostati i na njemu je instaliran Ubuntu Server**.
+<img src="./CleanShot 2026-05-07 at 23.17.28@2x.png" style="width:100%; border-radius: 10px;" ></img>
+
+> Slika 15. VirtualBox: Uklanjanje ISO slike diska nakon instalacije
+
+Uočite `Ubuntu Server.vdi` virtualni disk koji smo ranije stvorili - **taj mora ostati i na njemu je instaliran Ubuntu Server**.
 
 Sada možete ponovno pokrenuti VM.
 
@@ -345,7 +368,7 @@ Ako ste sve dobro napravili, trebali biste vidjeti pozdravnu poruku i osnovne in
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/successfull-login-ubuntu-server.png?raw=true" style="width:90%;" ></img>
 
-> Slika 13. Ubuntu Server (VM): Uspješna prijava u Ubuntu Server OS
+> Slika 16. Ubuntu Server (VM): Uspješna prijava u Ubuntu Server OS
 
 Odmah na početnoj stranici možete vidjeti nekoliko korisnih informacija:
 
@@ -357,6 +380,32 @@ Odmah na početnoj stranici možete vidjeti nekoliko korisnih informacija:
 - Broj prijavljenih korisnika
 - ...
 
+#### Namještanje tipkovnice <!-- omit from toc -->
+
+Obzirom da ovdje ne možemo koristiti grafičko sučelje (samim time ni miš), sve interakcije s Ubuntu Serverom će se odvijati putem naredbenog retka i tipkovnice. Prema tome, važno je unaprijed ispravno namjestiti tipkovnicu tijekom instalacije.
+
+Testiraje tipkovnicu unosom nekoliko znakova, npr. `@`, `#`, `\`, `|` i sl. Ako vam se pokazuju neočekivani znakovi, potrebno je ponovno namjestiti tipkovnicu.
+
+Unesite naredbu:
+
+```bash
+→ sudo dpkg-reconfigure keyboard-configuration
+```
+
+Otvorit će vam se interaktivni CLI alat koji će vas voditi kroz proces ponovnog namještanja tipkovnice. Slijedite upute na ekranu i odaberite odgovarajuće opcije za vašu tipkovnicu.
+
+Nakon što ste završili, unesite:
+
+```bash
+sudo setupcon # kako biste primijenili promjene
+```
+
+ili _rebootajte_ virtualni stroj.
+
+```bash
+sudo reboot
+```
+
 <div style="page-break-after: always; break-after: page;"></div>
 
 # 3. Ubuntu Server
@@ -365,11 +414,11 @@ Uspješno smo instalirali Ubuntu Server unutar VirtualBoxa hipervizora na našem
 
 Kratki podsjetnik: naše okruženje sada izgleda ovako:
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_1.png?raw=true" style="width:60%; border-radius: 10px;" ></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_1.png?raw=true" style="width:50%; border-radius: 10px;" ></img>
 
-> Slika 14. Ilustracija hijerarhije između VirtualBox hipervizora i Ubuntu Server VM-a
+> Slika 17. Ilustracija hijerarhije između VirtualBox hipervizora i Ubuntu Server VM-a
 
-Rekli smo se naredbom `echo $0` možemo uvjeriti da koristimo _bash shell_. Također, možemo provjeriti verziju Ubuntu Servera pomoću sljedeće naredbe:
+Rekli smo se naredbom `echo $0` možemo uvjeriti da koristimo _bash shell_. Također, možemo provjeriti verziju Ubuntu Servera pomoću naredbe `lsb_release -a`:
 
 ```bash
 → echo $0 # aktivni shell
@@ -382,9 +431,9 @@ Ispis će izgledati otprilike ovako:
 -bash
 
 Distributor ID: Ubuntu
-Description:    Ubuntu 24.04.2 LTS
-Release:        24.04
-Codename:       noble
+Description:    Ubuntu 26.04 LTS
+Release:        26.04
+Codename:       resolutels
 ```
 
 Provjerite trenutni radni direktorij - trebali biste se nalaziti u home direktoriju:
@@ -404,7 +453,15 @@ Prebacite se u korijenski direktorij i provjerite sadržaj:
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/root-dir-lsla.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 15. Ubuntu Server (VM): Detaljni prikaz sadržaja korijenskog direktorija (`ls -la`)
+> Slika 18. Ubuntu Server (VM): Detaljni prikaz sadržaja korijenskog direktorija (`ls -la`)
+
+Također možete ipsrobati nekoliko osnovnih naredbi za ispis podataka o sustavu:
+
+- `uname -a` - ispisuje informacije o kernelu i operacijskom sustavu
+- `uptime` - ispisuje koliko je sustav aktivan od zadnjeg ponovnog pokretanja
+- `hostnamectl` - ispisuje naziv računala (hostname) i druge informacije o sustavu (npr. operacijski sustav, kernel, arhitektura procesora)
+- `lscpu` - ispisuje detaljnije informacije o CPU-u
+- `timedatectl status` - ispisuje informacije o datumu, vremenu i vremenskoj zoni
 
 ## 3.1 APT (Advanced Package Tool)
 
@@ -414,7 +471,7 @@ Unesite naredbu `apt` i pritisnite `Enter`. Trebali biste dobiti sljedeći ispis
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/apt.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 16. Ubuntu Server (VM): Prikaz metapodataka i osnovnih naredbi `apt` alata
+> Slika 19. Ubuntu Server (VM): Prikaz metapodataka i osnovnih naredbi `apt` alata
 
 U prikazu ćete vidjeti sljedeće informacije:
 
@@ -457,7 +514,7 @@ Vidjet ćete datoteku `ubuntu.sources` koja sadrži informacije o repozitorijima
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ls-la-ubuntu-sources.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 17. Ubuntu Server (VM): Ispis sadržaja `ubuntu.sources` datoteke
+> Slika 20. Ubuntu Server (VM): Ispis sadržaja `ubuntu.sources` datoteke
 
 Uočite dva zapisa u sljedećem formatu:
 
@@ -466,7 +523,7 @@ Types: deb
 URIS: http://ports.ubuntu.com/ubuntu-ports
 Suites: noble-security
 Components: main restricted universe multiverse
-Signed-By: /usr/share/keyring/ubuntu-archive-keyring.gpg
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 ```
 
 - `deb` označava da se radi o binarnom paketu (eng. _binary package_). Općenito govoreći, binarni paketi su već kompajlirani i spremni za instalaciju. Konkretno, `.deb` označava da se radi o Debian paketu (distribucija Linuxa na kojoj se temelji i sam Ubuntu). Ove pakete moguće je instalirati direktno, ili preuzimanjem i instalacijom putem `apt` alata.
@@ -486,7 +543,7 @@ Ako otvorite poveznicu u web pregledniku, **vidjet ćete datotečni sustav pohra
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/index-of-ubuntu-ports.png?raw=true" style="width:40%;" ></img>
 
-> Slika 18. Datotečni sustav javnog repozitorija - moguće ga je otvoriti na webu
+> Slika 21. Datotečni sustav javnog repozitorija - moguće ga je otvoriti na webu
 
 <hr>
 
@@ -506,7 +563,7 @@ Ova naredba će zahtijevati unos lozinke koju ste postavili prilikom instalacije
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-apt-update.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 19. Ubuntu Server (VM): Rezultat `apt update` naredbe - uočite da postoji 64 paketa koje možemo ažurirati
+> Slika 22. Ubuntu Server (VM): Rezultat `apt update` naredbe - uočite da postoji 64 paketa koje možemo ažurirati
 
 Ova naredba ustvari **ažurira lokalno pohranjenu listu dostupnih paketa i njihovih verzija** i preporučuje se pokrenuti prije instalacije ili ažuriranja paketa. Na taj način, `apt` zna koji su paketi dostupni za instalaciju, odnosno koje verzije paketa su dostupne.
 
@@ -530,7 +587,7 @@ Nakon što je nadogradnja završena, možemo ponovo pozvati naredbu `apt update`
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/upgrade-then-update-again.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 20. Ubuntu Server (VM): Nakon `apt upgrade` ponovo pozivamo naredbu `apt update` kako bismo provjerili koliko je paketa ažurirano
+> Slika 23. Ubuntu Server (VM): Nakon `apt upgrade` ponovo pozivamo naredbu `apt update` kako bismo provjerili koliko je paketa ažurirano
 
 Kako bismo instalirali novi paket koristimo naredbu `apt install`. Primjerice, želimo instalirati `nano` i `vim` CLI uređivače teksta.
 
@@ -549,7 +606,7 @@ Vidimo da su oba uređivača već instalirana na našem sustavu i najnovije verz
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-apt-install-nanovim.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 21. Ubuntu Server (VM): Instalacija `nano` i `vim` CLI uređivača
+> Slika 24. Ubuntu Server (VM): Instalacija `nano` i `vim` CLI uređivača
 
 Što ako izađe nova verzija nekog paketa?
 
@@ -618,7 +675,7 @@ U nastavku se nalazi tablica najčešće korištenih `apt` naredbi:
 - **Enkripcija**: Svi podaci koji se šalju između klijenta i poslužitelja su **enkriptirani**
 - **Autentifikacija**: SSH koristi različite **metode autentifikacije**, uključujući lozinke i javne ključeve
 - **Integritet**: SSH **osigurava da podaci nisu izmijenjeni** tijekom prijenosa
-- **Prijenos podataka**: SSH omogućava **siguran prijenos datoteka** između klijenta i poslužitelja putem protokola SCP (Secure Copy Protocol) i SFTP (SSH File Transfer Protocol)
+- **Prijenos podataka**: SSH omogućava **siguran prijenos datoteka** između klijenta i poslužitelja putem protokola [SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol) (Secure Copy Protocol), [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) (SSH File Transfer Protocol) ili [rsync](https://en.wikipedia.org/wiki/Rsync) alata
 
 SSH je široko korišten u administraciji sustava, a danas postoji mnogo različitih SSH klijenata i poslužitelja dostupnih za različite operacijske sustave. Najpoznatiji SSH klijent je `OpenSSH`, koji je uključen u većinu Linux distribucija, uključujući i Ubuntu Server.
 
@@ -628,15 +685,15 @@ Prema tome, naše računalo domaćina će biti **SSH klijent** (eng. _SSH client
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju%3A%20Uvod/screenshots/SSH_simplified_protocol_diagram-2.webp" style="width:70%;" ></img>
 
-> Slika 22. Ilustracija SSH protokola - https://www.ssh.com/academy/ssh
+> Slika 25. Ilustracija SSH protokola - https://www.ssh.com/academy/ssh
 
 ### 3.2.1 Instalacija OpenSSH poslužitelja
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/openssh.gif?raw=true" style="width:70%;" ></img>
 
-> Slika 23. OpenSSH je besplatan alat za udaljeno povezivanje putem SSH protokola
+> Slika 26. OpenSSH je besplatan alat za udaljeno povezivanje putem SSH protokola
 
-Unutar Ubuntu Servera ćemo instalirati [OpenSSH](https://www.openssh.com/) poslužitelj pomoću `apt` alata:
+**Unutar Ubuntu Servera** ćemo instalirati [OpenSSH](https://www.openssh.com/) poslužitelj pomoću `apt` alata:
 
 ```bash
 → sudo apt update
@@ -657,7 +714,7 @@ Argumentom `status` možemo dobiti status određenog servisa. U ovom slučaju, p
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/systemctl-status-ssh.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 24. Ubuntu Server (VM): Ispis statusa SSH servisa (SSH neaktivan)
+> Slika 27. Ubuntu Server (VM): Ispis statusa SSH servisa (SSH neaktivan)
 
 Ako je instalacija uspješno prošla, trebali biste vidjeti "OpenBSH Secure Shell server", međutim **vjerojatno nije pokrenut**, uočite: `Active: inactive (dead)`.
 
@@ -675,11 +732,11 @@ Nakon toga možemo ponovo provjeriti status:
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/sudo-system-start-ssh.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 25. Ubuntu Server (VM): Pokretanje SSH servisa (SSH aktivan)
+> Slika 28. Ubuntu Server (VM): Pokretanje SSH servisa (SSH aktivan)
 
 <hr>
 
-U Linux OS-u postoji [princip/pristup koji kaže da je "sve datoteka"](https://en.wikipedia.org/wiki/Everything_is_a_file). To znači da se gotovo sve – uključujući obične dokumente, direktorije, uređaje poput tvrdog diska, pa čak i mrežne priključke ili servise – tretira kao datoteka. Navedeno omogućuje jednostavnije i ujednačeno rukovanje svim tim resursima.
+U Linux OS-u postoji [princip/pristup koji kaže da je "sve datoteka"](https://en.wikipedia.org/wiki/Everything_is_a_file). To znači da se gotovo sve – uključujući obične dokumente, direktorije, uređaje poput tvrdog diska, **pa čak i mrežne priključke ili servise** – tretira kao datoteka. Navedeno omogućuje jednostavnije i ujednačeno rukovanje svim tim resursima.
 
 Kada pišemo bash skripte, vidjeli smo da često trebamo provjeriti što neka "datoteka" zapravo predstavlja. U tu svrhu smo koristili zastavice:
 
@@ -721,7 +778,7 @@ Možemo i navesti port koji nas zanima, primjerice, **SSH obično koristi port**
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/lsof-i-22.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 26. Ubuntu Server (VM): Ispis svih otvorenih datoteka i procesa koji koriste port 22 (SSH)
+> Slika 29. Ubuntu Server (VM): Ispis svih otvorenih datoteka i procesa koji koriste port 22 (SSH)
 
 ### 3.2.2. Povezivanje na SSH poslužitelj
 
@@ -746,21 +803,25 @@ Zapis naredbe je dosta kompleksan i dugačak, a u pravilu se sastoji od 2 dijela
    - **`Subnet masku`**: (`/24`) koja određuje veličinu mreže (u našem slušaju ukupno 254 uređaja može biti spojeno na istoj mreži budući da je mrežni dio maske fiksan za prvih 24 bita)
    - **`Broadcast adresu`** (`10.0.2.255`) kojom se šalju poruke svim uređajima na mreži
 
-O mrežama više na kolegiju [Mrežni sustavi](https://fipu.unipu.hr/fipu/predmet/mresus).
+O mrežama više na kolegiju [Mrežni sustavi](https://fipu.unipu.hr/fipu/predmet/mresus), sada se nećemo baviti detaljima o mrežama.
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ip-address.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 27. Ubuntu Server (VM): Ispis IP adrese virtualnog stroja naredbom ip address
+> Slika 30. Ubuntu Server (VM): Ispis IP adrese virtualnog stroja naredbom ip address
 
 Samo IP adresu mrežnog sučelja možemo dobiti i pomoću naredbe `hostname`:
 
 ```bash
-→ hostname -I
+→ hostname -I # vraća IPv4 i IPv6 adrese virtualnog mrežnog adaptera
 ```
 
-Do sad smo podesili SSH poslužitelj i znamo njegovu IP adresu. SSH klijent je već instaliran na vašem računalu domaćinu, a to je OpenSSH klijent (dodano za Windows 10 i 11). Drugi poznati SSH klijenti su PuTTY i MobaXterm.
+Do sad smo podesili SSH poslužitelj i znamo njegovu IP adresu. SSH klijent je već instaliran na vašem računalu domaćinu, a to je OpenSSH klijent (dodano za Windows 10 i 11). Drugi poznati SSH klijenti su [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) i [MobaXterm](https://mobaxterm.mobatek.net/).
 
-Kako bi se povezali na SSH poslužitelj, jednostavno otvorimo bilo koji terminal i unosimo `ssh` naredbu te naziv korisnika na VM-u i njegovu IP adresu.
+---
+
+#### Povezivanje na SSH poslužitelj
+
+Kako bi se povezali na SSH poslužitelj, jednostavno otvorimo **bilo koji terminal na domaćinu** i unosimo `ssh` naredbu te naziv korisnika na VM-u i njegovu IP adresu.
 
 **Sintaksa:**
 
@@ -780,24 +841,26 @@ Ipak, ako se pokušamo spojiti na ovaj način dobit ćemo grešku!
 ssh: connect to host 10.0.2.15 port 22: Operation timed out
 ```
 
-Prema zadanim postavkama, VirtualBox koristi **NAT mrežni adapter** za svoje virtualne strojeve. NAT (_eng. Network Address Translation_) je tehnologija koja omogućuje da više uređaja dijeli jednu javnu IP adresu. U ovom slučaju, VirtualBox koristi ugrađeni virtualni usmjerivač koji upravlja prometom između vašeg računala i virtualnog stroja.
+Prema zadanim postavkama, VirtualBox koristi [NAT mrežni adapter](https://en.wikipedia.org/wiki/Network_address_translation) za svoje virtualne strojeve. NAT (_eng. Network Address Translation_) je tehnologija koja omogućuje da više uređaja dijeli jednu javnu IP adresu (prednosti su štednja adresa i poboljšana sigurnost). U ovom slučaju, VirtualBox koristi ugrađeni virtualni usmjerivač (_eng. router_) koji upravlja prometom između vašeg računala i virtualnog stroja.
 
 To znači da:
 
 - Virtualni stroj nema izravno dostupnu IP adresu unutar lokalne mreže.
 - Domaćin ne može inicirati SSH vezu prema virtualnom stroju, jer je promet iz vanjske mreže prema "NAT-iranom" VM-u blokiran.
 
-Zamislite da je vaš VM „iza“ usmjerivača – baš kao što su vaša računala i pametni uređaji kod kuće iza kućnog routera. U tom slučaju, ne možete pristupiti VM-u izvan VirtualBoxa bez dodatne konfiguracije.
+Zamislite da je vaš VM "iza" usmjerivača – baš kao što su vaša računala i pametni uređaji kod kuće iza kućnog usmjerivača (routera). U tom slučaju, ne možete pristupiti VM-u izvan VirtualBoxa bez dodatne konfiguracije.
 
-**Ovaj problem možemo riješiti na 2 načina:**
+**Ovaj "problem" možemo riješiti na 2 načina:**
 
-**Rješenje 1**: Odrađujemo _port forwarding_ da bismo mogli pristupiti SSH poslužitelju na VM-u. Isto omogućuje da se promet s **određenog porta na domaćinu preusmjeri na određeni port na VM-u**.
+#### 1. Port forwarding na NAT mrežnom adapteru
+
+Odrađujemo _port forwarding_ da bismo mogli pristupiti SSH poslužitelju na VM-u. Isto omogućuje da se promet s **određenog porta na domaćinu preusmjeri na određeni port na VM-u**.
 
 Otvorite VirtualBox i otvorite postavke VM-a. Na vrhu ćete vidjeti odabir `Basic`, `Expert`. Odaberite `Expert` kako bi vam se otvorila dodatna opcija `Port Forwarding`. Odaberite `Network → Port Forwarding`.
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/port-forwarding.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 28. VirtualBox: Settings → Expert → Port Forwarding
+> Slika 31. VirtualBox: Settings → Expert → Port Forwarding
 
 #### Alat `ss`
 
@@ -836,7 +899,7 @@ Sada možemo zatvoriti VM i vratiti se u mrežne postavke VirtualBoxa. U `Port F
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/virtualbox/port-forwarding-adding-entry.png?raw=true"  style="width:70%; border-radius: 10px;" ></img>
 
-> Slika 29. VirtualBox: Dodavanje novog unosa za port forwarding (TCP: Host 2222 -> Guest 22)
+> Slika 32. VirtualBox: Dodavanje novog unosa za port forwarding (TCP: Host 2222 -> Guest 22)
 
 Nakon što ste dodali unos, pokrenite VM i ponovo provjerite status SSH poslužitelja.
 
@@ -844,7 +907,7 @@ Nakon što ste dodali unos, pokrenite VM i ponovo provjerite status SSH posluži
 
 Sada se možemo povezati na SSH poslužitelj putem SSH klijenta. U ovom slučaju, koristimo port `2222` na domaćinu koji je preusmjeren na port `22` na VM-u.
 
-Otvorite ponovo terminal. Više nećemo koristiti IP adresu VM-a, budući da kad koristimo _port forwarding_, na neki način ustvari govorimo VirtualBoxu da **preusmjeri sav promet koji dolazi s domaćina na portu `2222` prema VM-u na portu `22`**. Budući da u unosu iznad nismo unijeli IP adrese, VirtualBox će pravilo preusmjeravanja primijeniti samo na `localhost` adresu, odnosno `127.0.0.1`
+Otvorite ponovo terminal. Više nećemo koristiti IP adresu VM-a, budući da kad koristimo _port forwarding_, na neki način ustvari govorimo VirtualBoxu da **preusmjeri sav promet koji dolazi s domaćina na portu `2222` prema VM-u na portu `22`**. Budući da u unosu iznad nismo unijeli IP adrese, **VirtualBox će po defaultu pravilo preusmjeravanja primijeniti samo na `localhost` adresu**, odnosno `127.0.0.1`
 
 > 💡Hint: localhost predstavlja specijalnu IP adresu 127.0.0.1 koja se koristi za pristup mrežnim servisima koji se izvode na istom računalu koristeći loopback sučelje. [Pročitajte više...](https://en.wikipedia.org/wiki/Localhost)
 
@@ -862,15 +925,21 @@ Dobit ćete upozorenje da je poslužitelj nepoznat i da se ne može provjeriti n
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/host-ssh-successful-connect.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 30. Lokalno računalo: Uspješno povezivanje na SSH poslužitelj
+> Slika 33. Lokalno računalo: Uspješno povezivanje na SSH poslužitelj
 
 Nakon uspješne autentifikacije, trebali biste biti povezani na SSH poslužitelj i vidjeti iste uvodne informacije kao i na VM-u. Sada možete upravljati VM-om putem SSH klijenta, odnosno putem vašeg terminala na lokalnom računalu.
 
 <hr>
 
-**Rješenje 2**: drugo rješenje je promjena mrežnog adaptera VM-a iz `NAT` u `Bridged Adapter`. Bridged adapter omogućuje VM-u da se ponaša kao fizički uređaj unutar lokalne mreže. To znači da će VM dobiti svoju vlastitu IP adresu unutar lokalne mreže, a ne "NAT-iranu" adresu. Na taj način, možete pristupiti VM-u putem njegove IP adrese **bez potrebe za _port forwardingom_**.
+#### Rješenje 2: Promjena mrežnog adaptera u Bridged Adapter
+
+Drugo rješenje je promjena mrežnog adaptera VM-a iz `NAT` u `Bridged Adapter`. Bridged adapter omogućuje VM-u da se ponaša kao fizički uređaj unutar lokalne mreže. To znači da će VM dobiti svoju vlastitu IP adresu unutar lokalne mreže gdje ste povezani, a ne "NAT-iranu" adresu. Na taj način, možete pristupiti VM-u putem njegove IP adrese **bez potrebe za _port forwardingom_**.
 
 Zatvorite VM i otvorite postavke VM-a na VirtualBoxu. U `Network` odjeljku, promijenite `Attached to` opciju iz `NAT` u `Bridged Adapter`. To je to! Možete ostaviti naziv adaptera `en0: Wi-Fi`.
+
+<img src="./CleanShot 2026-05-08 at 09.02.38@2x.png" style="width:90%; border-radius: 10px;" ></img>
+
+> Slika 34. VirtualBox: Promjena mrežnog adaptera u Bridged Adapter
 
 Ponovno pokrenite virtualni stroj i provjerite njegovu IP adresu pomoću `ip a` ili `hostname -I` naredbe.
 
@@ -884,7 +953,7 @@ Uočit ćete da se IP adresa promijenila.
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ip-addr-bridged-adapter.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 31. Ubuntu Server (VM): IP adresa nakon promjene mrežnog adaptera u Bridged Adapter
+> Slika 35. Ubuntu Server (VM): IP adresa nakon promjene mrežnog adaptera u Bridged Adapter
 
 Pokrenite ponovo SSH poslužitelj. Sada se možemo direktno povezati na VM putem SSH klijenta koristeći njegovu IP adresu:
 
@@ -901,17 +970,17 @@ Ponovno će nas pitati da li želimo dodati javni ključ poslužitelja u našu S
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/ubuntu-server/ssh-successfull-connection-bridged.png?raw=true"  style="width:90%; border-radius: 10px;" ></img>
 
-> Slika 32. Lokalno računalo: Uspješno povezivanje na SSH poslužitelj (Bridged Adapter) - bez _port forwardinga_
+> Slika 36. Lokalno računalo: Uspješno povezivanje na SSH poslužitelj (Bridged Adapter) - bez _port forwardinga_
 
 Uspješno smo se povezali na virtualni stroj putem SSH klijenta! 🚀
 
-> **💡Hint**: Kako bismo pogledati listu javnih ključeva poznatih SSH poslužitelja, možemo otvoriti datoteku `~/.ssh/known_hosts` na našem lokalnom računalu. Ova datoteka sadrži popis svih poznatih SSH poslužitelja i njihovih javnih ključeva na koje smo se povezivali.
+> **💡Hint**: Kako bismo pogledati listu javnih ključeva poznatih SSH poslužitelja, možemo otvoriti konfiguracijsku datoteku `~/.ssh/known_hosts` na našem lokalnom računalu. Ova datoteka sadrži popis svih poznatih SSH poslužitelja i njihovih javnih ključeva na koje smo se povezivali.
 
 Okruženje koje smo sada postavili možemo prikazati sljedećom ilustracijom:
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_2.png?raw=true"  style="width:50%; border-radius: 10px;" ></img>
 
-> Slika 33. Ilustracija komunikacije između domaćina i VM-a putem SSH protokola
+> Slika 37. Ilustracija komunikacije između domaćina i VM-a putem SSH protokola
 
 I dalje izvodimo VM putem hipervizora VirtualBox, ali sada imamo mogućnost povezivanja putem SSH klijenta. Naše računalo je domaćin VM-a, ali istovremeno i klijent u kontekstu SSH veze. Na VM smo instalirali SSH poslužitelj koji omogućuje udaljeni pristup sustavu putem SSH protokola. Naše računalo domaćin koristi SSH klijent za povezivanje na definirani SSH poslužitelj.
 
@@ -925,7 +994,15 @@ U tom slučaju, našu situaciju možemo ilustrirati na sljedeći način:
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/vm-illustrations/vm-illustration_3.png?raw=true"  style="width:50%; border-radius: 10px;" ></img>
 
-> Slika 34. Ilustracija komunikacije između našeg računala i VM-a u Cloudu putem SSH protokola
+> Slika 38. Ilustracija komunikacije između našeg računala i VM-a u Cloudu putem SSH protokola
+
+#### Screenshot u virtualnom stroju
+
+Kako biste napravili screenshot unutar virtualnog stroja (treba će vam za ispite i zadaće), možete koristiti prečac `Host + E` (najčešće `Right Ctrl + E` ili `Left CMD + E` na Macu), ili odaberite `View → Take Screenshot` iz izbornika VirtualBoxa.
+
+<img src="./CleanShot 2026-05-07 at 23.57.39@2x.png" style="width:50%; border-radius: 10px;" ></img>
+
+> Slika 39. VirtualBox: Izrada screenshota unutar virtualnog stroja
 
 <div style="page-break-after: always; break-after: page;"></div>
 
