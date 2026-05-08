@@ -248,7 +248,7 @@ Jednom kad ste preuzeli ISO datoteku, otvorite VirtualBox i slijedite sljedeće 
 2. Odaberite ISO datoteku koju ste preuzeli
 3. Type postavite na `"Linux"`, a Subtype na `Ubuntu` (ako se ne postavi automatski)
 
-<img src="./CleanShot 2026-05-07 at 22.57.39@2x.png" style="width:100%; border-radius: 10px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/CleanShot%202026-05-07%20at%2022.57.39@2x.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
 
 > Slika 6. VirtualBox: Izrada novog virtualnog stroja
 
@@ -262,7 +262,7 @@ Za naše potrebe, možemo dodijeliti `2 GB RAM-a` i `2` procesorske jezgre. Opci
 
 Potrebno je još odrediti veličinu virtualnog diska. Prisjetite da virtualizacijom mi ustvari "rentamo" resurse našeg računala (domaćina), pa tako i prostor na disku. U ovom slučaju, odabrat ćemo opciju `"Create a Virtual Hard Disk Now"` i dodijeliti `20` GB prostora.
 
-<img src="./CleanShot 2026-05-07 at 22.55.05@2x.png" style="width:100%; border-radius: 10px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/CleanShot%202026-05-07%20at%2022.55.05@2x.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
 
 > Slika 8. Izrada virtualnog diska i dodjela prostora (25 GB nam je sasvim dovoljno)
 
@@ -287,7 +287,7 @@ Host key na macOS-u: `Left Command`
 
 Preporuka je postaviti VirtualBox u **Scaled mode** kako bi se prozor virtualnog stroja prilagodio veličini zaslona. To možete učiniti pritiskom na `Host key` + `C` (npr. `Right Ctrl` + `C` na Windowsu ili `Left Command` + `C` na macOS-u).
 
-<img src="./CleanShot 2026-05-07 at 23.58.52@2x.png" style="width:50%; border-radius: 10px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/CleanShot%202026-05-07%20at%2023.58.52@2x.png?raw=true" style="width:50%; border-radius: 10px;" ></img>
 
 > Slika 10. VirtualBox: Uključivanje Scaled Mode prikaza
 
@@ -345,7 +345,7 @@ Please remove the installation medium, then press ENTER:
 
 Zatvorite VM i odaberite opciju `Settings` (ikona zupčanika ⚙️) u VirtualBoxu. U lijevom izborniku odaberite `Storage`, a zatim odaberite `Empty` sliku diska. Jednostavno ju uklonite i odaberite `OK`.
 
-<img src="./CleanShot 2026-05-07 at 23.17.28@2x.png" style="width:100%; border-radius: 10px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/CleanShot%202026-05-07%20at%2023.17.28@2x.png?raw=true" style="width:100%; border-radius: 10px;" ></img>
 
 > Slika 15. VirtualBox: Uklanjanje ISO slike diska nakon instalacije
 
@@ -937,7 +937,7 @@ Drugo rješenje je promjena mrežnog adaptera VM-a iz `NAT` u `Bridged Adapter`.
 
 Zatvorite VM i otvorite postavke VM-a na VirtualBoxu. U `Network` odjeljku, promijenite `Attached to` opciju iz `NAT` u `Bridged Adapter`. To je to! Možete ostaviti naziv adaptera `en0: Wi-Fi`.
 
-<img src="./CleanShot 2026-05-08 at 09.02.38@2x.png" style="width:90%; border-radius: 10px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/CleanShot%202026-05-08%20at%2009.02.38@2x.png?raw=true" style="width:90%; border-radius: 10px;" ></img>
 
 > Slika 34. VirtualBox: Promjena mrežnog adaptera u Bridged Adapter
 
@@ -1000,7 +1000,7 @@ U tom slučaju, našu situaciju možemo ilustrirati na sljedeći način:
 
 Kako biste napravili screenshot unutar virtualnog stroja (treba će vam za ispite i zadaće), možete koristiti prečac `Host + E` (najčešće `Right Ctrl + E` ili `Left CMD + E` na Macu), ili odaberite `View → Take Screenshot` iz izbornika VirtualBoxa.
 
-<img src="./CleanShot 2026-05-07 at 23.57.39@2x.png" style="width:50%; border-radius: 10px;" ></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS4%20-%20Rad%20na%20Virtualnom%20stroju:%20Uvod/screenshots/CleanShot%202026-05-07%20at%2023.57.39@2x.png?raw=true" style="width:50%; border-radius: 10px;" ></img>
 
 > Slika 39. VirtualBox: Izrada screenshota unutar virtualnog stroja
 
