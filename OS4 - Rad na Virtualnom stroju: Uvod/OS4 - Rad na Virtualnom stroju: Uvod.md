@@ -455,7 +455,7 @@ Prebacite se u korijenski direktorij i provjerite sadržaj:
 
 > Slika 18. Ubuntu Server (VM): Detaljni prikaz sadržaja korijenskog direktorija (`ls -la`)
 
-Također možete ipsrobati nekoliko osnovnih naredbi za ispis podataka o sustavu:
+Također možete isprobati nekoliko osnovnih naredbi za ispis podataka o sustavu:
 
 - `uname -a` - ispisuje informacije o kernelu i operacijskom sustavu
 - `uptime` - ispisuje koliko je sustav aktivan od zadnjeg ponovnog pokretanja
