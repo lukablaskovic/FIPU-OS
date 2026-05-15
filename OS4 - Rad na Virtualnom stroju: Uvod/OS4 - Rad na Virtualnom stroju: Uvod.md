@@ -1011,7 +1011,7 @@ Kako biste napravili screenshot unutar virtualnog stroja (treba će vam za ispit
 1. **Preuzmite i instalirajte** VirtualBox na svoje računalo.
 
 2. **Preuzmite i instalirajte** Ubuntu Server (LTS verziju) te **izradite novi virtualni stroj**.  
-   Tijekom instalacije Ubuntu Servera, za `username` unesite svoje ime i prezime u formatu: `ime.prezime`.
+   Tijekom instalacije Ubuntu Servera, za `username` unesite svoje ime i prezime u formatu: `imeprezime`.
 
 3. Nakon instalacije, **napravite _screenshot_ početnog zaslona** Ubuntu Servera na kojem se jasno vidi vaše korisničko ime i naziv virtualnog stroja.
 
@@ -1022,8 +1022,8 @@ Kako biste napravili screenshot unutar virtualnog stroja (treba će vam za ispit
 - Pronađite IP adresu virtualnog stroja i provjerite koji su mrežni portovi otvoreni.  
   _Kako ćete provjeriti koji port koristi SSH poslužitelj?_
 - Povežite se na SSH poslužitelj putem SSH klijenta na dva načina:
-  - korištenjem **NAT adaptera i _port forwardinga_**
-  - korištenjem **Bridged adaptera**
+  - korištenjem virtualnog mrežnog adaptera u **NAT mode i** uz odgovarajući **_port forwarding_**
+  - korištenjem virtualnog mrežnog adaptera u **Bridged mode**
 - Kada uspostavite SSH vezu s poslužiteljem, **napravite _screenshot_ terminala domaćina (SSH klijenta)**.
 
 Putem domaćina, **izradite novu bash skriptu** unutar virtualnog stroja, u direktoriju `/home/username/` (zamijenite `username` svojim korisničkim imenom). Skripta treba napraviti **detaljan ispis svih datoteka** (uključujući skrivene) iz korijenskog direktorija VM-a (`/`).
