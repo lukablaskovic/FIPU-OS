@@ -70,7 +70,7 @@ Recimo da svaka od tih funkcija ima različite zahtjeve za konfiguracijom:
 - Aplikacija za krajnje korisnike zahtijeva Linux operacijski sustav i veliku procesorsku snagu kako bi podnijela veliki broj korisnika na web stranici
 - interna poslovna aplikacija zahtijeva iOS i više radne memorije (RAM)
 
-U fizičkom svijetu, tvrtka bi trebala kupiti tri fizička poslužitelja, svaki s različitim specifikacijama. Navedeno zahtijeva **visoke inicijalne troškove**, a održavanje i nadogradnje se provode za svaki stroj pojedinačno. Također, tvrtka ne možemo optimalno koristiti resurse, budući da samim posjedovanjem fizičkih poslužitelja troši električnu energiju i prostor, plaća 100% troškova održavanja, ako ustvari im je potreban samo dio njihove pohrane i procesorske snage.
+Tada bi tvrtka bi trebala kupiti tri fizička poslužitelja, svaki s različitim specifikacijama. Navedeno zahtijeva **visoke inicijalne troškove**, a održavanje i nadogradnje se provode za svaki stroj pojedinačno. Također, tvrtka ne možemo optimalno koristiti resurse, budući da samim posjedovanjem fizičkih poslužitelja troši električnu energiju i prostor, plaća 100% troškova održavanja, ako ustvari im je potreban samo dio njihove pohrane i procesorske snage.
 
 **Prednosti virtualizacije:**
 
