@@ -5,15 +5,15 @@
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
+<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; border-radius: 10px; box-shadow: none !important;"></img>
 
 # (5) Rad na Virtualnom stroju: Naprednije teme
 
 <img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-OS/refs/heads/main/icons/OS5.png" style="width:9%; border-radius: 8px; float:right;"></img>
 
 <div style="float: clear; margin-right:5px;">
-Procesi predstavljaju aktivne instance programa koji se izvršavaju unutar operacijskog sustava. U višezadaćnim operacijskim sustavima, što uključuje sve suvremene računalne sustave, procesor se brzo prebacuje između više procesa, omogućujući tako istovremeno i konkurentno izvođenje različitih programa.
-Operacijski sustav ima ključnu ulogu u organizaciji i optimizaciji rada sustava – on upravlja dostupnim resursima te raspodjeljuje procesorsko vrijeme među različitim procesima i njihovim dretvama. U ovoj skripti pružit ćemo uvod u upravljanje procesima i dretvama, te upoznati osnovne alate koji se koriste za njihovo praćenje i kontrolu u Linux operacijskom sustavu.
+Procesi predstavljaju aktivne instance programa koji se izvršavaju unutar operacijskog sustava. U višezadaćnim operacijskim sustavima, što uključuje sve suvremene računalne sustave, procesor se brzo prebacuje između više procesa, omogućujući tako paralelno i konkurentno izvođenje različitih programa.
+Operacijski sustav ima ključnu ulogu u organizaciji i optimizaciji rada sustava – on upravlja dostupnim resursima te raspodjeljuje procesorsko vrijeme među različitim procesima i njihovim dretvama. U ovoj skripti napravit ćemo uvod u upravljanje procesima i dretvama, te upoznati osnovne alate koji se koriste za njihovo praćenje i kontrolu na Linux OS-u.
 Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servisima – pozadinskim procesima koji se automatski pokreću prilikom dizanja sustava i omogućuju kontinuiran rad ključnih funkcionalnosti operacijskog sustava.
 
 </div>
@@ -21,7 +21,7 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 28.5.2025.**
+**🆙 Posljednje ažurirano: 28.5.2026.**
 
 ## Sadržaj
 
@@ -30,27 +30,31 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
   - [Sadržaj](#sadržaj)
 - [1. Upravljanje procesima](#1-upravljanje-procesima)
   - [1.1 Interaktivni pregled procesa (`top`/`htop`)](#11-interaktivni-pregled-procesa-tophtop)
-      - [Alat `top`](#alat-top)
-      - [Alat `htop`](#alat-htop)
+    - [Alat `top`](#alat-top)
+      - [Tumačenje stupaca u `top`/`htop` alatima:](#tumačenje-stupaca-u-tophtop-alatima)
+      - [Prioritetni raspon](#prioritetni-raspon)
+    - [Alat `htop`](#alat-htop)
+      - [Stanja procesa](#stanja-procesa)
   - [Zadatak 1: Tumačenje procesa](#zadatak-1-tumačenje-procesa)
-  - [1.2 Programske dretve](#12-programske-dretve)
-      - [Alat `kill`](#alat-kill)
-      - [Alati `pidof` i `pgrep`](#alati-pidof-i-pgrep)
-      - [Alat `pkill`](#alat-pkill)
-  - [1.3 Alat `nice`](#13-alat-nice)
+  - [1.2 Hijerarhija procesa (`PPID`, `fork`, `exec`)](#12-hijerarhija-procesa-ppid-fork-exec)
+  - [1.3 Programske dretve](#13-programske-dretve)
+    - [Alat `kill`](#alat-kill)
+    - [Alati `pidof` i `pgrep`](#alati-pidof-i-pgrep)
+    - [Alat `pkill`](#alat-pkill)
+  - [1.4 Alat `nice`](#14-alat-nice)
   - [Zadatak 2: Upravljanje procesima](#zadatak-2-upravljanje-procesima)
 - [2. Upravljanje korisnicima i grupama](#2-upravljanje-korisnicima-i-grupama)
   - [2.1 Naredba `useradd`](#21-naredba-useradd)
-      - [Preusmjeravanje (eng. piping)](#preusmjeravanje-eng-piping)
+    - [Preusmjeravanje (eng. piping)](#preusmjeravanje-eng-piping)
   - [2.2. Tablica čestih zastavica naredbe `useradd`](#22-tablica-čestih-zastavica-naredbe-useradd)
   - [2.3 Naredba `usermod`](#23-naredba-usermod)
   - [2.4. Tablica čestih zastavica naredbe `usermod`](#24-tablica-čestih-zastavica-naredbe-usermod)
   - [2.5 Naredba `userdel`](#25-naredba-userdel)
   - [Zadatak 3: Upravljanje korisnicima i grupama](#zadatak-3-upravljanje-korisnicima-i-grupama)
-- [3. Dozvole datoteka (eng. file permissions)](#3-dozvole-datoteka-eng-file-permissions)
-      - [Alat `chown`](#alat-chown)
+- [3. Dozvole datoteka (eng. file permissions)](#3-dozvole-datoteka-eng-file-permissions) - [Dozvole direktorija i `umask`](#dozvole-direktorija-i-umask) - [Alat `chown`](#alat-chown)
   - [Zadatak 4: Dozvole datoteka](#zadatak-4-dozvole-datoteka)
 - [4. Upravljanje servisima](#4-upravljanje-servisima)
+  - [4.1 Stanje servisa i logovi](#41-stanje-servisa-i-logovi)
   - [Zadatak 5: Upravljanje servisima](#zadatak-5-upravljanje-servisima)
 - [Zadaci za Vježbu 5](#zadaci-za-vježbu-5)
 
@@ -66,19 +70,19 @@ Osim samog programa, proces sadrži (enkapsulira) i sve druge resurse potrebne z
 
 - **adresni prostor** (eng. <i>address space</i>) - dio memorije koji proces koristi
 - **skup otvorenih datoteka** (eng. <i>open files</i>) - datoteke koje proces koristi
-- **deskriptori procesa** (eng. <i>process descriptors</i>) - informacije o procesu, kao što su PID (eng. <i>process ID</i>), UID (eng. <i>user ID</i>), GID (eng. <i>group ID</i>) i drugi atributi
-- **varijable okoline** (eng. <i>environment variables</i>) - varijable koje proces koristi
-- **informacije o procesoru** (eng. <i>CPU</i>) - trenutno stanje procesora (registri, brojač instrukcija, itd.) ako je proces u stanju izvođenja
+- **deskriptori procesa** (eng. <i>process descriptors</i>) - informacije o procesu, kao što su PID (eng. <i>process ID</i>), UID (eng. <i>user ID</i>), GID (eng. <i>group ID</i>) i dr.
+- **varijable okoline** (eng. <i>environment variables</i>) - varijable koje proces koristi (npr. `PATH`, `HOME`, `USER`, itd.)
+- **informacije o procesoru** (eng. <i>CPU</i>) - trenutno stanje procesora (npr. registri, brojač instrukcija; ako je proces u stanju izvođenja)
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/os-process-wiki.jpg?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/os-process-wiki.jpg?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼️ Računalni program je skup instrukcija pohranjen na disku, dok proces predstavlja egzekuciju (realizaciju) tog programa. Naravno, za realizaciju je potrebno više od samih instrukcija (programskog koda)
+> Slika 1. Računalni program je skup instrukcija pohranjen na disku, dok proces predstavlja egzekuciju (realizaciju) tog programa. Naravno, za realizaciju je potrebno više od samih instrukcija (programskog koda)
 
-**Višezadaćnost** (eng. <i>multitasking</i>) je metoda koja dozvoljava izvođenje više procesa istovremeno - konkurentno (_eng. concurrent_). U višezadaćnom operacijskom sustavu, novi procesi mogu biti stvoreni i izvršavati se paralelno s postojećim procesima.
+**Višezadaćnost** (_eng. multitasking_) je mogućnost operacijskog sustava da upravlja izvođenjem više procesa ili zadataka u istom vremenskom razdoblju. Ti se procesi mogu izvoditi [konkurentno](<https://en.wikipedia.org/wiki/Concurrency_(computer_science)>) (_eng. concurrently_), pri čemu operacijski sustav **brzo prebacuje procesor između njih, stvarajući dojam istovremenog izvođenja**. Na višejezgrenim sustavima neki se procesi mogu izvoditi i stvarno [paralelno](https://en.wikipedia.org/wiki/Parallel_computing) (eng. _in parallel_), odnosno istodobno na različitim jezgrama procesora.
 
-Svaka jezgra procesora (_eng. CPU core_) može izvršavati samo jedan proces u jednom trenutku. Međutim, višezadaćnost dozvoljava procesoru da se **brzo prebacuje (_eng. switch_) između različitih procesa bez čekanja da jedan proces završi**.
+U višezadaćnom operacijskom sustavu novi procesi mogu se stvarati i izvršavati dok se postojeći procesi još uvijek izvode.
 
-Mehanizam kojim se ostvaruje ovo prebacivanje između procesa naziva se _context switching_. Termin se koristi i u psihologiji, gdje se, baš kao i u računalstvu, koristi za opisivanje prebacivanja između različitih zadataka, projekata ili aktivnosti. Premda prema nekim istraživanjima, "biološki" _context switching_ [često dovodi do smanjenja produktivnosti](https://asana.com/resources/context-switching), što definitivno nije slučaj u računalstvu.
+Mehanizam kojim se ostvaruje ovo prebacivanje između procesa naziva se **_context switching_**. Termin se koristi i u psihologiji, gdje se, baš kao i u računalstvu, koristi za opisivanje prebacivanja između različitih zadataka, projekata ili aktivnosti. Premda prema nekim istraživanjima, "biološki" _context switching_ [često dovodi do smanjenja produktivnosti](https://asana.com/resources/context-switching), dok je u računalstvu nužan dio višezadaćnosti. Ipak, ipak ima određeni procesorski trošak. Ako je prebacivanje konteksta prečesto, može smanjiti ukupnu učinkovitost sustava.
 
 Glavna zadaća OS-a za vrijeme višezadaćnosti je učinkovito upravljanje resursima i raspodjela vremena procesora između različitih procesa.
 
@@ -90,11 +94,18 @@ Podignut ćemo naš virtualni stroj i Ubuntu Server. Kako bi provjerili sve proc
 → ps aux
 ```
 
+- `ps` - naredba za prikaz informacija o procesima
+- `a` - prikazuje procese svih korisnika
+- `u` - prikazuje procese u korisničkom formatu (s dodatnim informacijama)
+- `x` - prikazuje procese koji nisu vezani za terminal
+
 Dobit ćemo detaljni tablični prikaz svih aktivnih procesa, možemo rezultat proslijediti i kroz naredbu `less` kako bi mogli _proscrollati_:
 
 ```bash
-→ ps aux | less
+→ ps aux | less # preusmjeri rezultat naredbe ps aux u naredbu less
 ```
+
+> **💡Hint**: ovo se zove preusmjeravanje (eng. _piping_) i koristi se za prosljeđivanje rezultata jedne naredbe kao ulaz druge naredbe. Osim naredbe `less`, možemo koristiti i `more` (ona dozvoljava scrollanje samo prema dolje) te naredbe `head` i `tail` (koje prikazuju samo prvih odnosno zadnjih n redaka rezultata).
 
 Međutim, rekli smo da u višezadaćnom operacijskom sustavu procesor vrlo često prebacuje (skače) između različitih procesa. Samim time, procesi se mogu nalaziti u različitim stanjima. Naredba `ps` ne daje nam mogućnost da pratimo promjene stanja procesa, već daje **_snapshot_ procesa u trenutku kada je naredba izvršena**.
 
@@ -110,7 +121,7 @@ Kako bi pratili promjene stanja procesa, možemo koristiti ugrađeni alat `top`.
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/top.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼 Rezultat naredbe `top` je interaktivni prozor koji prikazuje dinamičku listu procesa u realnom vremenu
+> Slika 2. Rezultat naredbe `top` je interaktivni prozor koji prikazuje dinamičku listu procesa u realnom vremenu
 
 Na vrhu prozora možemo vidjeti nekoliko informacija o sustavu, uključujući:
 
@@ -122,47 +133,61 @@ Na vrhu prozora možemo vidjeti nekoliko informacija o sustavu, uključujući:
 
 - `MiB Swap` - ukupna i slobodna _swap_ memorija u mebibajtovima (_MiB_)
 
-> **💡Napomena:** MebiByte nije isto što i Megabyte.
-> `1 MB = 1,000,000 bajtova (B) = 1000 × 1000 B`,
-> `1 MiB = 1,048,576 B = 1024 × 1024 B`.
-> Iako su obje jedinice vrlo slične i često se koriste naizmjenično u svakodnevnoj komunikaciji, postoji jasna tehnička razlika između njih. Megabyte (MB) koristi decimalni sustav (baza 10), dok Mebibyte (MiB) koristi binarni sustav (baza 2).
-> Mebibyte (MiB) i slične binarne jedinice (Kibibyte _KiB_, Gibibyte _GiB_, itd.) definirala je Međunarodna elektrotehnička komisija (IEC) još 1998. godine kako bi se izbjegla zabuna. Ove jedinice se češće koriste u Linux operativnim sustavima, gdje se preciznije prikazuje stvarna količina memorije. S druge strane, Windows, macOS i proizvođači hardvera uglavnom koriste decimalne jedinice – što nas dovodi do zanimljivog pitanja:
-> **Jeste li se ikad pitali zašto dobijete manje memorije nego što ste platili?**
-> Primjerice: Kupite 512 GB SSD, ali vam računalo pokazuje oko 475 "GB" slobodne memorije. "GB" je u ovom slučaju namjerno pod navodnim znakovima jer se ustvari radi o 475 GiB (Gibibyte). Razlog tome je što proizvođači hardvera iz marketinških (dakle financijskih) razloga koriste decimalni sustav za prikazivanje kapaciteta, dok operacijski sustavi koriste binarni sustav.
-> Na primjer, `1 GiB = 1024 MiB, dok 1 GB = 1000 MB`. Dakle, 512 GB je uistinu oko 476 GiB, i to nije greška, već druga mjerna jedinica!
+> **💡 Napomena:** MebiByte nije isto što i Megabyte.
+>
+> `1 MB = 1,000,000 B = 1000 × 1000 B`  
+> `1 MiB = 1,048,576 B = 1024 × 1024 B`
+>
+> Megabyte (MB) koristi decimalni sustav, dok Mebibyte (MiB) koristi binarni sustav. Binarne jedinice poput KiB, MiB i GiB definirala je IEC 1998. godine kako bi se izbjegla zabuna.
+>
+> Zato SSD od 512 GB može biti prikazan kao približno 476 "GB". Proizvođači kapacitet najčešće iskazuju decimalno (baza 10):
+>
+> `512 GB = 512,000,000,000 B`
+>
+> dok neki operacijski sustavi i alati prostor računaju binarno (baza 2):
+>
+> `512,000,000,000 / 1024³ ≈ 476.84 GiB`
+>
+> To nije greška, nego posljedica korištenja različitih mjernih jedinica i načina prikaza.
 
 <hr>
 
-Ako pogledate prikaz procesa, uočite nekoliko važnijih stupaca:
+##### Tumačenje stupaca u `top`/`htop` alatima:
 
 - `PID` - **jedinstveni identifikator procesa** (eng. <i>Process ID</i>)
 - `USER` - **korisnik** koji pokreće proces
 - `PR` - **prioritet procesa** (eng. <i>Process Priority</i>). **Veći broj znači manji prioritet**.
-  - Na primjer, `20` je **manji prioritet** od `10`, a raspon je tipično od `0` do `20`.
-  - Vrijednost `0` je **najviši prioritet**, dok je `20` najniži.
-  - `PR` se za _user-space_ (normalne) procese računa kao: `PR = 20 + NI`, gdje je `NI` _nice value_ procesa.
+  - Na primjer, `20` je **manji prioritet** od `10`, a za normalne procese raspon je tipično od `0` do `39`.
+  - Vrijednost `0` je **najviši prioritet među normalnim procesima**, dok je `39` najniži.
+  - `PR` se za tzv. _user-space_ (normalne) procese računa kao: `PR = 20 + NI`, gdje je `NI` _nice value_ procesa.
 - `NI` - **_"nice value"_** - [još jedan "princip" određivanja prioriteta procesa](<https://en.wikipedia.org/wiki/Nice_(Unix)>).
   - Tipično se koristi za određivanje prioriteta procesa koji nisu _real-time_ procesi, a iznosi između `-20` i `19` gdje `-20` predstavlja najviši prioritet, a `19` najniži.
-- `VIRT` - ukupna **virtualna memorija** koju proces
-- `RES` - **fizička memorija** koju proces koristi
-- `SHR` - **dijeljena memorija** koju proces koristi
+- `VIRT` - ukupna **virtualna adresna memorija** procesa. Uključuje sav adresni prostor koji je procesu mapiran: stvarno korišten RAM, memoriju koja može biti u swapu, mapirane datoteke, učitane biblioteke te rezerviranu memoriju koja možda još nije fizički zauzeta.
+
+- `RES` - **rezidentna memorija** procesa, tj. dio memorije koji se trenutno nalazi u fizičkom RAM-u. Ne uključuje memoriju koja je trenutno u swapu. Važno: `RES` može uključivati i dijeljene stranice memorije, pa nije uvijek “privatna” potrošnja procesa.
+
+- `SHR` - dio rezidentne memorije koji je **potencijalno dijeljen** s drugim procesima, npr. zajedničke biblioteke ili mapirane datoteke. To ne znači nužno da se sva ta memorija u tom trenutku stvarno dijeli, nego da može biti dijeljena.
 - `S` - **stanje procesa** (eng. <i>Process State</i>) - više o tome u nastavku
 - `%CPU` - **postotak CPU-a** koji proces koristi
-- `%MEM` - **postotak RAM-a** koji proces koristi
+- `%MEM` označava koliki postotak ukupne fizičke memorije (RAM-a) zauzima proces.
 - `TIME+` - ukupno procesorsko vrijeme koje je proces koristio od pokretanja
 - `COMMAND` - **naziv i argumenti naredbe koja je pokrenula proces**
 
 **Određivanje prioriteta procesa** je važno jer OS koristi ovu vrijednost kako bi odredio koji procesi trebaju dobiti više resursa i procesorskog vremena.
 
+---
+
 **📌Analogija**: Zamislimo računalo kao kuhinju u restoranu, a procese kao narudžbe koje treba pripremiti.
 
 Recimo da su neke narudžbe super hitne (npr. za VIP goste), njih ćemo nazivati **_real-time_ procesima**, dok su ostale narudžbe manje hitne i mogu čekati malo duže (npr. narudžbe za obične, non-VIP goste).
 
+##### Prioritetni raspon
+
 Sljedeća skala ilustrira **prioritetni raspon** (_eng. Priority range_) koji koristi Linux kernel za upravljanje procesima (skala se može razlikovati od distribucije do distribucije, ali generalno je slična):
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/priority-range-linux-kernel.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/priority-range-linux-kernel.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼 Prioritetni raspon koji koristi Linux kernel. Izvor: https://blogs.oracle.com/linux/post/task-priority
+> Slika 3. Prioritetni raspon koji koristi Linux kernel. Izvor: https://blogs.oracle.com/linux/post/task-priority
 
 > **💡Napomena:** navedena skala predstavlja interni raspon prioriteta koji koristi Linux kernel, a ne korisnički prikaz koji vidimo u alatima poput `top` ili `htop`. Odnosno, ako naš proces ima `PR = 20`, to **ne znači** da je njegov prioritet `20` prema skali i da se radi o _real-time_ procesu!
 
@@ -171,7 +196,7 @@ Uočite podjelu na skali:
 - **Real-time** procesi (lijeva strana) imaju visoki prioritet - između `0` i `99`, gdje `0` predstavlja najviši prioritet.
 
 - **Normalni (nice)** procesi (desna strana) imaju niži prioritet - između `100` i `139`, gdje `139` predstavlja najniži prioritet. Ovo su naši obični procesi (ili obični _nice_ gosti kojima se ne žuri). Oni će čekati koliko god treba međutim, neki su malo nestrpljivi i žele da im se narudžba pripremi malo brže!
-  - **_nice_** procesi imaju interni prioritet između `-20` i `+19`, gdje `-20` predstavlja goste (_taskove_) koji su nervozni i pomalo škrti po pitanju procesorske snage, dok `+19` predstavlja drage goste koji su strpljivi i spremni su prepustiti procesorsku snagu drugim gostima.
+  - **_nice_** procesi imaju _nice_ vrijednost između `-20` i `+19`, gdje `-20` predstavlja goste (_taskove_) koji su nervozni i pomalo škrti po pitanju procesorske snage, dok `+19` predstavlja drage goste koji su strpljivi i spremni su prepustiti procesorsku snagu drugim gostima.
 
 **Linux će uvijek prvo obraditi _real-time_ procese.**
 
@@ -181,9 +206,10 @@ Uočite podjelu na skali:
 
 Dakle:
 
-- proces gdje je `NI = 0` će imati `PR = 20` (tzv. **zadani prioritet**)
-- proces gdje je `NI = 10` će imati `PR = 30` (**manji prioritet od zadanog**)
-- proces gdje `NI = -20` će imati `PR = 0` (**najveći prioritet među normalnim procesima**)
+- Normalni procesi koriste **nice** vrijednost u rasponu od `-20` do `+19`.
+- `nice = -20` znači da je proces “manje ljubazan” prema ostalima, odnosno želi dobiti više procesorskog vremena.
+- `nice = 0` je zadana vrijednost za obične procese.
+- `nice = +19` znači da je proces “vrlo ljubazan” i spreman je prepustiti procesorsko vrijeme drugim procesima.
 
 Uočit ćete da neki procesi imaju `PR < 0`, što najvjerojatnije predstavlja pogrešku u prikazu ili indikaciju da se radi o _real-time_ procesu.
 
@@ -199,7 +225,7 @@ Moderniji alat koji se može koristiti za praćenje procesa je `htop`, koji je n
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼 Moderniji interaktivni prikaz aktivnih procesa koristeći naredbu `htop`.
+> Slika 4. Moderniji interaktivni prikaz aktivnih procesa koristeći naredbu `htop`.
 
 Ako nije instaliran, možete ga instalirati ručno:
 
@@ -213,11 +239,11 @@ Rekli smo da je praktično koristiti `htop` jer pruža i jednostavnije sučelje 
 
 - `F3` - pretraživanje procesa prema naredbi i argumentu (zadano ponašanje), primjer: `Search: python3`
 - `F6` - sortiranje procesa prema različitim kriterijima, primjer: `SortBy: CPU%`
-- `F4` - sortiranje procesa prema naredbi i argumentu (zadano ponašanje), primjer: `Filter: ModemManager`
+- `F4` - filtriranje procesa prema naredbi i argumentu (zadano ponašanje), primjer: `Filter: ModemManager`
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-filter.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ Primjer filtriranja `python3` procesa u `htop` alatu.
+> Slika 5. Primjer filtriranja `python3` procesa u `htop` alatu.
 
 Što se tiče memorije, možemo uočiti 3 glavne kategorije:
 
@@ -233,6 +259,8 @@ Rekli smo da je praktično koristiti `htop` jer pruža i jednostavnije sučelje 
 - _Primjer_: Kada koristimo web preglednik i otvorimo puno kartica, OS može neaktivne kartice "premjestiti" u _swap_ memoriju kako bi oslobodio fizičku memoriju za aktivne kartice.
 - Virtualna memorija uključuje i memoriju koju aktivni proces može koristiti, ali nije direktno prisutna u kompajliranom programu, npr. dijeljene biblioteke, konfiguracijske datoteke, druge OS-level datoteke itd.
 
+> Više o _swap_ memoriji možete pročitati [ovdje](https://www.youstable.com/hr/blog/swap-memory-in-linux/).
+
 **2. Fizička memorija (RES)** (_eng. Resident Set Size / Physical Memory_) predstavlja stvarnu količinu radne memorije (RAM) koju proces trenutno koristi. Drugim riječima, predstavlja količinu _non-swapped_ memorije koju proces trenutno okupira u fizičkoj memoriji.
 
 - ova vrijednost direktno utječe na performanse sustava i vrlo je važna metrika za praćenje.
@@ -241,6 +269,8 @@ Rekli smo da je praktično koristiti `htop` jer pruža i jednostavnije sučelje 
 **3. Dijeljena memorija (SHR)** (_eng. Shared Memory_) predstavlja količinu fizičke (`RES`) memorije koju proces dijeli s drugim procesima u sustavu. Ova vrijednost je uvijek manja od fizičke memorije (RES) i može biti korisna za procjenu koliko memorije proces koristi u odnosu na druge procese.
 
 Važan stupac koji nismo objasnili su stanja procesa - `S`.
+
+##### Stanja procesa
 
 **Stanje procesa** (_eng. Process State_) predstavlja trenutnu aktivnost procesa i može biti u **jednom od sljedećih stanja**:
 
@@ -251,9 +281,9 @@ Važan stupac koji nismo objasnili su stanja procesa - `S`.
 - `Z` - **Zombie** - proces je završen, ali ga i dalje možemo pronaći u procesnom prikazu (tablici), npr. zbog neodgovarajuće obrade signala od strane roditeljskog procesa
 - `X` - **Dead** - proces je mrtav, potpuno je završen i ne može se više pronaći u procesnom prikazu. Ovu oznaku ćemo vrlo rijetko vidjeti.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/linux-process-states.png?raw=true" style="width:70%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/linux-process-states.png?raw=true" style="width:70%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼️ Graf stanja procesa i prelazaka u drugo stanje. Izvor: https://idea.popcount.org/2012-12-11-linux-process-states/
+> Slika 6. Graf stanja procesa i prelazaka u drugo stanje. Izvor: https://idea.popcount.org/2012-12-11-linux-process-states/
 
 Ako malo _proscrollamo_ kroz procese, možemo vidjeti da gotovo svi procesi imaju oznaku `S` (sleeping). Ova oznaka označava stanje prekidljivog mirovanja, što ne znači da računalo ne obavlja nikakve aktivnosti. Naprotiv, riječ je o standardnom i učinkovitom mehanizmu upravljanja resursima u Linux operacijskom sustavu, kojim se omogućuje da procesi čekaju događaje bez nepotrebnog opterećenja procesora.
 
@@ -318,7 +348,60 @@ Otvorite `htop` alat i analizirajte barem:
 
 Protumačite sve stupce kao što smo to napravili u prethodnim primjerima.
 
-## 1.2 Programske dretve
+## 1.2 Hijerarhija procesa (`PPID`, `fork`, `exec`)
+
+Procesi na Linuxu ne postoje izolirano. Gotovo svaki proces ima **roditeljski proces** (_eng. parent process_) koji ga je pokrenuo i može imati **dječje procese** (_eng. child processes_) koje je sam pokrenuo.
+
+Zato uz `PID` često pratimo i:
+
+- `PPID` (_eng. Parent Process ID_) - `PID` roditeljskog procesa
+- `STAT` - trenutno stanje procesa, npr. `S`, `R`, `T`, `Z`
+- `CMD` - naredba koja je pokrenula proces
+
+U praksi se stvaranje novog procesa najčešće događa u dva koraka:
+
+1. **`fork`** - postojeći proces stvara novi proces-dijete
+2. **`exec`** - dijete zamjenjuje svoj programski kod novim programom koji se treba izvršiti
+
+Primjerice, kada u `bash` terminalu pokrenemo naredbu `sleep 100`, `bash` je roditeljski proces, a `sleep` je dječji proces. Ako naredbu pokrenemo u pozadini pomoću `&`, terminal ostaje slobodan za daljnji rad (proces se izvršava u pozadini):
+
+```bash
+→ echo $$ # PID trenutnog shell procesa
+→ sleep 100 & # izvršavaj naredbu sleep 100 u pozadini
+→ echo $! # PID posljednjeg procesa pokrenutog u pozadini
+→ ps -p $$,$! -o pid,ppid,stat,cmd
+→ kill $! # zaustavljamo sleep proces nakon vježbe
+```
+
+Mogući ispis:
+
+```text
+  PID  PPID STAT CMD
+  986   972 Ss   -bash
+ 2351   986 S    sleep 100
+```
+
+Čitamo:
+
+- `bash` ima `PID = 986`, a njegov roditelj je proces s `PID = 972`
+- `sleep 100` ima `PID = 2351`, a njegov `PPID = 986`, što znači da ga je pokrenuo `bash`
+- `sleep 100` je u stanju `S` jer spava i čeka da prođe zadano vrijeme
+
+Proces koji završi mora biti "preuzet" od strane roditeljskog procesa. U programskom smislu, roditelj to radi pozivom `wait`, odnosno čitanjem izlaznog statusa djeteta. Ako dijete završi, a roditelj još nije preuzeo njegov izlazni status, takav proces nakratko može ostati u stanju `Z` - **zombie**.
+
+**Zombie proces** nije aktivan proces koji troši CPU. On je već završio, ali se njegov zapis još nalazi u procesnoj tablici kako bi roditelj mogao pročitati izlazni status.
+
+S druge strane, ako roditeljski proces završi prije djeteta, dijete postaje **orphan** proces. Takav proces preuzima drugi roditelj, najčešće `systemd` (`PID = 1`) ili neki drugi nadređeni servisni proces. Ovo omogućuje da sustav i dalje može pravilno upravljati procesima koji su ostali bez izvornog roditelja.
+
+Za pregled hijerarhije procesa možemo koristiti i `ps` s prikazom stabla:
+
+```bash
+→ ps -ejH
+```
+
+Ili u `htop` alatu pritisnuti `F5` za _Tree view_, što smo već koristili za vizualni prikaz odnosa između procesa, potprocesa i dretvi.
+
+## 1.3 Programske dretve
 
 **Dretva** (_eng. thread_) je **najmanja jedinica izvršavanja** unutar procesa. Više dretvi može postojati unutar istog procesa, a svaka dretva može samostalno izvršavati skup instrukcija. Sve dretve jednog procesa **dijele isti adresni prostor** (memoriju), uključujući varijable, otvorene datoteke i druge resurse. Međutim, svaka dretva ima **vlastiti programski brojač**, **registarski skup** i **vlastiti stog** (_eng. stack_), što joj omogućuje neovisno izvršavanje.
 
@@ -337,9 +420,9 @@ _Primjer:_ Moderni web preglednici koriste **višestruke procese** (_multiproces
   - prikazivanje slika i videozapisa
   - upravljanje korisničkim sučeljem
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/threads-illustration.png?raw=true" style="width:90%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/threads-illustration.png?raw=true" style="width:90%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼️ Ilustracija prikazuje više dretvi unutar istog procesa (višedretvenost), od kojih svaka ima različito trajanje izvršavanja tijekom rada procesa.
+> Slika 7. Ilustracija prikazuje više dretvi unutar istog procesa (višedretvenost), od kojih svaka ima različito trajanje izvršavanja tijekom rada procesa.
 
 Dretveni prikaz koristeći `htop` će najvjerojatnije biti zadan, ako nije, možemo ga pokrenuti zastavicom `-H`:
 
@@ -349,15 +432,15 @@ Dretveni prikaz koristeći `htop` će najvjerojatnije biti zadan, ako nije, mož
 
 Možemo otvoriti `Setup (F2)` i omogućiti opciju `Display options -> Display threads in a different color` kako bi lakše razlikovali dretve od procesa.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-threads-different-color.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-threads-different-color.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼 `htop`: `Setup F2` -> `Display options` -> `Display threads in a different color`
+> Slika 8. `htop`: `Setup F2` -> `Display options` -> `Display threads in a different color`
 
 Pod `Command` ćete sada uočiti dretve definirane **zelenom bojom**. Dodatno, možemo prikazati hijerarhiju pritiskom na tipku `F5` (_Tree view_).
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-tree.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼️ `htop`: Prikaz hijerarhije procesa i dretvi, hijerarhijski odabirom `F5` opcije
+> Slika 9. `htop`: Prikaz hijerarhije procesa i dretvi, hijerarhijski odabirom `F5` opcije
 
 Primjerice, za proces `/sbin/multipathd -d -s` možemo vidjeti da se radi o procesu koji koristi 6 dretvi. Dodatno, u ovom slučaju dretve dijele resurse pa možemo vidjeti iste vrijednosti za `VIRT`, `RES` i `SHR` i `MEM%` stupce.
 
@@ -375,13 +458,13 @@ Kada omogućimo skrivene kernel dretve, možemo ih vidjeti u `htop` alatu označ
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-kthr.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼️ `htop`: Prikaz skrivenih kernel dretvi - označene isto tako zelenom bojom
+> Slika 10. `htop`: Prikaz skrivenih kernel dretvi - označene isto tako zelenom bojom
 
 #### Alat `kill`
 
 Kako bismo prekinuli neki proces (ili dretvu), možemo koristiti alat `kill`. Ova naredba šalje određeni signal procesu kako bi ga prekinula ili promijenila njegovo stanje.
 
-Naredba `kill` koristi se za slanje signala procesu putem njegovog PID-a, i ne mora se raditi o prekidu procesa, već i o drugim signalima koji mogu promijeniti njegovo ponašanje. Međutim, najčešće se koristi za prekid procesa interuptivnim signalom koji prebacuje stanje procesa iz `R` (Running) u `T` (stopped).
+Naredba `kill` koristi se za slanje signala procesu putem njegovog PID-a, i ne mora se raditi o prekidu procesa, već i o drugim signalima koji mogu promijeniti njegovo ponašanje. Najčešće se koristi za traženje prekida procesa signalom `SIGTERM`, dok se stanje `T` (stopped) dobiva signalima za zaustavljanje/pauziranje procesa, primjerice `SIGSTOP`.
 
 **Sintaksa:**
 
@@ -395,16 +478,16 @@ Opcije (zastavice) predstavljaju vrstu signala koji šaljemo procesu. Najčešć
 - `-15` - **SIGTERM** - šalje procesu zahtjev za prekidom, proces može obraditi signal i završiti se na "ljubazan" način
 - `-1` - **SIGHUP** - šalje procesu signal za ponovno učitavanje konfiguracije, često se koristi za ponovno učitavanje usluga
 - `-2` - **SIGINT** - šalje procesu signal za prekid, obično se koristi kada pritisnemo `CTRL+C` u terminalu
-- `-19` - **SIGSTOP** - šalje procesu signal za pauziranje, proces se ne može obraditi i ne može se nastaviti dok ga ne prekinemo
+- `-19` - **SIGSTOP** - šalje procesu signal za pauziranje, proces ga ne može ignorirati i ostaje zaustavljen dok mu ne pošaljemo `SIGCONT`
 - `-18` - **SIGCONT** - šalje procesu signal za nastavak nakon pauziranja
 
 Prema zadanim postavkama, `kill` šalje signal `SIGTERM` (`-15`) procesu.
 
 Otvorite `htop` i pronađite `PID` procesa `htop`. Možete i pretraživati (`F3`) kako biste ga lakše pronašli.
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-htop-searchf3.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-htop-searchf3.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼️ `htop`: Pronalazak procesa pretraživanjem po nazivu (`F3`)
+> Slika 11. `htop`: Pronalazak procesa pretraživanjem po nazivu (`F3`)
 
 Vidimo da je `PID` našeg `htop` procesa `1421`. Dakle, prekinuli bismo ga koristeći:
 
@@ -424,7 +507,7 @@ Trebali biste vidjeti nove sesije koje razlikujete po oznaci `tty[N]`, npr. `tty
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/tty3.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ Nova terminal sesija (`tty3`) u koju smo se prebacili pritiskom na `ALT + →`
+> Slika 12. Nova terminal sesija (`tty3`) u koju smo se prebacili pritiskom na `ALT + →`
 
 Prijavite se i pokrenite naredbu za prekidanje procesa `htop`:
 
@@ -477,7 +560,7 @@ _Primjer_: Želimo prekinuti sve procese koji se zovu `htop`, možemo koristiti:
 → pkill htop
 ```
 
-Postoji i varijanta - `killall` koja se koristi za prekid svih procesa koji imaju isto ime, bez obzira na korisnika koji ih pokreće. Primjerice, želimo odjednom zatvoriti `chrome` ili `firefox` i sve njihove procese:
+Postoji i varijanta - `killall` koja se koristi za prekid svih procesa koji imaju isto ime, ako korisnik ima dozvolu poslati im signal. Običan korisnik može signalizirati vlastite procese, dok je za tuđe procese najčešće potreban `sudo`. Primjerice, želimo odjednom zatvoriti `chrome` ili `firefox` i sve njihove procese:
 
 ```bash
 → killall chrome
@@ -486,19 +569,19 @@ Postoji i varijanta - `killall` koja se koristi za prekid svih procesa koji imaj
 
 Ova naredba će neizravno prekinuti i sve dretve koje su pokrenute unutar tih procesa, budući da su dio tog procesa.
 
-## 1.3 Alat `nice`
+## 1.4 Alat `nice`
 
-Alat `nice` se koristi za pokretanje procesa s definiranim `NI` prioritetom. Ova naredba omogućava korisnicima da odrede prioritet procesa koji pokreću, čime se može utjecati na raspodjelu resursa i CPU vremena između različitih procesa.
+Alat `nice` se koristi za pokretanje procesa s definiranom `NI` (_nice_) vrijednošću. Ova naredba omogućava korisnicima da utječu na prioritet procesa koji pokreću, čime se može utjecati na raspodjelu resursa i CPU vremena između različitih procesa.
 
-Rekli smo da je `NI` prioritet procesa između `-20` i `19`, gdje `-20` predstavlja najviši prioritet, a `19` najniži.
+Rekli smo da je `NI` vrijednost procesa između `-20` i `19`, gdje `-20` predstavlja najviši prioritet, a `19` najniži.
 
 **Sintaksa:**
 
 ```bash
-→ nice -n <prioritet> <naredba>
+→ nice -n <nice_vrijednost> <naredba>
 ```
 
-- `<prioritet>` - predstavlja prioritet koji želimo postaviti procesu, a može biti između `-20` i `19`
+- `<nice_vrijednost>` - predstavlja _nice_ vrijednost koju želimo postaviti procesu, a može biti između `-20` i `19`
 - `<naredba>` - predstavlja naredbu koju želimo pokrenuti s određenim prioritetom (može biti bilo koja CLI naredba, uključujući i bash izraz ili skripta)
 
 _Primjer_: Ako definiramo bash skriptu `numbers.sh` koja ispisuje brojeve od `1` do `100`, možemo ju pokrenuti s različitim prioritetima:
@@ -525,11 +608,11 @@ Dodjeljujemo dozvolu za izvršavanje `x`:
 Skriptu možemo pokrenuti s različitim prioritetima:
 
 ```bash
-→ nice -n 0 ./numbers.sh # pokreće skriptu s prioritetom 0 (zadani prioritet)
+→ nice -n 0 ./numbers.sh # pokreće skriptu s nice vrijednošću 0 (zadani prioritet)
 
-→ nice -n 10 ./numbers.sh # pokreće skriptu s prioritetom 10 (manji prioritet od zadanog)
+→ nice -n 10 ./numbers.sh # pokreće skriptu s nice vrijednošću 10 (manji prioritet od zadanog)
 
-→ sudo nice -n -10 ./numbers.sh # pokreće skriptu s prioritetom -10 (veći prioritet od zadanog)
+→ sudo nice -n -10 ./numbers.sh # pokreće skriptu s nice vrijednošću -10 (veći prioritet od zadanog)
 ```
 
 Ponekad je za pokretanje naredbi s većim prioritetom potreban `sudo` pristup. Ako pokušamo pokrenuti skriptu s višim prioritetom bez `sudo` naredbe, dobit ćemo poruku:
@@ -567,27 +650,27 @@ Uočite sljedeću hijerarhiju procesa/potprocesa:
 
 - `/bin/login -p --` - proces koji se pokreće na početku (login sesija)
   - `-bash` - potproces koji pokreće `bash` shell
-    - `/bin/bash .numbers.sh` - potproces koji pokreće našu bash skriptu
+    - `/bin/bash ./numbers.sh` - potproces koji pokreće našu bash skriptu
       - `sleep 1` - potproces koji pokreće `sleep` naredbu
 
 Ako pokrenemo skriptu s `nice` naredbom, primijetite da se procesi nalaze u drugoj hijerarhiji:
 
 ```bash
-→ nice -n 10 ./numbers.sh # pokreće skriptu s prioritetom 10 (manji prioritet od zadanog)
+→ nice -n 10 ./numbers.sh # pokreće skriptu s nice vrijednošću 10 (manji prioritet od zadanog)
 
-→ sudo nice -n -20 ./numbers.sh # pokreće skriptu s prioritetom -20 (najviši prioritet)
+→ sudo nice -n -20 ./numbers.sh # pokreće skriptu s nice vrijednošću -20 (najviši prioritet)
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-sudo-nice-max.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-sudo-nice-max.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼️ `htop` prikaz: Proces instanciran naredbom `nice` s najvišim mogućim prioritetom od `-20`.
+> Slika 13. `htop` prikaz: Proces instanciran naredbom `nice` s najvišim mogućim prioritetom od `-20`.
 
-Ako želimo promijeniti prioritet već pokrenut procesa (u fazi `R`), možemo koristiti `renice` varijantu naredbe:
+Ako želimo promijeniti prioritet već pokrenut procesa, možemo koristiti `renice` varijantu naredbe:
 
 **Sintaksa:**
 
 ```bash
-→ renice -n <prioritet> -p <PID>
+→ renice -n <nice_vrijednost> -p <PID>
 ```
 
 _Primjer_: ako želimo povećati prioritet izvođenja procesa `./numbers.sh`, možemo prvo pronaći njegov `PID` koristeći `htop` ili `pidof` ili `pgrep`:
@@ -598,7 +681,7 @@ _Primjer_: ako želimo povećati prioritet izvođenja procesa `./numbers.sh`, mo
 
 > **💡Napomena** : puni naziv procesa je: `/bin/bash ./numbers.sh` zbog _shebang_ oznake na početku skripte
 
-Smanjit ćemo mu prioritet na `-10`:
+Povećat ćemo mu prioritet postavljanjem _nice_ vrijednosti na `-10`:
 
 ```bash
 → sudo renice -n -10 -p <PID>
@@ -679,7 +762,7 @@ Kako bismo provjerili **sve pohranjene korisnike**, možemo pročitati sadržaj 
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/cat-etc-passwd.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ Prikaz svih korisnika u konfiguracijskoj datoteci `/etc/passwd`
+> Slika 14. Prikaz svih korisnika u konfiguracijskoj datoteci `/etc/passwd`
 
 Ova datoteka sadrži sve korisnike koji su registrirani, svaki redak predstavlja jednog korisnika.
 
@@ -709,7 +792,7 @@ Kako bismo se prebacili u `root` korisnika, možemo koristiti naredbu:
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/sudo-i.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ Prebacivanje u `root` korisnika koristeći `sudo -i` naredbu
+> Slika 15. Prebacivanje u `root` korisnika koristeći `sudo -i` naredbu
 
 Kada smo u `root` korisniku, možemo koristiti sve privilegije i upravljati sustavom bez ograničenja - **ne moramo koristiti `sudo` ispred svake naredbe**.
 
@@ -756,7 +839,7 @@ _Primjer:_ Dodajemo novog korisnika `markomaric`:
 → sudo useradd markomaric
 ```
 
-Prema zadanim postavkama, novi korisnik će biti bez lozinke, a njegov home direktorij će biti `/home/markomaric`. Također, zadani shell će biti `/bin/bash`. Isto možemo provjeriti u datoteci `/etc/passwd`:
+Prema zadanim postavkama, novi korisnik će biti bez lozinke. Zapis u `/etc/passwd` može sadržavati zadanu putanju _home_ direktorija (npr. `/home/markomaric`) i zadani shell iz konfiguracije sustava, ali _home_ direktorij se na Ubuntu Serveru obično neće stvoriti bez zastavice `-m`, a zadani shell nije nužno `/bin/bash`. Isto možemo provjeriti u datoteci `/etc/passwd`:
 
 ```bash
 sudo cat /etc/passwd
@@ -784,7 +867,7 @@ _Primjer_: Želimo brzo pronaći korisnika `markomaric` u datoteci `/etc/passwd`
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/passwd-grep-markomaric.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ Preusmjeravanje ukupnog sadržaja iz datoteke `/etc/passwd` u `grep` alat koji filtrira sadržaj prema regularnom izrazu, konkretno izraz je običan string: `markomaric`
+> Slika 16. Preusmjeravanje ukupnog sadržaja iz datoteke `/etc/passwd` u `grep` alat koji filtrira sadržaj prema regularnom izrazu, konkretno izraz je običan string: `markomaric`
 
 Ipak, naredba `useradd` neće automatski stvoriti _home_ direktorij za novog korisnika, već to moramo učiniti sami. Prebacit ćemo se u korisnika `markomaric` i pokušati mu stvoriti _home_ direktorij:
 
@@ -810,7 +893,7 @@ Stvorit ćemo _home_ direktorij ručno:
 → sudo su - markomaric # prebacujemo se u novog korisnika
 ```
 
-Ipak, ako pokušate išta raditi s novim korisnikom, nećete moći jer `markomaric` nema privilegije.
+Ipak, ako pokušate išta raditi s novim korisnikom u tom direktoriju, nećete moći jer je ručno stvoreni direktorij vlasništvo korisnika `root`, a ne korisnika `markomaric`.
 
 **Ne preporučuje se ovo raditi!** Ne želimo nikad ručno stvarati _home_ direktorij, već koristiti odgovarajuću zastavicu/zastavice prilikom pozivanja `useradd` naredbe.
 
@@ -835,9 +918,9 @@ Lozinku se ne preporučuje dodavati pomoću zastavice, već **naknadno pomoću**
 → sudo passwd anaanic # dodajemo lozinku korisniku "anaanic"
 ```
 
-<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/sudopasswd-anaanic.png?raw=true" style="width:100%; box-shadow: none !important;"></img>
+<img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/sudopasswd-anaanic.png?raw=true" style="width:100%; border-radius: 10px; box-shadow: none !important;"></img>
 
-> 🖼️ Dodavanje lozinke korisniku `anaanic` koristeći `passwd` nakon uspješnog stvaranja korisnika naredbom `useradd -m -s`
+> Slika 17. Dodavanje lozinke korisniku `anaanic` koristeći `passwd` nakon uspješnog stvaranja korisnika naredbom `useradd -m -s`
 
 - stvorili smo home direktorij `/home/anaanic`
 - postavili smo zadani shell `/bin/bash`
@@ -854,7 +937,7 @@ bash: cd: /home/anaanic: Permission denied
 
 Neće raditi niti sa `sudo`, a niti nije moguće koristiti `sudo` s naredbom `cd`.
 
-Dakle, nemamo privilegije za pristup _home_ direktoriju `anaanic`, **jer je ona vlasnik tog direktorija**. Ipak, možemo ući unutra na dva načina:
+Dakle, nemamo privilegije za pristup _home_ direktoriju `anaanic` zbog dozvola postavljenih na tom direktoriju, a ne samo zbog činjenice da je `anaanic` vlasnica. Ipak, možemo ući unutra na dva načina:
 
 - prijavimo se kao `anaanic` korisnik (`su - anaanic`)
 - prijavimo se kao `root` korisnik (`sudo -i`) koji ima sve privilegije svijeta
@@ -963,7 +1046,7 @@ Ako je sve prošlo u redu, trebali bismo se prebaciti u `root` korisnika bez pro
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/usermod-aG-anaanic.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ Dodavanje `sudo` ovlasti korisniku `anaanic` pomoću naredbe `usermod`, prebacivanje u `root`
+> Slika 18. Dodavanje `sudo` ovlasti korisniku `anaanic` pomoću naredbe `usermod`, prebacivanje u `root`
 
 > **💡Napomena**: Pazite da ne zaboravite na zastavicu `-a` (append), jer ako ju ne navedemo, lista grupa će biti pregažena i korisnik će biti uklonjen iz svih ostalih grupa, osim iz one koju smo naveli.
 
@@ -1060,7 +1143,7 @@ Pozivamo skriptu s argumentom korisničkog imena:
 → ./lock_user.sh anaanic
 ```
 
-Ako je sve prošlo u redu, korisnik `anaanic` više se ne može prijaviti u sustav. Međutim, i dalje ćemo se moći prebaciti u njega kao `root` ili administrator korisnik. Otvorite novu terminal sesiju i pokušajte se prijaviti kao `anaanic` korisnik, ili pokušajte putem SSH izvana.
+Ako je sve prošlo u redu, korisnik `anaanic` više se ne može prijaviti koristeći lozinku. Međutim, `usermod -L` zaključava lozinku, ali ne mora blokirati sve moguće načine prijave (npr. SSH ključ), niti prekida već aktivne sesije. I dalje ćemo se moći prebaciti u njega kao `root` ili administrator korisnik.
 
 <hr>
 
@@ -1123,7 +1206,7 @@ Podignuli ste VM u cloud okruženju i prijavili se kao `root` korisnik. U vašoj
 Napravite korisničke račune za svakog od njih i dodijelite im sekundarnu grupu `devs`. Također, senior developeru dodijelite još jednu sekundarnu grupu `seniors` i `sudo` privilegije.
 
 Dodajte lozinke za sve korisnike.
-Kako su junior developeri na praksi, postavite datum isteka korisničkog računa na 1. listopada 2025. godine.
+Kako su junior developeri na praksi, postavite datum isteka korisničkog računa na 1. listopada 2026. godine.
 
 E sad, svake godine dobivate nove juniore i neda vam se ponovo raditi sve ispočetka. Prijavite se kao senior i u njegovom _home_ direktoriju stvorite bash skriptu `create_junior.sh <username> <full_name> <password> <date>` koja će automatski dodati juniore u sustav pozivanjem svih odgovarajućih naredbi koje ste ručno upisivali.
 
@@ -1151,7 +1234,7 @@ Navedene informacije rekli smo da dobivamo pomoću zastavice `-l` naredbe `ls`:
 
 <img src= "https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/home-ls-l.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ Prikaz datoteka u _home_ direktoriju s pripadajućim dozvolama i vlasnicima
+> Slika 19. Prikaz datoteka u _home_ direktoriju s pripadajućim dozvolama i vlasnicima
 
 **Prisjetimo se:**
 
@@ -1170,6 +1253,14 @@ Postoji i 3 **vrste dozvola**:
 - **Pisanje (oznaka `w`)** (_eng. write_) - dozvola za pisanje u datoteku
 - **Izvršavanje (oznaka `x`)** (_eng. execute_) - dozvola za izvršavanje datoteke
 
+Kod direktorija iste oznake imaju malo drugačije značenje:
+
+- `r` - dozvola za ispis naziva datoteka u direktoriju
+- `w` - dozvola za stvaranje, brisanje i preimenovanje datoteka unutar direktorija
+- `x` - dozvola za ulazak u direktorij i pristup datotekama ako znamo njihovo ime
+
+Zbog toga je `x` dozvola na direktorijima posebno važna. Bez nje korisnik ne može normalno ući u direktorij, čak i ako ima dozvolu `r`.
+
 Do sada smo već dodavali dozvolu za izvršavanje datoteke pomoću `chmod` naredbe.
 
 **Dozvola** je tipično prikazana kao niz od `10` odnosno (`1` + `9`) znakova:
@@ -1181,7 +1272,6 @@ Zašto `1 + 9`? Jer prvi znak označava vrstu datoteke, a ostalih `9` znakova oz
 ```
 
 - **prvi znak** označava vrstu datoteke:
-
   - `-` - obična datoteka
   - `d` - direktorij
   - `l` - simbolička veza (eng. symbolic link)
@@ -1260,7 +1350,63 @@ Kako bismo sada izmijenili dozvole datoteke, koristimo `chmod` naredbu, oktalnu 
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/izmjenjena-dozvola-oktalnom-rep.png?raw=true"  style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ Prikaz izmijenjene dozvole datoteke `lock_user.sh` na `764` (-rwxrw-r--)
+> Slika 20. Prikaz izmijenjene dozvole datoteke `lock_user.sh` na `764` (-rwxrw-r--)
+
+<hr>
+
+#### Dozvole direktorija i `umask`
+
+Kada stvaramo novu datoteku ili direktorij, Linux ne dodjeljuje dozvole proizvoljno. Polazi od zadanih vrijednosti i zatim primjenjuje masku koja se zove `umask`.
+
+Zadane početne vrijednosti su:
+
+- `666` za obične datoteke (`rw-rw-rw-`) jer se nove datoteke ne bi trebale automatski moći izvršavati
+- `777` za direktorije (`rwxrwxrwx`) jer direktorij treba `x` dozvolu da bismo mogli ući u njega
+
+Naredbom `umask` možemo vidjeti trenutnu masku:
+
+```bash
+→ umask
+0022
+```
+
+Ako je `umask = 022`, tada se nove dozvole računaju ovako:
+
+| Vrsta      | Početna vrijednost | `umask` | Konačna dozvola     |
+| ---------- | ------------------ | ------- | ------------------- |
+| datoteka   | `666`              | `022`   | `644` (`rw-r--r--`) |
+| direktorij | `777`              | `022`   | `755` (`rwxr-xr-x`) |
+
+_Primjer:_ Stvorimo novu datoteku i direktorij pa provjerimo njihove dozvole:
+
+```bash
+→ umask
+→ touch nova_datoteka.txt
+→ mkdir novi_direktorij
+→ ls -ld nova_datoteka.txt novi_direktorij
+```
+
+U tipičnoj Ubuntu konfiguraciji vidjet ćete da je datoteka stvorena s dozvolama `644`, a direktorij s dozvolama `755`.
+
+Možemo privremeno postaviti strožu masku:
+
+```bash
+→ umask 027
+→ touch privatno.txt
+→ mkdir privatni_dir
+→ ls -ld privatno.txt privatni_dir
+```
+
+S `umask 027`, nove datoteke tipično dobivaju dozvolu `640`, a novi direktoriji `750`. To znači da vlasnik ima puna prava, grupa ima ograničen pristup, a ostali korisnici nemaju pristup.
+
+> **💡Napomena:** `umask` utječe samo na nove datoteke i direktorije. Ne mijenja dozvole datoteka koje već postoje.
+
+Postoje i posebne dozvole koje se često koriste na direktorijima:
+
+- **setgid** (`chmod g+s direktorij`) - nove datoteke unutar direktorija nasljeđuju grupu direktorija
+- **sticky bit** (`chmod +t direktorij`) - korisnici mogu brisati samo vlastite datoteke unutar zajedničkog direktorija
+
+Primjerice, direktorij `/tmp` tipično koristi _sticky bit_ kako bi više korisnika moglo stvarati privremene datoteke, ali da ne mogu brisati tuđe datoteke.
 
 <hr>
 
@@ -1335,7 +1481,7 @@ Servisima upravlja _service manager_ sustav, najčešće je to `systemd` koji je
 
 <img src="https://github.com/lukablaskovic/FIPU-OS/blob/main/OS5%20-%20Rad%20na%20Virtualnom%20stroju:%20Naprednije%20teme/screenshots/htop-search-systemd.png?raw=true" style="width:100%; box-shadow: none !important; border-radius: 10px;"></img>
 
-> 🖼️ `htop` prikaz: Prikaz aktivnog `systemd` procesa.
+> Slika 21. `htop` prikaz: Prikaz aktivnog `systemd` procesa.
 
 U prošloj skripti naučili smo koristiti naredbu `systemctl`. Ova naredba koristi se za upravljanje servisima koji koriste `systemd` servisni manager.
 
@@ -1357,18 +1503,18 @@ _Primjer:_ Provjera statusa određenog servisa, npr `ssh`:
 → systemctl status ssh
 ```
 
-_Primjer:_ Provjera statusa svih aktivnih servisa:
+_Primjer:_ Provjera svih aktivnih servisa:
 
 ```bash
-→ systemctl status
+→ systemctl list-units --type=service --state=active
 ```
 
 _Primjer:_ Pokretanje/zaustavljanje određenog servisa, npr `nginx`:
 
 ```bash
-→ systemctl start nginx
-→ systemctl stop nginx
-→ systemctl restart nginx
+→ sudo systemctl start nginx
+→ sudo systemctl stop nginx
+→ sudo systemctl restart nginx
 ```
 
 _Primjer:_ Provjera statusa određenog servisa, npr `ssh`:
@@ -1383,17 +1529,75 @@ _Primjer:_ Provjera koji servisi nisu uspješno pokrenuti prilikom podizanja sus
 → systemctl --failed
 
 # Ako želimo određene servise pokrenuti prilikom podizanja sustava, koristimo:
-→ systemctl enable <servis>
+→ sudo systemctl enable <servis>
 
 # Ili pak onemogućiti:
-→ systemctl disable <servis>
+→ sudo systemctl disable <servis>
 ```
+
+## 4.1 Stanje servisa i logovi
+
+Važno je razlikovati dvije stvari:
+
+- je li servis **trenutno pokrenut**
+- hoće li se servis **automatski pokrenuti prilikom dizanja sustava**
+
+Naredbe `start`, `stop` i `restart` utječu na trenutno stanje servisa. Naredbe `enable` i `disable` utječu na ponašanje prilikom sljedećeg pokretanja sustava.
+
+Drugim riječima:
+
+- `active` znači da servis trenutno radi
+- `inactive` znači da servis trenutno ne radi
+- `failed` znači da se servis pokušao pokrenuti, ali je završio greškom
+- `enabled` znači da će se servis pokušati automatski pokrenuti prilikom dizanja sustava
+- `disabled` znači da se servis neće automatski pokrenuti prilikom dizanja sustava
+
+Zato servis može biti `active`, ali `disabled` - trenutno radi, ali se neće automatski pokrenuti nakon restarta. Može biti i `inactive`, ali `enabled` - trenutno ne radi, ali je postavljen da se pokrene prilikom dizanja sustava.
+
+Za brzu provjeru možemo koristiti:
+
+```bash
+→ systemctl is-active ssh
+→ systemctl is-enabled ssh
+```
+
+Ako želimo servis odmah pokrenuti i istovremeno omogućiti njegovo pokretanje prilikom dizanja sustava, možemo koristiti `--now`:
+
+```bash
+→ sudo systemctl enable --now ssh
+```
+
+Kada servis ne radi kako očekujemo, prvo gledamo njegov status:
+
+```bash
+→ systemctl status ssh
+```
+
+Ako status nije dovoljan, čitamo logove pomoću `journalctl`:
+
+```bash
+→ journalctl -u ssh -n 50 --no-pager
+```
+
+Čitamo:
+
+- `-u ssh` - prikazuje logove za `ssh` servis
+- `-n 50` - prikazuje zadnjih 50 zapisa
+- `--no-pager` - ispisuje rezultat direktno u terminal bez otvaranja dodatnog preglednika teksta
+
+Za praćenje logova u stvarnom vremenu možemo koristiti:
+
+```bash
+→ journalctl -u ssh -f
+```
+
+Ovo je vrlo korisno kada pokušavamo pokrenuti servis i odmah želimo vidjeti zašto se ne pokreće ili koju grešku ispisuje.
 
 Servisima ćemo se puno više baviti na kolegiju [Raspodijeljeni sustavi](https://fipu.unipu.hr/fipu/predmet/rassus_a).
 
 ## Zadatak 5: Upravljanje servisima
 
-Napišite bash skriptu koja prima naziv servisa kao argument (npr. `ssh`) i provjerava postoji li taj servis u sustavu naredbom `systemctl status`. Kako biste znali napisati `if` selekciju, provjerite što vraća varijabla `$?` kada servis postoji u sustavu, a što kada ne postoji.
+Napišite bash skriptu koja prima naziv servisa kao argument (npr. `ssh`) i provjerava postoji li taj servis u sustavu naredbom `systemctl cat <servis>`. Naredba `systemctl status` nije idealna za ovu provjeru jer može vratiti neuspješan izlazni status i za servis koji postoji, ali je zaustavljen ili u grešci. Kako biste znali napisati `if` selekciju, provjerite što vraća varijabla `$?` kada servis postoji u sustavu, a što kada ne postoji.
 
 Temeljem te selekcije, pokrenite određeni servis. Bash očekuje točno jedan argument - naziv servisa, a ako nije naveden, ispišite poruku upozorenja i izađite iz skripte.
 
@@ -1433,7 +1637,7 @@ Stvorite nekoliko novih korisnika i dodajte ih u grupu `devteam`.
 
 Za direktorij `project`, vi ostajete vlasnik, a grupu postavite na `devteam`.
 
-Definirajte dozvole za direktorij `project` tako da svi članovi grupe `devteam` mogu čitati, pisati, vi možete čitati, pisati i izvršavati, a ostali korisnici samo čitati.
+Definirajte dozvole za direktorij `project` tako da svi članovi grupe `devteam` mogu čitati, pisati i ući u direktorij, vi možete čitati, pisati i izvršavati, a ostali korisnici mogu samo čitati sadržaj i ući u direktorij. Kod direktorija je dozvola `x` potrebna za ulazak/pretraživanje direktorija.
 
 **Zadatak 4**
 
