@@ -1,4 +1,6 @@
-# Materijali iz kolegija: Operacijski sustavi (OS)
+# Materijali iz kolegija: Operacijski sustavi ([OS - 199570](https://fipu.unipu.hr/fipu/predmet/opsus_a))
+
+<img src="images/OS-banner.png" alt="Operacijski sustavi (OS - 199570)" style="border-radius: 8px;">
 
 <p>
   <a href="https://ubuntu.com/server" target="_blank">  <img src="https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white" />
@@ -15,10 +17,10 @@
 **Ustanova**: [Sveučilište Jurja Dobrile u Puli](https://www.unipu.hr/), [Fakultet informatike u Puli](https://fipu.unipu.hr/)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU_white.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU.png">
+  <source media="(prefers-color-scheme: dark)" srcset="images/FIPU_UNIPU_white.png">
+  <source media="(prefers-color-scheme: light)" srcset="images/FIPU_UNIPU.png">
   <img alt="Fakultet informatike u Puli (materijali iz kolegija Operacijski sustavi - Luka Blašković)" 
-       src="https://raw.githubusercontent.com/lukablaskovic/FIPU-WA/refs/heads/main/FIPU_UNIPU_white.png" width="300">
+       src="images/FIPU_UNIPU_white.png" width="300">
 </picture>
 
 ---

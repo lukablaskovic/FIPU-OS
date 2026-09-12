@@ -19,3 +19,10 @@ midterm-tasks.md
 /results-os-final
 /ispit-16-6-26
 /ispit-7-7-26
+
+# Local PDF and Google Drive tools
+script-patcher/credentials.json
+script-patcher/token.json
+script-patcher/.venv/
+script-patcher/node_modules/
+script-patcher/__pycache__/

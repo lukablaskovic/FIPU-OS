@@ -1,11 +1,13 @@
-# Operacijski sustavi (OS)
+# Operacijski sustavi ([OS - 199570](https://fipu.unipu.hr/fipu/predmet/opsus_a))
+
+<img src="../images/OS-banner.png" alt="Operacijski sustavi (OS - 199570)" style="border-radius: 8px;">
 
 **Nositelj**: doc. dr. sc. Ivan Lorencin
 **Asistent**: Luka Blašković, mag. inf.
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; border-radius: 10px; box-shadow: none !important;"></img>
+<img src="../images/FIPU_UNIPU.png" style="width:40%; border-radius: 10px; box-shadow: none !important;"></img>
 
 # (5) Rad na Virtualnom stroju: Naprednije teme
 
@@ -21,11 +23,11 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 28.5.2026.**
+**🆙 Posljednje ažurirano: 12.9.2026.**
 
 ## Sadržaj
 
-- [Operacijski sustavi (OS)](#operacijski-sustavi-os)
+- [Operacijski sustavi (OS - 199570)](#operacijski-sustavi-os---199570)
 - [(5) Rad na Virtualnom stroju: Naprednije teme](#5-rad-na-virtualnom-stroju-naprednije-teme)
   - [Sadržaj](#sadržaj)
 - [1. Upravljanje procesima](#1-upravljanje-procesima)

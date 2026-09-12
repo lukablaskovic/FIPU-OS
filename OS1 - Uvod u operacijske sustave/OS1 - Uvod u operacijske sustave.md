@@ -1,11 +1,13 @@
-# Operacijski sustavi (OS)
+# Operacijski sustavi ([OS - 199570](https://fipu.unipu.hr/fipu/predmet/opsus_a))
+
+<img src="../images/OS-banner.png" alt="Operacijski sustavi (OS - 199570)" style="border-radius: 8px;">
 
 **Nositelj**: doc. dr. sc. Ivan Lorencin
 **Asistent**: Luka Blašković, mag. inf.
 
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
-<img src="https://raw.githubusercontent.com/lukablaskovic/FIPU-PJS/main/0.%20Template/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
+<img src="../images/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
 
 # (1) Uvod u operacijske sustave
 
@@ -21,11 +23,11 @@ Svaki računalni sustav sastavljen je od procesora, radnog spremnika, vanjskih s
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 12.3.2026.**
+**🆙 Posljednje ažurirano: 12.9.2026.**
 
 ## Sadržaj
 
-- [Operacijski sustavi (OS)](#operacijski-sustavi-os)
+- [Operacijski sustavi (OS - 199570)](#operacijski-sustavi-os---199570)
 - [(1) Uvod u operacijske sustave](#1-uvod-u-operacijske-sustave)
   - [Sadržaj](#sadržaj)
 - [1. Uvod](#1-uvod)
