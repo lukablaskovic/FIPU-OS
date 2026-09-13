@@ -4,7 +4,6 @@
 
 **Nositelj**: doc. dr. sc. Ivan Lorencin
 **Asistent**: Luka Blašković, mag. inf.
-
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
 <img src="../images/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
@@ -21,7 +20,7 @@ Računalo na kojem se virtualni stroj izvodi naziva se domaćin (eng. <i>host</i
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 12.9.2026.**
+**🆙 Posljednje ažurirano: 13.9.2026.**
 
 ## Sadržaj
 
@@ -31,9 +30,9 @@ Računalo na kojem se virtualni stroj izvodi naziva se domaćin (eng. <i>host</i
 - [1. Virtualizacija](#1-virtualizacija)
 - [2. Virtualni stroj](#2-virtualni-stroj)
   - [2.1 Instalacija VirtualBoxa](#21-instalacija-virtualboxa)
-    - [Windows](#windows)
-    - [macOS](#macos)
-    - [Linux](#linux)
+      - [Windows](#windows)
+      - [macOS](#macos)
+      - [Linux](#linux)
   - [2.2 Ubuntu Server](#22-ubuntu-server)
   - [2.3 Izrada virtualnog stroja](#23-izrada-virtualnog-stroja)
   - [2.4 Instalacija Ubuntu Servera](#24-instalacija-ubuntu-servera)

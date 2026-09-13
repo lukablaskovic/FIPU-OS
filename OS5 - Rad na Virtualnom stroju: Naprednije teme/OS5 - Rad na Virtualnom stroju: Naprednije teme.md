@@ -4,7 +4,6 @@
 
 **Nositelj**: doc. dr. sc. Ivan Lorencin
 **Asistent**: Luka Blašković, mag. inf.
-
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
 <img src="../images/FIPU_UNIPU.png" style="width:40%; border-radius: 10px; box-shadow: none !important;"></img>
@@ -23,7 +22,7 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 12.9.2026.**
+**🆙 Posljednje ažurirano: 13.9.2026.**
 
 ## Sadržaj
 
@@ -32,28 +31,30 @@ Osim toga, obradit ćemo i upravljanje korisnicima, korisničkim grupama i servi
   - [Sadržaj](#sadržaj)
 - [1. Upravljanje procesima](#1-upravljanje-procesima)
   - [1.1 Interaktivni pregled procesa (`top`/`htop`)](#11-interaktivni-pregled-procesa-tophtop)
-    - [Alat `top`](#alat-top)
-      - [Tumačenje stupaca u `top`/`htop` alatima:](#tumačenje-stupaca-u-tophtop-alatima)
-      - [Prioritetni raspon](#prioritetni-raspon)
-    - [Alat `htop`](#alat-htop)
-      - [Stanja procesa](#stanja-procesa)
+      - [Alat `top`](#alat-top)
+        - [Tumačenje stupaca u `top`/`htop` alatima:](#tumačenje-stupaca-u-tophtop-alatima)
+        - [Prioritetni raspon](#prioritetni-raspon)
+      - [Alat `htop`](#alat-htop)
+        - [Stanja procesa](#stanja-procesa)
   - [Zadatak 1: Tumačenje procesa](#zadatak-1-tumačenje-procesa)
   - [1.2 Hijerarhija procesa (`PPID`, `fork`, `exec`)](#12-hijerarhija-procesa-ppid-fork-exec)
   - [1.3 Programske dretve](#13-programske-dretve)
-    - [Alat `kill`](#alat-kill)
-    - [Alati `pidof` i `pgrep`](#alati-pidof-i-pgrep)
-    - [Alat `pkill`](#alat-pkill)
+      - [Alat `kill`](#alat-kill)
+      - [Alati `pidof` i `pgrep`](#alati-pidof-i-pgrep)
+      - [Alat `pkill`](#alat-pkill)
   - [1.4 Alat `nice`](#14-alat-nice)
   - [Zadatak 2: Upravljanje procesima](#zadatak-2-upravljanje-procesima)
 - [2. Upravljanje korisnicima i grupama](#2-upravljanje-korisnicima-i-grupama)
   - [2.1 Naredba `useradd`](#21-naredba-useradd)
-    - [Preusmjeravanje (eng. piping)](#preusmjeravanje-eng-piping)
+      - [Preusmjeravanje (eng. piping)](#preusmjeravanje-eng-piping)
   - [2.2. Tablica čestih zastavica naredbe `useradd`](#22-tablica-čestih-zastavica-naredbe-useradd)
   - [2.3 Naredba `usermod`](#23-naredba-usermod)
   - [2.4. Tablica čestih zastavica naredbe `usermod`](#24-tablica-čestih-zastavica-naredbe-usermod)
   - [2.5 Naredba `userdel`](#25-naredba-userdel)
   - [Zadatak 3: Upravljanje korisnicima i grupama](#zadatak-3-upravljanje-korisnicima-i-grupama)
-- [3. Dozvole datoteka (eng. file permissions)](#3-dozvole-datoteka-eng-file-permissions) - [Dozvole direktorija i `umask`](#dozvole-direktorija-i-umask) - [Alat `chown`](#alat-chown)
+- [3. Dozvole datoteka (eng. file permissions)](#3-dozvole-datoteka-eng-file-permissions)
+      - [Dozvole direktorija i `umask`](#dozvole-direktorija-i-umask)
+      - [Alat `chown`](#alat-chown)
   - [Zadatak 4: Dozvole datoteka](#zadatak-4-dozvole-datoteka)
 - [4. Upravljanje servisima](#4-upravljanje-servisima)
   - [4.1 Stanje servisa i logovi](#41-stanje-servisa-i-logovi)

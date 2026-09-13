@@ -4,7 +4,6 @@
 
 **Nositelj**: doc. dr. sc. Ivan Lorencin
 **Asistent**: Luka Blašković, mag. inf.
-
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
 <img src="../images/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
@@ -27,7 +26,7 @@ U ovom poglavlju studenti će se upoznati s najčešće korištenim zastavicama 
 <div style="clear: both; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 12.9.2026.**
+**🆙 Posljednje ažurirano: 13.9.2026.**
 
 ## Sadržaj
 
@@ -54,8 +53,8 @@ U ovom poglavlju studenti će se upoznati s najčešće korištenim zastavicama 
 - [5. Praktični primjer: Git CLI](#5-praktični-primjer-git-cli)
   - [5.1 Instalacija Git CLI](#51-instalacija-git-cli)
   - [5.2 Osnovne Git CLI naredbe](#52-osnovne-git-cli-naredbe)
-    - [1. Način: Lokalni rad s Git-om](#1-način-lokalni-rad-s-git-om)
-    - [2. Način: Rad s udaljenim repozitorijem](#2-način-rad-s-udaljenim-repozitorijem)
+      - [1. Način: Lokalni rad s Git-om](#1-način-lokalni-rad-s-git-om)
+      - [2. Način: Rad s udaljenim repozitorijem](#2-način-rad-s-udaljenim-repozitorijem)
   - [5.3 Zastavice Git CLI naredbi](#53-zastavice-git-cli-naredbi)
 - [Zadaci za Vježbu 2](#zadaci-za-vježbu-2)
 

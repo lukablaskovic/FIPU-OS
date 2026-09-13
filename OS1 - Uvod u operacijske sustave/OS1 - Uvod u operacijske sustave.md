@@ -4,7 +4,6 @@
 
 **Nositelj**: doc. dr. sc. Ivan Lorencin
 **Asistent**: Luka Blašković, mag. inf.
-
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
 <img src="../images/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
@@ -23,7 +22,7 @@ Svaki računalni sustav sastavljen je od procesora, radnog spremnika, vanjskih s
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 12.9.2026.**
+**🆙 Posljednje ažurirano: 13.9.2026.**
 
 ## Sadržaj
 
@@ -34,21 +33,21 @@ Svaki računalni sustav sastavljen je od procesora, radnog spremnika, vanjskih s
 - [2. Naredbeni redak (CLI)](#2-naredbeni-redak-cli)
   - [2.1 Bash - Bourne Again Shell](#21-bash---bourne-again-shell)
   - [2.2 Kako pokrenuti bash?](#22-kako-pokrenuti-bash)
-    - [Unix-like OS](#unix-like-os)
-    - [Windows OS](#windows-os)
+      - [Unix-like OS](#unix-like-os)
+      - [Windows OS](#windows-os)
 - [3. Osnovne bash naredbe](#3-osnovne-bash-naredbe)
-  - [Naredba `pwd`](#naredba-pwd)
-  - [Naredba `ls`](#naredba-ls)
-  - [Naredba `cd`](#naredba-cd)
-  - [Naredba `clear`](#naredba-clear)
-  - [Naredba `echo`](#naredba-echo)
+    - [Naredba `pwd`](#naredba-pwd)
+    - [Naredba `ls`](#naredba-ls)
+    - [Naredba `cd`](#naredba-cd)
+    - [Naredba `clear`](#naredba-clear)
+    - [Naredba `echo`](#naredba-echo)
 - [4. Bash naredbe za manipulaciju datotekama i direktorijima](#4-bash-naredbe-za-manipulaciju-datotekama-i-direktorijima)
-  - [Naredba `mkdir`](#naredba-mkdir)
-  - [Naredba `rmdir`](#naredba-rmdir)
-  - [Naredba `touch`](#naredba-touch)
-  - [Naredba `cp`](#naredba-cp)
-  - [Naredba `mv`](#naredba-mv)
-  - [Naredba `rm`](#naredba-rm)
+    - [Naredba `mkdir`](#naredba-mkdir)
+    - [Naredba `rmdir`](#naredba-rmdir)
+    - [Naredba `touch`](#naredba-touch)
+    - [Naredba `cp`](#naredba-cp)
+    - [Naredba `mv`](#naredba-mv)
+    - [Naredba `rm`](#naredba-rm)
 - [5. Tablica osnovnih bash naredbi](#5-tablica-osnovnih-bash-naredbi)
 - [Zadaci za Vježbu 1](#zadaci-za-vježbu-1)
 

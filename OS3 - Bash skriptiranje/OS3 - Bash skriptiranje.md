@@ -4,7 +4,6 @@
 
 **Nositelj**: doc. dr. sc. Ivan Lorencin
 **Asistent**: Luka Blašković, mag. inf.
-
 **Ustanova**: Sveučilište Jurja Dobrile u Puli, Fakultet informatike u Puli
 
 <img src="../images/FIPU_UNIPU.png" style="width:40%; box-shadow: none !important;"></img>
@@ -22,7 +21,7 @@ Osim interaktivne upotrebe, bash se široko primjenjuje za izradu skripti – je
 <div style="float: clear; margin-right:5px;"> </div>
 <br>
 
-**🆙 Posljednje ažurirano: 12.9.2026.**
+**🆙 Posljednje ažurirano: 13.9.2026.**
 
 - samo mali ispravak kod aritmetičkih izraza
 
